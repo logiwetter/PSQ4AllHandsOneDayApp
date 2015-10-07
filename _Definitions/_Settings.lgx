@@ -55,9 +55,9 @@
 	<Connections>
 		<Connection
 			ID="Northwind"
-			SqlServer="localhost"
+			SqlServer="209.48.69.227"
 			SqlServerDatabase="Northwind"
-			SqlServerPassword="niks1gip"
+			SqlServerPassword="lgxpass000"
 			SqlServerPort=""
 			SqlServerUser="sa"
 			Type="SqlServer"
