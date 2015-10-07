@@ -1,31 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report ID="InfoReports.Dashboard" SavedBy="LOGIXML\mark" SavedAt="10/7/2015 2:30:33 PM" EngineVersion="12.0.036-SP3">
+<Report ID="InfoReports.Dashboard" SavedBy="LOGIXML\mark" SavedAt="10/7/2015 3:32:46 PM" EngineVersion="12.0.036-SP3">
   <StyleSheet />
   <Body>
     <Division ID="div_inputs" HtmlDiv="True">
-      <InputCheckboxList OptionCaptionColumn="CompanyName" OptionValueColumn="CustomerID" ID="inpCustomerID" CheckboxListDropdown="True" MultiSelect="True" Caption="Company: ">
+      <InputCheckboxList OptionCaptionColumn="CompanyName" OptionValueColumn="CustomerID" ID="inpCustomerID" CheckboxListDropdown="True" MultiSelect="True" Caption="Customer: " DefaultValue="@Request.inpCustomerID~">
         <DataLayer Type="SQL" ID="dlCustomers" ConnectionID="Northwind" Source="Select CustomerID, CompanyName&#xD;&#xA;From  Customers &#xD;&#xA;Order by CompanyName" />
       </InputCheckboxList>
+      <Spaces Size="5" />
+      <Button Caption="Filter">
+        <Action Type="Report">
+          <Target Type="Report" />
+        </Action>
+      </Button>
     </Division>
     <ResponsiveRow>
       <ResponsiveColumn>
-        <ChartCanvas ChartCaption="Sales by Salesperson">
-          <DataLayer Type="SQL" ID="SQLDataLayer1" ConnectionID="Northwind" Source="Select Orders.CustomerID,&#xD;&#xA;  Orders.EmployeeID,&#xD;&#xA;  Orders.OrderDate,&#xD;&#xA;  Orders.ShipCountry,&#xD;&#xA;  Orders.ShipRegion,&#xD;&#xA;  [Order Details].UnitPrice,&#xD;&#xA;  [Order Details].Quantity,&#xD;&#xA;  [Order Details].UnitPrice * [Order Details].Quantity As SaleAmount,&#xD;&#xA;  Employees.LastName,&#xD;&#xA;  Customers.CompanyName&#xD;&#xA;From Orders&#xD;&#xA;  Inner Join [Order Details] On Orders.OrderID = [Order Details].OrderID&#xD;&#xA;  Inner Join Employees On Employees.EmployeeID = Orders.EmployeeID&#xD;&#xA;  Inner Join Customers On Customers.CustomerID = Orders.CustomerID&#xD;&#xA;">
-            <GroupFilter GroupColumn="LastName" KeepGroupedRows="False">
+        <ChartCanvas ChartCaption="Top 10 Customer Sales">
+          <DataLayer Type="SQL" ID="SQLDataLayer1" ConnectionID="Northwind" Source="with&#xD;&#xA;descendants as&#xD;&#xA;  ( select [ReportsTo] as parent, [EmployeeID] as descendant, 1 as level&#xD;&#xA;    from [Northwind].[dbo].[Employees]&#xD;&#xA;  union all&#xD;&#xA;    select [ReportsTo] as parent, [EmployeeID] as child, d.level + 1&#xD;&#xA;    from descendants as d&#xD;&#xA;      join [Northwind].[dbo].[Employees] s&#xD;&#xA;        on d.descendant = s.[ReportsTo]&#xD;&#xA;  ) &#xD;&#xA;&#xD;&#xA;&#xD;&#xA;Select Orders.CustomerID,&#xD;&#xA;  Orders.EmployeeID,&#xD;&#xA;  Orders.OrderDate,&#xD;&#xA;  Orders.ShipCountry,&#xD;&#xA;  Orders.ShipRegion,&#xD;&#xA;  [Order Details].UnitPrice,&#xD;&#xA;  [Order Details].Quantity,&#xD;&#xA;  [Order Details].UnitPrice * [Order Details].Quantity As SaleAmount,&#xD;&#xA;  Employees.LastName,&#xD;&#xA;  Customers.CompanyName&#xD;&#xA;From Orders&#xD;&#xA;  Inner Join [Order Details] On Orders.OrderID = [Order Details].OrderID&#xD;&#xA;  Inner Join Employees On Employees.EmployeeID = Orders.EmployeeID&#xD;&#xA;  Inner Join Customers On Customers.CustomerID = Orders.CustomerID&#xD;&#xA;where&#xD;&#xA;	(Orders.CustomerID in (@SingleQuote.Request.inpCustomerID~) or '@Request.inpCustomerID~'='')&#xD;&#xA;	and&#xD;&#xA;	Orders.EmployeeID in (select descendant from descendants where parent =  '@Session.EmployeeID~' or descendant = '@Session.EmployeeID~' or '@Session.EmployeeID~'='')">
+            <GroupFilter GroupColumn="CompanyName" KeepGroupedRows="False">
               <GroupAggregateColumn AggregateColumn="SaleAmount" AggregateFunction="Sum" ID="gacSaleAmount" />
             </GroupFilter>
+            <SortFilter SortColumn="gacSaleAmount" DataType="Number" SortSequence="Descending" />
+            <SequenceColumn ID="seq" />
+            <ConditionFilter Condition="0@Data.seq~&lt;=10" />
           </DataLayer>
-          <Series Type="Pie" ChartYDataColumn="gacSaleAmount" ChartLabelColumn="LastName">
+          <Series Type="Pie" ChartYDataColumn="gacSaleAmount" ChartLabelColumn="CompanyName">
             <Action Type="Report">
               <Target Type="Report" Report="InfoReports.DrillDown" />
-              <LinkParams EmployeeID="@Chart.EmployeeID~" rdAgReset="True" />
+              <LinkParams rdAgReset="True" CustomerID="@Chart.CustomerID~" />
             </Action>
           </Series>
         </ChartCanvas>
       </ResponsiveColumn>
       <ResponsiveColumn>
         <ChartCanvas ChartCaption="Sales by Country">
-          <DataLayer Type="SQL" ID="SQLDataLayer1" ConnectionID="Northwind" Source="Select Orders.CustomerID,&#xD;&#xA;  Orders.EmployeeID,&#xD;&#xA;  Orders.OrderDate,&#xD;&#xA;  Orders.ShipCountry,&#xD;&#xA;  Orders.ShipRegion,&#xD;&#xA;  [Order Details].UnitPrice,&#xD;&#xA;  [Order Details].Quantity,&#xD;&#xA;  [Order Details].UnitPrice * [Order Details].Quantity As SaleAmount,&#xD;&#xA;  Employees.LastName,&#xD;&#xA;  Customers.CompanyName&#xD;&#xA;From Orders&#xD;&#xA;  Inner Join [Order Details] On Orders.OrderID = [Order Details].OrderID&#xD;&#xA;  Inner Join Employees On Employees.EmployeeID = Orders.EmployeeID&#xD;&#xA;  Inner Join Customers On Customers.CustomerID = Orders.CustomerID&#xD;&#xA;">
+          <DataLayer Type="SQL" ID="SQLDataLayer1" ConnectionID="Northwind" Source="with&#xD;&#xA;descendants as&#xD;&#xA;  ( select [ReportsTo] as parent, [EmployeeID] as descendant, 1 as level&#xD;&#xA;    from [Northwind].[dbo].[Employees]&#xD;&#xA;  union all&#xD;&#xA;    select [ReportsTo] as parent, [EmployeeID] as child, d.level + 1&#xD;&#xA;    from descendants as d&#xD;&#xA;      join [Northwind].[dbo].[Employees] s&#xD;&#xA;        on d.descendant = s.[ReportsTo]&#xD;&#xA;  ) &#xD;&#xA;&#xD;&#xA;&#xD;&#xA;Select Orders.CustomerID,&#xD;&#xA;  Orders.EmployeeID,&#xD;&#xA;  Orders.OrderDate,&#xD;&#xA;  Orders.ShipCountry,&#xD;&#xA;  Orders.ShipRegion,&#xD;&#xA;  [Order Details].UnitPrice,&#xD;&#xA;  [Order Details].Quantity,&#xD;&#xA;  [Order Details].UnitPrice * [Order Details].Quantity As SaleAmount,&#xD;&#xA;  Employees.LastName,&#xD;&#xA;  Customers.CompanyName&#xD;&#xA;From Orders&#xD;&#xA;  Inner Join [Order Details] On Orders.OrderID = [Order Details].OrderID&#xD;&#xA;  Inner Join Employees On Employees.EmployeeID = Orders.EmployeeID&#xD;&#xA;  Inner Join Customers On Customers.CustomerID = Orders.CustomerID&#xD;&#xA;where&#xD;&#xA;	(Orders.CustomerID in (@SingleQuote.Request.inpCustomerID~) or '@Request.inpCustomerID~'='')&#xD;&#xA;	and&#xD;&#xA;	Orders.EmployeeID in (select descendant from descendants where parent =  '@Session.EmployeeID~' or descendant = '@Session.EmployeeID~' or '@Session.EmployeeID~'='')">
             <GroupFilter GroupColumn="ShipCountry" KeepGroupedRows="False">
               <GroupAggregateColumn AggregateColumn="SaleAmount" AggregateFunction="Sum" ID="gacSaleAmount" />
             </GroupFilter>
@@ -41,5 +50,5 @@
       </ResponsiveColumn>
     </ResponsiveRow>
   </Body>
-  <ideTestParams />
+  <ideTestParams inpCustomerID="" />
 </Report>

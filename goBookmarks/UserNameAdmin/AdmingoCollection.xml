@@ -11,4 +11,16 @@
     <SessionParameters />
     <Schedule SchedulerTaskID="23" Description="At 8:00 AM on 10/07/2015" />
   </Bookmark>
+  <Bookmark Report="InfoGo.goAnalysisGrid" Name="" CustomColumn1="" CustomColumn2="" Description="Untitled Analysis" SaveTime="2015-10-07T16:22:05-04:00" BookmarkID="21ab4bf5-4f15-4760-917a-a8d1a180d42e" ExtraFile="AdmingoCollection_21ab4bf5-4f15-4760-917a-a8d1a180d42e.xml">
+    <RequestParameters rdAgLoadSaved="AdmingoCollection_21ab4bf5-4f15-4760-917a-a8d1a180d42e.xml" />
+    <SessionParameters />
+  </Bookmark>
+  <Bookmark Report="InfoGo.goAnalysisGrid" Name="" CustomColumn1="" CustomColumn2="" Description="Untitled Analysis" SaveTime="2015-10-07T16:22:05-04:00" BookmarkID="1d48ccf1-1fe6-4dae-afdd-2ab98fc10424" ExtraFile="AdmingoCollection_1d48ccf1-1fe6-4dae-afdd-2ab98fc10424.xml">
+    <RequestParameters rdAgLoadSaved="AdmingoCollection_1d48ccf1-1fe6-4dae-afdd-2ab98fc10424.xml" />
+    <SessionParameters />
+  </Bookmark>
+  <Bookmark Report="InfoGo.goDashboard" Name="" CustomColumn1="" CustomColumn2="" Description="Untitled Dashboard" SaveTime="2015-10-07T16:22:47-04:00" BookmarkID="c1f93231-00dc-42ce-a585-2be78097039e" ExtraFile="AdmingoCollection_c1f93231-00dc-42ce-a585-2be78097039e.xml">
+    <RequestParameters />
+    <SessionParameters />
+  </Bookmark>
 </rdBookmarks>
