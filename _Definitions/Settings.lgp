@@ -234,5 +234,8 @@
       <Element Key="1\2\1\0\1\0\1" />
       <Element Key="1\2\1\0\1\0\1\0" />
     </File>
+    <File Name="C:\inetpub\wwwroot\PSQ4AllHandsOneDayApp\_Definitions\_Reports\InfoGo.goHome.lgx">
+      <Element Key="5\0\0\1" />
+    </File>
   </CollapsedDef>
 </Settings>
