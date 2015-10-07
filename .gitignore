@@ -1,12 +1,4 @@
 *.lic
 *.xml
-rdDownload/g5jbanun4wcbzrlypui5o2pz--rdDebug.htm
-rdDownload/g5jbanun4wcbzrlypui5o2pz-198a1d4a171a48d69a75eca4fcc3ba64-rdDebug.htm
-rdDownload/g5jbanun4wcbzrlypui5o2pz-2c9f33094cb3400d983d264811c79fce-rdDebug.htm
-rdDownload/g5jbanun4wcbzrlypui5o2pz-40350d5fd8f54aa195d69fe260a8724e-rdDebug.htm
-rdDownload/g5jbanun4wcbzrlypui5o2pz-484b3124385745c89f8fb2d6ea239d44-rdDebug.htm
-rdDownload/g5jbanun4wcbzrlypui5o2pz-762d7144df2c4e55b3c088ee275681af-rdDebug.htm
-rdDownload/g5jbanun4wcbzrlypui5o2pz-8f6b97d51c5f492db0296ed7e11fd9a7-rdDebug.htm
-rdDownload/g5jbanun4wcbzrlypui5o2pz-a6d769331ace4134b239883c8af039f1-rdDebug.htm
-rdDownload/g5jbanun4wcbzrlypui5o2pz-dce163e73e724dfa9c034bf055d6987f-rdDebug.htm
-rdDownload/rdLocalizationInfo_g5jbanun4wcbzrlypui5o2pz.js
+rdDownload/*
+rdDataCache/*
