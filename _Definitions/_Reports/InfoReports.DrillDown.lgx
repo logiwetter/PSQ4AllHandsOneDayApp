@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report ID="InfoReports.DrillDown" SavedBy="LOGIXML\mark" SavedAt="10/7/2015 2:29:24 PM" EngineVersion="12.0.036-SP3">
+<Report ID="InfoReports.DrillDown" SavedBy="LOGIXML\mark" SavedAt="10/7/2015 3:33:20 PM" EngineVersion="12.0.036-SP3">
   <StyleSheet />
   <Body>
     <Division ID="div_nav" HtmlDiv="True">
@@ -10,7 +10,7 @@
       </Label>
     </Division>
     <AnalysisGrid ID="AnalysisGrid1" ShowPageNumber="True" SortArrows="True" DraggableColumns="True" AjaxPaging="True">
-      <DataLayer Type="SQL" ID="SQLDataLayer1" ConnectionID="Northwind" Source="Select Orders.CustomerID,&#xD;&#xA;  Orders.EmployeeID,&#xD;&#xA;  Orders.OrderDate,&#xD;&#xA;  Orders.ShipCountry,&#xD;&#xA;  Orders.ShipRegion,&#xD;&#xA;  [Order Details].UnitPrice,&#xD;&#xA;  [Order Details].Quantity,&#xD;&#xA;  [Order Details].UnitPrice * [Order Details].Quantity As SaleAmount,&#xD;&#xA;  Employees.LastName,&#xD;&#xA;  Customers.CompanyName&#xD;&#xA;From Orders&#xD;&#xA;  Inner Join [Order Details] On Orders.OrderID = [Order Details].OrderID&#xD;&#xA;  Inner Join Employees On Employees.EmployeeID = Orders.EmployeeID&#xD;&#xA;  Inner Join Customers On Customers.CustomerID = Orders.CustomerID&#xD;&#xA;where&#xD;&#xA;	(Orders.EmployeeID = '@Request.EmployeeID~' or ''='@Request.EmployeeID~')&#xD;&#xA;	and (Orders.ShipCountry = '@Request.ShipCountry~' or ''='@Request.ShipCountry~')" HandleQuotesInTokens="True" />
+      <DataLayer Type="SQL" ID="SQLDataLayer1" ConnectionID="Northwind" Source="with&#xD;&#xA;descendants as&#xD;&#xA;  ( select [ReportsTo] as parent, [EmployeeID] as descendant, 1 as level&#xD;&#xA;    from [Northwind].[dbo].[Employees]&#xD;&#xA;  union all&#xD;&#xA;    select [ReportsTo] as parent, [EmployeeID] as child, d.level + 1&#xD;&#xA;    from descendants as d&#xD;&#xA;      join [Northwind].[dbo].[Employees] s&#xD;&#xA;        on d.descendant = s.[ReportsTo]&#xD;&#xA;  ) &#xD;&#xA;&#xD;&#xA;&#xD;&#xA;Select Orders.CustomerID,&#xD;&#xA;  Orders.EmployeeID,&#xD;&#xA;  Orders.OrderDate,&#xD;&#xA;  Orders.ShipCountry,&#xD;&#xA;  Orders.ShipRegion,&#xD;&#xA;  [Order Details].UnitPrice,&#xD;&#xA;  [Order Details].Quantity,&#xD;&#xA;  [Order Details].UnitPrice * [Order Details].Quantity As SaleAmount,&#xD;&#xA;  Employees.LastName,&#xD;&#xA;  Customers.CompanyName&#xD;&#xA;From Orders&#xD;&#xA;  Inner Join [Order Details] On Orders.OrderID = [Order Details].OrderID&#xD;&#xA;  Inner Join Employees On Employees.EmployeeID = Orders.EmployeeID&#xD;&#xA;  Inner Join Customers On Customers.CustomerID = Orders.CustomerID&#xD;&#xA;where&#xD;&#xA;	(Orders.CustomerID = '@Request.CustomerID~' or ''='@Request.CustomerID~')&#xD;&#xA;	and (Orders.ShipCountry = '@Request.ShipCountry~' or ''='@Request.ShipCountry~')&#xD;&#xA;	and (Orders.CustomerID in (@SingleQuote.Request.inpCustomerID~) or '@Request.inpCustomerID~'='')&#xD;&#xA;	and&#xD;&#xA;	Orders.EmployeeID in (select descendant from descendants where parent =  '@Session.EmployeeID~' or descendant = '@Session.EmployeeID~' or '@Session.EmployeeID~'='')" HandleQuotesInTokens="True" />
       <AnalysisGridColumn ID="colCompanyName" Header="CompanyName" DataColumn="CompanyName" DataType="Text" />
       <AnalysisGridColumn ID="colCustomerID" Header="CustomerID" DataColumn="CustomerID" DataType="Text" />
       <AnalysisGridColumn ID="colLastName" Header="LastName" DataColumn="LastName" DataType="Text" />
@@ -23,8 +23,7 @@
       <AnalysisGridColumn ID="colSaleAmount" Header="SaleAmount" DataColumn="SaleAmount" DataType="Number" />
     </AnalysisGrid>
     <InputHidden ID="inpCustomerID" DefaultValue="@Request.inpCustomerID~" />
-    <InputHidden ID="EmployeeID" DefaultValue="@Request.EmployeeID~" />
     <InputHidden ID="ShipCountry" DefaultValue="@Request.ShipCountry~" />
   </Body>
-  <ideTestParams inpCustomerID="" EmployeeID="" ShipCountry="" />
+  <ideTestParams inpCustomerID="" ShipCountry="" CustomerID="" />
 </Report>
