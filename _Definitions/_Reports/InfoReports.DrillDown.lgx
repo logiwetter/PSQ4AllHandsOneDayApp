@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ID="InfoReports.DrillDown" SavedBy="LOGIXML\mark" SavedAt="10/7/2015 2:29:24 PM" EngineVersion="12.0.036-SP3">
+  <StyleSheet />
+  <Body>
+    <Division ID="div_nav" HtmlDiv="True">
+      <Label Caption="Dashboard">
+        <Action Type="Report">
+          <Target Type="Report" Report="InfoReports.Dashboard" />
+        </Action>
+      </Label>
+    </Division>
+    <AnalysisGrid ID="AnalysisGrid1" ShowPageNumber="True" SortArrows="True" DraggableColumns="True" AjaxPaging="True">
+      <DataLayer Type="SQL" ID="SQLDataLayer1" ConnectionID="Northwind" Source="Select Orders.CustomerID,&#xD;&#xA;  Orders.EmployeeID,&#xD;&#xA;  Orders.OrderDate,&#xD;&#xA;  Orders.ShipCountry,&#xD;&#xA;  Orders.ShipRegion,&#xD;&#xA;  [Order Details].UnitPrice,&#xD;&#xA;  [Order Details].Quantity,&#xD;&#xA;  [Order Details].UnitPrice * [Order Details].Quantity As SaleAmount,&#xD;&#xA;  Employees.LastName,&#xD;&#xA;  Customers.CompanyName&#xD;&#xA;From Orders&#xD;&#xA;  Inner Join [Order Details] On Orders.OrderID = [Order Details].OrderID&#xD;&#xA;  Inner Join Employees On Employees.EmployeeID = Orders.EmployeeID&#xD;&#xA;  Inner Join Customers On Customers.CustomerID = Orders.CustomerID&#xD;&#xA;where&#xD;&#xA;	(Orders.EmployeeID = '@Request.EmployeeID~' or ''='@Request.EmployeeID~')&#xD;&#xA;	and (Orders.ShipCountry = '@Request.ShipCountry~' or ''='@Request.ShipCountry~')" HandleQuotesInTokens="True" />
+      <AnalysisGridColumn ID="colCompanyName" Header="CompanyName" DataColumn="CompanyName" DataType="Text" />
+      <AnalysisGridColumn ID="colCustomerID" Header="CustomerID" DataColumn="CustomerID" DataType="Text" />
+      <AnalysisGridColumn ID="colLastName" Header="LastName" DataColumn="LastName" DataType="Text" />
+      <AnalysisGridColumn ID="colEmployeeID" Header="EmployeeID" DataColumn="EmployeeID" DataType="Number" />
+      <AnalysisGridColumn ID="colOrderDate" Header="OrderDate" DataColumn="OrderDate" DataType="Date" Format="Short Date" />
+      <AnalysisGridColumn ID="colShipCountry" Header="ShipCountry" DataColumn="ShipCountry" DataType="Text" />
+      <AnalysisGridColumn ID="colShipRegion" Header="ShipRegion" DataColumn="ShipRegion" DataType="Text" />
+      <AnalysisGridColumn ID="colUnitPrice" Header="UnitPrice" DataColumn="UnitPrice" DataType="Number" />
+      <AnalysisGridColumn ID="colQuantity" Header="Quantity" DataColumn="Quantity" DataType="Number" />
+      <AnalysisGridColumn ID="colSaleAmount" Header="SaleAmount" DataColumn="SaleAmount" DataType="Number" />
+    </AnalysisGrid>
+    <InputHidden ID="inpCustomerID" DefaultValue="@Request.inpCustomerID~" />
+    <InputHidden ID="EmployeeID" DefaultValue="@Request.EmployeeID~" />
+    <InputHidden ID="ShipCountry" DefaultValue="@Request.ShipCountry~" />
+  </Body>
+  <ideTestParams inpCustomerID="" EmployeeID="" ShipCountry="" />
+</Report>

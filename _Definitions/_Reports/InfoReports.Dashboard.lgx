@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ID="InfoReports.Dashboard" SavedBy="LOGIXML\mark" SavedAt="10/7/2015 2:30:33 PM" EngineVersion="12.0.036-SP3">
+  <StyleSheet />
+  <Body>
+    <Division ID="div_inputs" HtmlDiv="True">
+      <InputCheckboxList OptionCaptionColumn="CompanyName" OptionValueColumn="CustomerID" ID="inpCustomerID" CheckboxListDropdown="True" MultiSelect="True" Caption="Company: ">
+        <DataLayer Type="SQL" ID="dlCustomers" ConnectionID="Northwind" Source="Select CustomerID, CompanyName&#xD;&#xA;From  Customers &#xD;&#xA;Order by CompanyName" />
+      </InputCheckboxList>
+    </Division>
+    <ResponsiveRow>
+      <ResponsiveColumn>
+        <ChartCanvas ChartCaption="Sales by Salesperson">
+          <DataLayer Type="SQL" ID="SQLDataLayer1" ConnectionID="Northwind" Source="Select Orders.CustomerID,&#xD;&#xA;  Orders.EmployeeID,&#xD;&#xA;  Orders.OrderDate,&#xD;&#xA;  Orders.ShipCountry,&#xD;&#xA;  Orders.ShipRegion,&#xD;&#xA;  [Order Details].UnitPrice,&#xD;&#xA;  [Order Details].Quantity,&#xD;&#xA;  [Order Details].UnitPrice * [Order Details].Quantity As SaleAmount,&#xD;&#xA;  Employees.LastName,&#xD;&#xA;  Customers.CompanyName&#xD;&#xA;From Orders&#xD;&#xA;  Inner Join [Order Details] On Orders.OrderID = [Order Details].OrderID&#xD;&#xA;  Inner Join Employees On Employees.EmployeeID = Orders.EmployeeID&#xD;&#xA;  Inner Join Customers On Customers.CustomerID = Orders.CustomerID&#xD;&#xA;">
+            <GroupFilter GroupColumn="LastName" KeepGroupedRows="False">
+              <GroupAggregateColumn AggregateColumn="SaleAmount" AggregateFunction="Sum" ID="gacSaleAmount" />
+            </GroupFilter>
+          </DataLayer>
+          <Series Type="Pie" ChartYDataColumn="gacSaleAmount" ChartLabelColumn="LastName">
+            <Action Type="Report">
+              <Target Type="Report" Report="InfoReports.DrillDown" />
+              <LinkParams EmployeeID="@Chart.EmployeeID~" rdAgReset="True" />
+            </Action>
+          </Series>
+        </ChartCanvas>
+      </ResponsiveColumn>
+      <ResponsiveColumn>
+        <ChartCanvas ChartCaption="Sales by Country">
+          <DataLayer Type="SQL" ID="SQLDataLayer1" ConnectionID="Northwind" Source="Select Orders.CustomerID,&#xD;&#xA;  Orders.EmployeeID,&#xD;&#xA;  Orders.OrderDate,&#xD;&#xA;  Orders.ShipCountry,&#xD;&#xA;  Orders.ShipRegion,&#xD;&#xA;  [Order Details].UnitPrice,&#xD;&#xA;  [Order Details].Quantity,&#xD;&#xA;  [Order Details].UnitPrice * [Order Details].Quantity As SaleAmount,&#xD;&#xA;  Employees.LastName,&#xD;&#xA;  Customers.CompanyName&#xD;&#xA;From Orders&#xD;&#xA;  Inner Join [Order Details] On Orders.OrderID = [Order Details].OrderID&#xD;&#xA;  Inner Join Employees On Employees.EmployeeID = Orders.EmployeeID&#xD;&#xA;  Inner Join Customers On Customers.CustomerID = Orders.CustomerID&#xD;&#xA;">
+            <GroupFilter GroupColumn="ShipCountry" KeepGroupedRows="False">
+              <GroupAggregateColumn AggregateColumn="SaleAmount" AggregateFunction="Sum" ID="gacSaleAmount" />
+            </GroupFilter>
+            <SortFilter SortColumn="gacSaleAmount" DataType="Number" SortSequence="Descending" />
+          </DataLayer>
+          <Series Type="Bar" ChartYDataColumn="gacSaleAmount" ChartXDataColumn="ShipCountry">
+            <Action Type="Report">
+              <Target Type="Report" Report="InfoReports.DrillDown" />
+              <LinkParams ShipCountry="@Chart.ShipCountry~" rdAgReset="True" />
+            </Action>
+          </Series>
+        </ChartCanvas>
+      </ResponsiveColumn>
+    </ResponsiveRow>
+  </Body>
+  <ideTestParams />
+</Report>
