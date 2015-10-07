@@ -57,9 +57,9 @@
 			ID="Northwind"
 			SqlServer="209.48.69.227"
 			SqlServerDatabase="Northwind"
-			SqlServerPassword="lgxpass000"
+			SqlServerPassword="Logipass"
 			SqlServerPort=""
-			SqlServerUser="sa"
+			SqlServerUser="Training_User"
 			Type="SqlServer"
 		/>
 		<Remark>
