@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<rdData>
-  <RepeatSettings field="Body-bg" label="Body background color" type="textbox" value="" />
-  <RepeatSettings field="Header-bg" label="Header background color" type="textbox" value="" />
-  <RepeatSettings field="Sidebar-bg" label="Sidebar background color" type="textbox" value="" />
-  <RepeatSettings field="Footer-bg" label="Footer background color" type="textbox" value="" />
-</rdData>
