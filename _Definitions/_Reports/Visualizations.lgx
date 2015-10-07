@@ -240,35 +240,37 @@
 							HtmlDiv="True"
 							ID="panel-body"
 							>
-							<Gauge
-								StartValue="0"
-								Type="Arc"
-								Value="@Data.SubTotal~"
-								>
-								<DataLayer
-									ConnectionID="Northwind"
-									ID="YearlyTotals"
-									Source="Select YEAR([Summary of Sales by Year].ShippedDate) as &apos;Year&apos;,
+							<Remark>
+								<Gauge
+									StartValue="0"
+									Type="Arc"
+									Value="@Data.SubTotal~"
+									>
+									<DataLayer
+										ConnectionID="Northwind"
+										ID="YearlyTotals"
+										Source="Select YEAR([Summary of Sales by Year].ShippedDate) as &apos;Year&apos;,
   SUM([Summary of Sales by Year].Subtotal) as SubTotal
 From [Summary of Sales by Year]
 where YEAR([Summary of Sales by Year].ShippedDate) = &apos;@Request.Year~&apos;
 group by YEAR([Summary of Sales by Year].ShippedDate)
 order by &apos;Year&apos; desc"
-									Type="SQL"
-								/>
-								<GaugeRange
-									Color="Red"
-									RangeEndValue="200000"
-								/>
-								<GaugeRange
-									Color="#ECD869"
-									RangeEndValue="400000"
-								/>
-								<GaugeRange
-									Color="#85E77C"
-									RangeEndValue="700000"
-								/>
-							</Gauge>
+										Type="SQL"
+									/>
+									<GaugeRange
+										Color="Red"
+										RangeEndValue="200000"
+									/>
+									<GaugeRange
+										Color="#ECD869"
+										RangeEndValue="400000"
+									/>
+									<GaugeRange
+										Color="#85E77C"
+										RangeEndValue="700000"
+									/>
+								</Gauge>
+							</Remark>
 						</Division>
 					</Division>
 					<Division
@@ -290,16 +292,17 @@ order by &apos;Year&apos; desc"
 							HtmlDiv="True"
 							ID="panel-body"
 							>
-							<Gauge
-								ID="gaugeTotalEmployeeSales"
-								StartValue="0"
-								Type="Arc"
-								Value="@Data.SubTotal~"
-								>
-								<DataLayer
-									ConnectionID="Northwind"
-									ID="EmployeeTotals"
-									Source="Select Sum([Summary of Sales by Year].Subtotal) As SubTotal,
+							<Remark>
+								<Gauge
+									ID="gaugeTotalEmployeeSales"
+									StartValue="0"
+									Type="Arc"
+									Value="@Data.SubTotal~"
+									>
+									<DataLayer
+										ConnectionID="Northwind"
+										ID="EmployeeTotals"
+										Source="Select Sum([Summary of Sales by Year].Subtotal) As SubTotal,
   Year(Orders.OrderDate) As &apos;Year&apos;,
   Employees.EmployeeID,
   Employees.LastName,
@@ -315,30 +318,31 @@ Group By Year(Orders.OrderDate),
   Employees.LastName,
   Employees.FirstName,
   Employees.Quota"
-									Type="SQL"
-									>
-									<CalculatedColumn
-										Formula="@Data.Quota~/3"
-										ID="LowThreshold"
+										Type="SQL"
+										>
+										<CalculatedColumn
+											Formula="@Data.Quota~/3"
+											ID="LowThreshold"
+										/>
+										<CalculatedColumn
+											Formula="@Data.Quota~/1.5"
+											ID="MidThreshold"
+										/>
+									</DataLayer>
+									<GaugeRange
+										Color="Red"
+										RangeEndValue="@Data.LowThreshold~"
 									/>
-									<CalculatedColumn
-										Formula="@Data.Quota~/1.5"
-										ID="MidThreshold"
+									<GaugeRange
+										Color="#ECD869"
+										RangeEndValue="@Data.MidThreshold~"
 									/>
-								</DataLayer>
-								<GaugeRange
-									Color="Red"
-									RangeEndValue="@Data.LowThreshold~"
-								/>
-								<GaugeRange
-									Color="#ECD869"
-									RangeEndValue="@Data.MidThreshold~"
-								/>
-								<GaugeRange
-									Color="#85E77C"
-									RangeEndValue="@Data.Quota~"
-								/>
-							</Gauge>
+									<GaugeRange
+										Color="#85E77C"
+										RangeEndValue="@Data.Quota~"
+									/>
+								</Gauge>
+							</Remark>
 							<InputSelectList
 								Class="input-sm"
 								DefaultValue="@Request.EmployeeID~"

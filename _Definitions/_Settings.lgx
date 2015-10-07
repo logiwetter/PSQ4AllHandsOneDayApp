@@ -4,10 +4,10 @@
 	>
 	<Application
 		Caption="Accelerate"
-		DefaultReport="Visualizations"
+		DefaultReport="Default"
 	/>
 	<Path
-		AppPath="http://localhost/Accelerate"
+		AppPath="http://localhost/PSQ4AllHandsOneDayApp/"
 	/>
 	<General
 		BookmarkCollectionDefault="@Function.UserName~goCollection"
@@ -57,25 +57,27 @@
 			ID="Northwind"
 			SqlServer="localhost"
 			SqlServerDatabase="Northwind"
-			SqlServerPassword="lgxpass000"
+			SqlServerPassword="niks1gip"
 			SqlServerPort=""
 			SqlServerUser="sa"
 			Type="SqlServer"
 		/>
-		<Connection
-			ID="AdventureWorks"
-			SqlServer="localhost"
-			SqlServerDatabase="AdventureWorks"
-			SqlServerPassword="lgxpass000"
-			SqlServerPort=""
-			SqlServerUser="sa"
-			Type="SqlServer"
-			>
-			<Metadata
-				ID="metaAWsales"
-				MetadataName="AW Sales"
-			/>
-		</Connection>
+		<Remark>
+			<Connection
+				ID="AdventureWorks"
+				SqlServer="localhost"
+				SqlServerDatabase="AdventureWorks"
+				SqlServerPassword="lgxpass000"
+				SqlServerPort=""
+				SqlServerUser="sa"
+				Type="SqlServer"
+				>
+				<Metadata
+					ID="metaAWsales"
+					MetadataName="AW Sales"
+				/>
+			</Connection>
+		</Remark>
 		<Note
 			Note="Add and configure a supported database Connection element here,"
 		/>
@@ -94,105 +96,102 @@
 			Type="Smtp"
 		/>
 	</Connections>
-	<Security
-		AuthenticationSource="Standard"
-		CacheRights="Session"
-		SecurityEnabled="True"
-		>
-		<AuthenticationRule
-			ID="AuthStatic"
-			UsernameDataColumn="userName"
-			>
-			<DataLayer
-				ID="dlStaticAuth"
-				Type="Static"
-				>
-				<StaticDataRow
-					password="password"
-					userID="0"
-					userName="Admin"
-				/>
-				<StaticDataRow
-					password="password"
-					userID="1"
-					userName="StandardUser"
-				/>
-				<Note
-					Note="Always supply a role for new login"
-				/>
-				<CompareFilter
-					CaseSensitive="False"
-					CompareType="="
-					CompareValue="@Request.rdUsername~"
-					DataColumn="userName"
-					DataType="Text"
-					ID="compareUserName"
-				/>
-				<CompareFilter
-					CaseSensitive="True"
-					CompareType="="
-					CompareValue="@Request.rdPassword~"
-					DataColumn="password"
-					DataType="Text"
-					ID="comparePassword"
-				/>
-			</DataLayer>
-		</AuthenticationRule>
-		<UserRoles
-			ID="RoleStatic"
-			>
-			<DataLayer
-				ID="dlRoles"
-				Type="Static"
-				>
-				<StaticDataRow
-					roleName="Admin"
-					userName="Admin"
-				/>
-				<StaticDataRow
-					roleName="User"
-					userName="StandardUser"
-				/>
-				<Note
-					Note="Add role for login"
-				/>
-				<ConditionFilter
-					Condition="&quot;@Function.UserName~&quot; == &quot;@Data.userName~&quot;"
-				/>
-			</DataLayer>
-		</UserRoles>
-		<Rights>
-			<Remark>
-				<RightFromRole
-					ID="SeeAll"
-					>
-					<DataLayer
-						ID="dlRoleRights"
-						Type="Static"
-						>
-						<StaticDataRow
-							role="Master"
-						/>
-					</DataLayer>
-				</RightFromRole>
-			</Remark>
-			<RightsFromRoles/>
-		</Rights>
-	</Security>
 	<Remark>
 		<Security
-			AuthenticationClientAddresses="127.0.0.1,::1"
-			AuthenticationSource="SecureKey"
+			AuthenticationSource="Standard"
 			CacheRights="Session"
-			ID="SecureKey"
-			RestartSession="True"
 			SecurityEnabled="True"
 			>
+			<AuthenticationRule
+				ID="AuthStatic"
+				UsernameDataColumn="userName"
+				>
+				<DataLayer
+					ID="dlStaticAuth"
+					Type="Static"
+					>
+					<StaticDataRow
+						password="password"
+						userID="0"
+						userName="Admin"
+					/>
+					<StaticDataRow
+						password="password"
+						userID="1"
+						userName="StandardUser"
+					/>
+					<Note
+						Note="Always supply a role for new login"
+					/>
+					<CompareFilter
+						CaseSensitive="False"
+						CompareType="="
+						CompareValue="@Request.rdUsername~"
+						DataColumn="userName"
+						DataType="Text"
+						ID="compareUserName"
+					/>
+					<CompareFilter
+						CaseSensitive="True"
+						CompareType="="
+						CompareValue="@Request.rdPassword~"
+						DataColumn="password"
+						DataType="Text"
+						ID="comparePassword"
+					/>
+				</DataLayer>
+			</AuthenticationRule>
+			<UserRoles
+				ID="RoleStatic"
+				>
+				<DataLayer
+					ID="dlRoles"
+					Type="Static"
+					>
+					<StaticDataRow
+						roleName="Admin"
+						userName="Admin"
+					/>
+					<StaticDataRow
+						roleName="User"
+						userName="StandardUser"
+					/>
+					<Note
+						Note="Add role for login"
+					/>
+					<ConditionFilter
+						Condition="&quot;@Function.UserName~&quot; == &quot;@Data.userName~&quot;"
+					/>
+				</DataLayer>
+			</UserRoles>
 			<Rights>
+				<Remark>
+					<RightFromRole
+						ID="SeeAll"
+						>
+						<DataLayer
+							ID="dlRoleRights"
+							Type="Static"
+							>
+							<StaticDataRow
+								role="Master"
+							/>
+						</DataLayer>
+					</RightFromRole>
+				</Remark>
 				<RightsFromRoles/>
 			</Rights>
 		</Security>
 	</Remark>
+	<Security
+		AuthenticationClientAddresses="127.0.0.1,::1"
+		AuthenticationSource="SecureKey"
+		CacheRights="Session"
+		DevelopmentUsername="Admin"
+		ID="SecureKey"
+		RestartSession="True"
+		SecurityEnabled="True"
+	/>
 	<StartupProcess
 		Process="proc_Theme-Settings"
 		TaskID="startup-SetThemeSettings"
@@ -201,8 +200,5 @@
 			Note="This process sets the theme color settings"
 		/>
 	</StartupProcess>
-	<ideTestParams
-		rdPassword=""
-		rdUsername=""
-	/>
+	<ideTestParams/>
 </Setting>
