@@ -5,7 +5,11 @@
 	<Application
 		Caption="Accelerate"
 		DefaultReport="Default"
-	/>
+		>
+		<Note
+			Note="test note"
+		/>
+	</Application>
 	<Path
 		AppPath="http://localhost/PSQ4AllHandsOneDayApp/"
 	/>
