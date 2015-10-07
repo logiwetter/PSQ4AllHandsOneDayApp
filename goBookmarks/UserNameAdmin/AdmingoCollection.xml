@@ -2,4 +2,13 @@
   <Folders>
     <Folder Name="My Items" ID="" />
   </Folders>
+  <Bookmark Report="InfoGo.goAnalysisGrid" Name="" CustomColumn1="" CustomColumn2="" Description="Units in Stock" SaveTime="2015-10-07T11:43:50-04:00" BookmarkID="d657d44f-08c8-4dba-a0fe-06c02d9ebcfb" ExtraFile="AdmingoCollection_d657d44f-08c8-4dba-a0fe-06c02d9ebcfb.xml">
+    <RequestParameters rdAgLoadSaved="AdmingoCollection_d657d44f-08c8-4dba-a0fe-06c02d9ebcfb.xml" />
+    <SessionParameters />
+  </Bookmark>
+  <Bookmark Report="InfoGo.goReport" Name="" CustomColumn1="" CustomColumn2="" Description="Units in Stock Report" SaveTime="2015-10-07T11:55:31-04:00" BookmarkID="5fdcac60-d161-4694-b61b-f42940aa92ef" ExtraFile="AdmingoCollection_5fdcac60-d161-4694-b61b-f42940aa92ef.xml">
+    <RequestParameters />
+    <SessionParameters />
+    <Schedule SchedulerTaskID="22" Description="At 8:00 AM on 10/07/2015" />
+  </Bookmark>
 </rdBookmarks>

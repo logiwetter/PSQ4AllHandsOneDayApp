@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <rdData>
-  <TemplateConfiguration ID="Template_Sidebar" value="True" />
+  <TemplateConfiguration ID="Template_Sidebar" value="" />
   <TemplateConfiguration ID="Template_SidebarCollapse" value="" />
   <TemplateConfiguration ID="Template_SidebarStateAtStart" value="Closed" />
   <TemplateConfiguration ID="Template_SidebarBranding" value="" />
   <TemplateConfiguration ID="Template_SidebarApplicationTitle" value="" />
   <TemplateConfiguration ID="Template_SidebarApplicationCaption" value="" />
-  <TemplateConfiguration ID="Template_Header" value="True" />
+  <TemplateConfiguration ID="Template_Header" value="" />
   <TemplateConfiguration ID="Template_HeaderBranding" value="True" />
   <TemplateConfiguration ID="Template_HeaderApplicationTitle" value="" />
   <TemplateConfiguration ID="Template_HeaderApplicationCaption" value="" />
-  <TemplateConfiguration ID="Template_MenuLocation" value="Sidebar" />
-  <TemplateConfiguration ID="Template_AdminMenuLocation" value="Header" />
+  <TemplateConfiguration ID="Template_MenuLocation" value="" />
+  <TemplateConfiguration ID="Template_AdminMenuLocation" value="" />
   <TemplateConfiguration ID="Template_LayoutStyle" value="Fluid" />
   <TemplateConfiguration ID="Template_ApplicationTitle" value="Accelerate" />
   <TemplateConfiguration ID="Template_ApplicationCaption" value="" />
-  <TemplateConfiguration ID="Template_Footer" value="True" />
+  <TemplateConfiguration ID="Template_Footer" value="" />
   <TemplateConfiguration ID="Template_FooterContent" value="© Copyright 2015 - Logi Analytics" />
 </rdData>
