@@ -426,7 +426,103 @@ where
 	and Orders.EmployeeID in (select descendant from descendants where parent =  &apos;@Session.EmployeeID~&apos; or descendant = &apos;@Session.EmployeeID~&apos; or &apos;@Session.EmployeeID~&apos;=&apos;&apos;)"
 													Type="SQL"
 												/>
-												<AutoColumns/>
+												<Remark>
+													<AutoColumns/>
+												</Remark>
+												<DataTableColumn
+													Header="Customer ID"
+													ID="colCustomerID"
+													>
+													<Label
+														Caption="@Data.CustomerID~"
+														ID="lblCustomerID"
+													/>
+												</DataTableColumn>
+												<DataTableColumn
+													Header="Employee ID"
+													ID="colEmployeeID"
+													>
+													<Label
+														Caption="@Data.EmployeeID~"
+														ID="lblEmployeeID"
+													/>
+												</DataTableColumn>
+												<DataTableColumn
+													Header="Order Date"
+													ID="colOrderDate"
+													>
+													<Label
+														Caption="@Data.OrderDate~"
+														Format="Short Date"
+														ID="lblOrderDate"
+													/>
+												</DataTableColumn>
+												<DataTableColumn
+													Header="Country"
+													ID="colShipCountry"
+													>
+													<Label
+														Caption="@Data.ShipCountry~"
+														ID="lblShipCountry"
+													/>
+												</DataTableColumn>
+												<DataTableColumn
+													Header="Region"
+													ID="colShipRegion"
+													>
+													<Label
+														Caption="@Data.ShipRegion~"
+														ID="lblShipRegion"
+													/>
+												</DataTableColumn>
+												<DataTableColumn
+													Header="Unit Price"
+													ID="colUnitPrice"
+													>
+													<Label
+														Caption="@Data.UnitPrice~"
+														Format="Currency"
+														ID="lblUnitPrice"
+													/>
+												</DataTableColumn>
+												<DataTableColumn
+													Header="Quantity"
+													ID="colQuantity"
+													>
+													<Label
+														Caption="@Data.Quantity~"
+														Format="###,###,##0"
+														ID="lblQuantity"
+													/>
+												</DataTableColumn>
+												<DataTableColumn
+													Header="Sale Amount"
+													ID="colSaleAmount"
+													>
+													<Label
+														Caption="@Data.SaleAmount~"
+														Format="Currency"
+														ID="lblSaleAmount"
+													/>
+												</DataTableColumn>
+												<DataTableColumn
+													Header="Last Name"
+													ID="colLastName"
+													>
+													<Label
+														Caption="@Data.LastName~"
+														ID="lblLastName"
+													/>
+												</DataTableColumn>
+												<DataTableColumn
+													Header="Company"
+													ID="colCompanyName"
+													>
+													<Label
+														Caption="@Data.CompanyName~"
+														ID="lblCompanyName"
+													/>
+												</DataTableColumn>
 											</DataTable>
 										</Division>
 									</Division>
@@ -484,9 +580,9 @@ function updateShipRegion() {
 
 
 $( document ).ready(function() {
-	$(&quot;#inpCustomerIDui&quot;).attr(&quot;data-placeholder&quot;,&quot;companies&quot;);
-	$(&quot;#inpShipCountryUI&quot;).attr(&quot;data-placeholder&quot;,&quot;ship country&quot;);
-	$(&quot;#inpShipRegionUI&quot;).attr(&quot;data-placeholder&quot;,&quot;ship region&quot;);
+	$(&apos;#inpCustomerIDui&apos;).attr(&quot;data-placeholder&quot;,&quot;companies&quot;);
+	$(&apos;#inpShipCountryUI&apos;).attr(&quot;data-placeholder&quot;,&quot;ship country&quot;);
+	$(&apos;#inpShipRegionUI&apos;).attr(&quot;data-placeholder&quot;,&quot;ship region&quot;);
 	$(&apos;.chosen&apos;).chosen();
 
 });"
