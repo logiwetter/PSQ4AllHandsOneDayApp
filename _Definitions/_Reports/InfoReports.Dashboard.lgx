@@ -75,6 +75,7 @@ descendants as
 Select  distinct
   Orders.ShipCountry
 From Orders
+where
 	Orders.EmployeeID in (select descendant from descendants where parent =  &apos;@Session.EmployeeID~&apos; or descendant = &apos;@Session.EmployeeID~&apos; or &apos;@Session.EmployeeID~&apos;=&apos;&apos;)"
 									Type="SQL"
 								/>
