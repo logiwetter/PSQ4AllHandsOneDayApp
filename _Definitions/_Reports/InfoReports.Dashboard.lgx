@@ -22,9 +22,9 @@
 							ID="div_inputs"
 							>
 							<InputSelectList
+								Class="chosen"
 								ID="inpCustomerID"
-								IncludeBlank="True"
-								IncludeBlankCaption="All Customers"
+								MultiSelect="True"
 								OptionCaptionColumn="CompanyName"
 								OptionValueColumn="CustomerID"
 								>
@@ -84,7 +84,7 @@ Order by CompanyName"
 						</Division>
 						<Remark>
 							<Label
-								Caption="Text!"
+								Caption="::@Session.EmployeeID~::@Function.UserRoles~"
 								>
 								<Action
 									ElementID="panelDetailTable"
@@ -184,7 +184,7 @@ where
 												>
 												<Action
 													ID="actJS"
-													Javascript="updateClient(&apos;@Chart.CustomerID~&apos;);"
+													Javascript="updateClient(&apos;@Chart.CustomerID~&apos;,&apos;@Chart.CompanyName~&apos;);"
 													Type="Javascript"
 												/>
 											</Series>
@@ -300,8 +300,9 @@ where
 											ID="table-header"
 											>
 											<Label
-												Caption="Header Text"
+												Caption="Details for @Request.CustomerName~"
 												Class="panel-title"
+												ID="lblHeader"
 											/>
 										</Division>
 										<ConditionalClass
@@ -349,7 +350,7 @@ From Orders
   Inner Join Employees On Employees.EmployeeID = Orders.EmployeeID
   Inner Join Customers On Customers.CustomerID = Orders.CustomerID
 where
-	(Orders.CustomerID = &apos;@Request.CustomerID~&apos; or &apos;&apos;=&apos;@Request.CustomerID~&apos;)
+	(Orders.CustomerID = &apos;@Request.CustomerID~&apos;)
 	and (Orders.ShipCountry = &apos;@Request.ShipCountry~&apos; or &apos;&apos;=&apos;@Request.ShipCountry~&apos;)
 	and (Orders.CustomerID = &apos;@Request.inpCustomerID~&apos; or &apos;@Request.inpCustomerID~&apos;=&apos;&apos;)
 	and Orders.EmployeeID in (select descendant from descendants where parent =  &apos;@Session.EmployeeID~&apos; or descendant = &apos;@Session.EmployeeID~&apos; or &apos;@Session.EmployeeID~&apos;=&apos;&apos;)"
@@ -367,11 +368,21 @@ where
 			</ResponsiveColumn>
 		</ResponsiveRow>
 		<IncludeScript
-			IncludedScript="function updateClient(clientId) {
-	document.getElementById(&apos;CustomerID&apos;).value = clientId;
-	console.log(document.getElementById(&apos;CustomerID&apos;).value);
-	document.getElementById(&apos;RefreshTable&apos;).click();
-}"
+			IncludedScript="function updateClient(clientId,clientName) {
+	if (clientId == document.getElementById(&apos;CustomerID&apos;).value) {
+		document.getElementById(&apos;CustomerID&apos;).value = &apos;&apos;;
+		document.getElementById(&apos;CustomerName&apos;).value = &apos;&apos;;
+		document.getElementById(&apos;RefreshTable&apos;).click();
+	} else {
+		document.getElementById(&apos;CustomerID&apos;).value = clientId;
+		document.getElementById(&apos;CustomerName&apos;).value = clientName;
+		document.getElementById(&apos;RefreshTable&apos;).click();
+	}	
+}
+$( document ).ready(function() {
+	$(&apos;.chosen&apos;).chosen();
+
+});"
 		/>
 		<InputHidden
 			DefaultValue="@Request.ShipCountry~"
@@ -384,6 +395,10 @@ where
 		<InputHidden
 			DefaultValue="@Request.CustomerID~"
 			ID="CustomerID"
+		/>
+		<InputHidden
+			DefaultValue="@Request.CustomerName~"
+			ID="CustomerName"
 		/>
 		<Button
 			Class="ThemeHidden"
@@ -402,6 +417,7 @@ where
 	</Body>
 	<ideTestParams
 		CustomerID=""
+		CustomerName=""
 		inpCustomerID=""
 		ShipCountry=""
 	/>

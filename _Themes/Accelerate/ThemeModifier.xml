@@ -59,6 +59,18 @@
 			<StyleSheet StyleSheet="_Themes/Accelerate/css/bootstrap.min.css" />
 		</NewElement>
     </PrependChildElement>
+	
+    <PrependChildElement XPath="/Report | /MobileReport">
+		<NewElement>
+			<StyleSheet StyleSheet="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+		</NewElement>
+    </PrependChildElement>
+	
+    <PrependChildElement XPath="/Report | /MobileReport">
+		<NewElement>
+			<StyleSheet StyleSheet="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.min.css" />
+		</NewElement>
+    </PrependChildElement>
 
 	<!--Framework Header-->
 	<PrependChildElement XPath="/Report[not(@Class='no-framework')] | /MobileReport[not(@Class='no-framework')]">
@@ -135,6 +147,18 @@
     <AppendChildElement XPath="/Report/Division[@ID='JS'] | /MobileReport/Division[@ID='JS']">
 		<NewElement>
 			<IncludeScriptFile IncludedScriptFile="../_Themes/Accelerate/js/jquery-ui.min.js" />
+		</NewElement>
+    </AppendChildElement>
+    
+    <AppendChildElement XPath="/Report/Division[@ID='JS'] | /MobileReport/Division[@ID='JS']">
+		<NewElement>
+			<IncludeScriptFile IncludedScriptFile="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js" />
+		</NewElement>
+    </AppendChildElement>
+    
+    <AppendChildElement XPath="/Report/Division[@ID='JS'] | /MobileReport/Division[@ID='JS']">
+		<NewElement>
+			<IncludeScriptFile IncludedScriptFile="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.jquery.min.js" />
 		</NewElement>
     </AppendChildElement>
 

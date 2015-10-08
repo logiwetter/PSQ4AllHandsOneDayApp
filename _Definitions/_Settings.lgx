@@ -13,7 +13,7 @@
 		BookmarkCollectionDefault="@Function.UserName~goCollection"
 		BookmarkLocation="@Function.AppPhysicalPath~\goBookmarks\UserName@Function.UserName~"
 		DoctypeDeclaration="Html5"
-		rdDebuggerStyle="Redirect"
+		rdDebuggerStyle="NoDetail"
 		RedirectErrorUrl="rdPage.aspx?rdReport=_Layout.Error"
 		RepoFriendly="True"
 	/>
@@ -117,188 +117,184 @@
 			Type="Smtp"
 		/>
 	</Connections>
-	<Security
-		AuthenticationSource="Standard"
-		CacheRights="Session"
-		SecurityEnabled="True"
-		>
-		<AuthenticationRule
-			ID="AuthStatic"
-			UsernameDataColumn="userName"
-			>
-			<DataLayer
-				ID="dlStaticAuth"
-				Type="Static"
-				>
-				<StaticDataRow
-					password="password"
-					userID="0"
-					userName="Admin"
-				/>
-				<Remark>
-					<StaticDataRow
-						password="password"
-						userID="1"
-						userName="StandardUser"
-					/>
-				</Remark>
-				<Note
-					Note="Always supply a role for new login"
-				/>
-				<StaticDataRow
-					password=""
-					userID="1"
-					userName="Nancy Davolio"
-				/>
-				<StaticDataRow
-					password=""
-					userID="2"
-					userName="Andrew Fuller"
-				/>
-				<StaticDataRow
-					password=""
-					userID="3"
-					userName="Janet Leverling"
-				/>
-				<StaticDataRow
-					password=""
-					userID="4"
-					userName="Margaret Peacock"
-				/>
-				<StaticDataRow
-					password=""
-					userID="5"
-					userName="Steven Buchanan"
-				/>
-				<StaticDataRow
-					password=""
-					userID="6"
-					userName="Michael Suyama"
-				/>
-				<StaticDataRow
-					password=""
-					userID="7"
-					userName="Robert King"
-				/>
-				<StaticDataRow
-					password=""
-					userID="8"
-					userName="Laura Callahan"
-				/>
-				<StaticDataRow
-					password=""
-					userID="9"
-					userName="Anne Dodsworth"
-				/>
-				<CompareFilter
-					CaseSensitive="False"
-					CompareType="="
-					CompareValue="@Request.rdUsername~"
-					DataColumn="userName"
-					DataType="Text"
-					ID="compareUserName"
-				/>
-				<CompareFilter
-					CaseSensitive="True"
-					CompareType="="
-					CompareValue="@Request.rdPassword~"
-					DataColumn="password"
-					DataType="Text"
-					ID="comparePassword"
-				/>
-			</DataLayer>
-		</AuthenticationRule>
-		<UserRoles
-			ID="RoleStatic"
-			>
-			<DataLayer
-				ID="dlRoles"
-				Type="Static"
-				>
-				<StaticDataRow
-					roleName="Admin"
-					userName="Admin"
-				/>
-				<StaticDataRow
-					roleName="User"
-					userName="StandardUser"
-				/>
-				<Note
-					Note="Add role for login"
-				/>
-				<StaticDataRow
-					roleName="User"
-					userName="Nancy Davolio"
-				/>
-				<StaticDataRow
-					roleName="User"
-					userName="Andrew Fuller"
-				/>
-				<StaticDataRow
-					roleName="User"
-					userName="Janet Leverling"
-				/>
-				<StaticDataRow
-					roleName="User"
-					userName="Margaret Peacock"
-				/>
-				<StaticDataRow
-					roleName="User"
-					userName="Steven Buchanan"
-				/>
-				<StaticDataRow
-					roleName="User"
-					userName="Michael Suyama"
-				/>
-				<StaticDataRow
-					roleName="User"
-					userName="Robert King"
-				/>
-				<StaticDataRow
-					roleName="User"
-					userName="Laura Callahan"
-				/>
-				<StaticDataRow
-					roleName="User"
-					userName="Anne Dodsworth"
-				/>
-				<ConditionFilter
-					Condition="&quot;@Function.UserName~&quot; == &quot;@Data.userName~&quot;"
-				/>
-			</DataLayer>
-		</UserRoles>
-		<Rights>
-			<Remark>
-				<RightFromRole
-					ID="SeeAll"
-					>
-					<DataLayer
-						ID="dlRoleRights"
-						Type="Static"
-						>
-						<StaticDataRow
-							role="Master"
-						/>
-					</DataLayer>
-				</RightFromRole>
-			</Remark>
-			<RightsFromRoles/>
-		</Rights>
-	</Security>
 	<Remark>
 		<Security
-			AuthenticationClientAddresses="127.0.0.1,::1"
-			AuthenticationSource="SecureKey"
+			AuthenticationSource="Standard"
 			CacheRights="Session"
-			ID="SecureKey"
-			RestartSession="True"
 			SecurityEnabled="True"
 			>
+			<AuthenticationRule
+				ID="AuthStatic"
+				UsernameDataColumn="userName"
+				>
+				<DataLayer
+					ID="dlStaticAuth"
+					Type="Static"
+					>
+					<StaticDataRow
+						password="password"
+						userID="0"
+						userName="Admin"
+					/>
+					<Remark>
+						<StaticDataRow
+							password="password"
+							userID="1"
+							userName="StandardUser"
+						/>
+					</Remark>
+					<Note
+						Note="Always supply a role for new login"
+					/>
+					<StaticDataRow
+						password=""
+						userID="1"
+						userName="Nancy Davolio"
+					/>
+					<StaticDataRow
+						password=""
+						userID="2"
+						userName="Andrew Fuller"
+					/>
+					<StaticDataRow
+						password=""
+						userID="3"
+						userName="Janet Leverling"
+					/>
+					<StaticDataRow
+						password=""
+						userID="4"
+						userName="Margaret Peacock"
+					/>
+					<StaticDataRow
+						password=""
+						userID="5"
+						userName="Steven Buchanan"
+					/>
+					<StaticDataRow
+						password=""
+						userID="6"
+						userName="Michael Suyama"
+					/>
+					<StaticDataRow
+						password=""
+						userID="7"
+						userName="Robert King"
+					/>
+					<StaticDataRow
+						password=""
+						userID="8"
+						userName="Laura Callahan"
+					/>
+					<StaticDataRow
+						password=""
+						userID="9"
+						userName="Anne Dodsworth"
+					/>
+					<CompareFilter
+						CaseSensitive="False"
+						CompareType="="
+						CompareValue="@Request.rdUsername~"
+						DataColumn="userName"
+						DataType="Text"
+						ID="compareUserName"
+					/>
+					<CompareFilter
+						CaseSensitive="True"
+						CompareType="="
+						CompareValue="@Request.rdPassword~"
+						DataColumn="password"
+						DataType="Text"
+						ID="comparePassword"
+					/>
+				</DataLayer>
+			</AuthenticationRule>
+			<UserRoles
+				ID="RoleStatic"
+				>
+				<DataLayer
+					ID="dlRoles"
+					Type="Static"
+					>
+					<StaticDataRow
+						roleName="Admin"
+						userName="Admin"
+					/>
+					<StaticDataRow
+						roleName="User"
+						userName="StandardUser"
+					/>
+					<Note
+						Note="Add role for login"
+					/>
+					<StaticDataRow
+						roleName="User"
+						userName="Nancy Davolio"
+					/>
+					<StaticDataRow
+						roleName="User"
+						userName="Andrew Fuller"
+					/>
+					<StaticDataRow
+						roleName="User"
+						userName="Janet Leverling"
+					/>
+					<StaticDataRow
+						roleName="User"
+						userName="Margaret Peacock"
+					/>
+					<StaticDataRow
+						roleName="User"
+						userName="Steven Buchanan"
+					/>
+					<StaticDataRow
+						roleName="User"
+						userName="Michael Suyama"
+					/>
+					<StaticDataRow
+						roleName="User"
+						userName="Robert King"
+					/>
+					<StaticDataRow
+						roleName="User"
+						userName="Laura Callahan"
+					/>
+					<StaticDataRow
+						roleName="User"
+						userName="Anne Dodsworth"
+					/>
+					<ConditionFilter
+						Condition="&quot;@Function.UserName~&quot; == &quot;@Data.userName~&quot;"
+					/>
+				</DataLayer>
+			</UserRoles>
 			<Rights>
+				<Remark>
+					<RightFromRole
+						ID="SeeAll"
+						>
+						<DataLayer
+							ID="dlRoleRights"
+							Type="Static"
+							>
+							<StaticDataRow
+								role="Master"
+							/>
+						</DataLayer>
+					</RightFromRole>
+				</Remark>
 				<RightsFromRoles/>
 			</Rights>
 		</Security>
 	</Remark>
+	<Security
+		AuthenticationClientAddresses="127.0.0.1,::1"
+		AuthenticationSource="SecureKey"
+		CacheRights="Session"
+		ID="SecureKey"
+		RestartSession="True"
+		SecurityEnabled="True"
+	/>
 	<StartupProcess
 		Process="proc_Theme-Settings"
 		TaskID="startup-SetThemeSettings"
@@ -307,8 +303,5 @@
 			Note="This process sets the theme color settings"
 		/>
 	</StartupProcess>
-	<ideTestParams
-		rdPassword=""
-		rdUsername="2"
-	/>
+	<ideTestParams/>
 </Setting>
