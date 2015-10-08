@@ -3,7 +3,7 @@
 	ID="_settings"
 	>
 	<Application
-		Caption="Awesome Sauce"
+		Caption="Accelerate"
 		DefaultReport="InfoReports.Dashboard"
 	/>
 	<Path
@@ -13,7 +13,7 @@
 		BookmarkCollectionDefault="@Function.UserName~goCollection"
 		BookmarkLocation="@Function.AppPhysicalPath~\goBookmarks\UserName@Function.UserName~"
 		DoctypeDeclaration="Html5"
-		rdDebuggerStyle="ErrorDetail"
+		rdDebuggerStyle="DebuggerLinks"
 		RedirectErrorUrl="rdPage.aspx?rdReport=_Layout.Error"
 		RepoFriendly="True"
 	/>

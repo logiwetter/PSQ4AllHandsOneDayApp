@@ -461,21 +461,21 @@ function updateClientList() {
 	
 	document.getElementById(&apos;inpCustomerID&apos;).value = $(&apos;#inpCustomerIDui&apos;).val();
 	window.parent.document.getElementById(&apos;ParentClientIdList&apos;).value = $(&apos;#inpCustomerIDui&apos;).val();
-	document.getElementById(&apos;RefreshTable&apos;).click();
+	document.getElementById(&apos;RefreshEverything&apos;).click();
 		
 }
 function updateShipCountry() {
 	
 	document.getElementById(&apos;inpShipCountry&apos;).value = $(&apos;#inpShipCountryUI&apos;).val();
 	window.parent.document.getElementById(&apos;ParentShipCountry&apos;).value = $(&apos;#inpShipCountryUI&apos;).val();
-	document.getElementById(&apos;RefreshTable&apos;).click();
+	document.getElementById(&apos;RefreshEverything&apos;).click();
 		
 }
 function updateShipRegion() {
 	
 	document.getElementById(&apos;inpShipRegion&apos;).value = $(&apos;#inpShipRegionUI&apos;).val();
 	window.parent.document.getElementById(&apos;ParentShipRegion&apos;).value = $(&apos;#inpShipRegionUI&apos;).val();
-	document.getElementById(&apos;RefreshTable&apos;).click();
+	document.getElementById(&apos;RefreshEverything&apos;).click();
 		
 }
 
@@ -491,6 +491,20 @@ $( document ).ready(function() {
 
 });"
 		/>
+		<Button
+			Class="ThemeHidden"
+			ID="RefreshEverything"
+			>
+			<Action
+				ElementID="BodyMain"
+				ID="actRefreshEverything"
+				Type="RefreshElement"
+				>
+				<Remark>
+					<WaitPage/>
+				</Remark>
+			</Action>
+		</Button>
 		<Button
 			Class="ThemeHidden"
 			ID="RefreshTable"
