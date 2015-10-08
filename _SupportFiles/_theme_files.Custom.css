@@ -9,3 +9,7 @@ Extra application styles can also be stored here.
 iframe[id^="frameSchedule"] {
 	width: 400px;	
 }
+
+.go-create-list-col {
+	width: 200px !important;
+}

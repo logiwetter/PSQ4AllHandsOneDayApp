@@ -12,12 +12,4 @@
     <Schedule SchedulerTaskID="23" Description="At 8:00 AM on 10/07/2015" />
     <SharedWith BookmarkCollection="Nancy DavoliogoCollection" BookmarkUserName="Nancy Davolio" />
   </Bookmark>
-  <Bookmark Report="InfoGo.goAnalysisGrid" Name="" CustomColumn1="" CustomColumn2="" Description="Untitled Analysis" SaveTime="2015-10-08T09:53:38-04:00" BookmarkID="e0692075-48e8-4cd7-89d7-c2b3594c8ed6" ExtraFile="AdmingoCollection_e0692075-48e8-4cd7-89d7-c2b3594c8ed6.xml">
-    <RequestParameters rdAgLoadSaved="AdmingoCollection_e0692075-48e8-4cd7-89d7-c2b3594c8ed6.xml" />
-    <SessionParameters />
-  </Bookmark>
-  <Bookmark Report="InfoGo.goDashboard" Name="" CustomColumn1="" CustomColumn2="" Description="Untitled Dashboard" SaveTime="2015-10-08T09:54:16-04:00" BookmarkID="9a77bf00-1813-4a38-ad16-43f7101a60c6" ExtraFile="AdmingoCollection_9a77bf00-1813-4a38-ad16-43f7101a60c6.xml">
-    <RequestParameters />
-    <SessionParameters />
-  </Bookmark>
 </rdBookmarks>

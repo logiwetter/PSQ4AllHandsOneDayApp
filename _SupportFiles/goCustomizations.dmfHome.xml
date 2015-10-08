@@ -4,7 +4,7 @@
 	<RemoveElement ID="divGoCreateContainer"/>
 	<InsertBeforeElement XPath=".//Division[@ID='divGoContainer']">
 		<NewElement>
-			<Division Class="ThemePanel go-create" HtmlDiv="True" ID="divGoCreateContainer" IdeDisplayStatus="Collapsed">
+			<Division Class="ThemePanel go-create row col-lg-2" HtmlDiv="True" ID="divGoCreateContainer" IdeDisplayStatus="Collapsed">
 				<Division Class="go-create-list-col" HtmlDiv="True" ID="divGoHome" IdeDisplayStatus="Collapsed">
 					<Division Class="rdAgUnselectedTab go-create-list-item go-home" HtmlDiv="True" ID="divGoHomeLink" IdeDisplayStatus="Collapsed">
 					<ConditionalClass Class="rdAgUnselectedTab go-create-list-item go-home active" Condition="'@Request.rdReport~'=='InfoGo.goHome'||'@Request.rdReport~'==''" ID="TabActiveState" />
