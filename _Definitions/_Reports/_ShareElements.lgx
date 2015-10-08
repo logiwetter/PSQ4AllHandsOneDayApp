@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report
+	ID="_ShareElements"
+	>
+	<SharedElement
+		ID="userState"
+		>
+		<InputHidden
+			DefaultValue="@Request.ShipCountry~"
+			ID="ShipCountry"
+		/>
+		<InputHidden
+			DefaultValue="@Request.inpCustomerID~"
+			ID="inpCustomerID"
+		/>
+		<InputHidden
+			DefaultValue="@Request.CustomerID~"
+			ID="CustomerID"
+		/>
+		<InputHidden
+			DefaultValue="@Request.CustomerName~"
+			ID="CustomerName"
+		/>
+	</SharedElement>
+	<ideTestParams
+		CustomerID=""
+		CustomerName=""
+		inpCustomerID=""
+		ShipCountry=""
+	/>
+</Report>

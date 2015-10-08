@@ -319,6 +319,10 @@ where
 				</Division>
 			</ResponsiveColumn>
 		</ResponsiveRow>
+		<IncludeSharedElement
+			DefinitionFile="_ShareElements"
+			SharedElementID="userState"
+		/>
 		<IncludeScript
 			IncludedScript="function updateClient(clientId,clientName) {
 	if (clientId == document.getElementById(&apos;CustomerID&apos;).value) {
@@ -335,22 +339,6 @@ $( document ).ready(function() {
 	$(&apos;.chosen&apos;).chosen();
 
 });"
-		/>
-		<InputHidden
-			DefaultValue="@Request.ShipCountry~"
-			ID="ShipCountry"
-		/>
-		<InputHidden
-			DefaultValue="@Request.inpCustomerID~"
-			ID="inpCustomerID"
-		/>
-		<InputHidden
-			DefaultValue="@Request.CustomerID~"
-			ID="CustomerID"
-		/>
-		<InputHidden
-			DefaultValue="@Request.CustomerName~"
-			ID="CustomerName"
 		/>
 		<Button
 			Class="ThemeHidden"

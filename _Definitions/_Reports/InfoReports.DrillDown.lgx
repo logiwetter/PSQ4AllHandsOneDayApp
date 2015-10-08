@@ -1,29 +1,149 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report ID="InfoReports.DrillDown" SavedBy="LOGIXML\mark" SavedAt="10/7/2015 3:33:20 PM" EngineVersion="12.0.036-SP3">
-  <StyleSheet />
-  <Body>
-    <Division ID="div_nav" HtmlDiv="True">
-      <Label Caption="Dashboard">
-        <Action Type="Report">
-          <Target Type="Report" Report="InfoReports.Dashboard" />
-        </Action>
-      </Label>
-    </Division>
-    <AnalysisGrid ID="AnalysisGrid1" ShowPageNumber="True" SortArrows="True" DraggableColumns="True" AjaxPaging="True">
-      <DataLayer Type="SQL" ID="SQLDataLayer1" ConnectionID="Northwind" Source="with&#xD;&#xA;descendants as&#xD;&#xA;  ( select [ReportsTo] as parent, [EmployeeID] as descendant, 1 as level&#xD;&#xA;    from [Northwind].[dbo].[Employees]&#xD;&#xA;  union all&#xD;&#xA;    select [ReportsTo] as parent, [EmployeeID] as child, d.level + 1&#xD;&#xA;    from descendants as d&#xD;&#xA;      join [Northwind].[dbo].[Employees] s&#xD;&#xA;        on d.descendant = s.[ReportsTo]&#xD;&#xA;  ) &#xD;&#xA;&#xD;&#xA;&#xD;&#xA;Select Orders.CustomerID,&#xD;&#xA;  Orders.EmployeeID,&#xD;&#xA;  Orders.OrderDate,&#xD;&#xA;  Orders.ShipCountry,&#xD;&#xA;  Orders.ShipRegion,&#xD;&#xA;  [Order Details].UnitPrice,&#xD;&#xA;  [Order Details].Quantity,&#xD;&#xA;  [Order Details].UnitPrice * [Order Details].Quantity As SaleAmount,&#xD;&#xA;  Employees.LastName,&#xD;&#xA;  Customers.CompanyName&#xD;&#xA;From Orders&#xD;&#xA;  Inner Join [Order Details] On Orders.OrderID = [Order Details].OrderID&#xD;&#xA;  Inner Join Employees On Employees.EmployeeID = Orders.EmployeeID&#xD;&#xA;  Inner Join Customers On Customers.CustomerID = Orders.CustomerID&#xD;&#xA;where&#xD;&#xA;	(Orders.CustomerID = '@Request.CustomerID~' or ''='@Request.CustomerID~')&#xD;&#xA;	and (Orders.ShipCountry = '@Request.ShipCountry~' or ''='@Request.ShipCountry~')&#xD;&#xA;	and (Orders.CustomerID in (@SingleQuote.Request.inpCustomerID~) or '@Request.inpCustomerID~'='')&#xD;&#xA;	and&#xD;&#xA;	Orders.EmployeeID in (select descendant from descendants where parent =  '@Session.EmployeeID~' or descendant = '@Session.EmployeeID~' or '@Session.EmployeeID~'='')" HandleQuotesInTokens="True" />
-      <AnalysisGridColumn ID="colCompanyName" Header="CompanyName" DataColumn="CompanyName" DataType="Text" />
-      <AnalysisGridColumn ID="colCustomerID" Header="CustomerID" DataColumn="CustomerID" DataType="Text" />
-      <AnalysisGridColumn ID="colLastName" Header="LastName" DataColumn="LastName" DataType="Text" />
-      <AnalysisGridColumn ID="colEmployeeID" Header="EmployeeID" DataColumn="EmployeeID" DataType="Number" />
-      <AnalysisGridColumn ID="colOrderDate" Header="OrderDate" DataColumn="OrderDate" DataType="Date" Format="Short Date" />
-      <AnalysisGridColumn ID="colShipCountry" Header="ShipCountry" DataColumn="ShipCountry" DataType="Text" />
-      <AnalysisGridColumn ID="colShipRegion" Header="ShipRegion" DataColumn="ShipRegion" DataType="Text" />
-      <AnalysisGridColumn ID="colUnitPrice" Header="UnitPrice" DataColumn="UnitPrice" DataType="Number" />
-      <AnalysisGridColumn ID="colQuantity" Header="Quantity" DataColumn="Quantity" DataType="Number" />
-      <AnalysisGridColumn ID="colSaleAmount" Header="SaleAmount" DataColumn="SaleAmount" DataType="Number" />
-    </AnalysisGrid>
-    <InputHidden ID="inpCustomerID" DefaultValue="@Request.inpCustomerID~" />
-    <InputHidden ID="ShipCountry" DefaultValue="@Request.ShipCountry~" />
-  </Body>
-  <ideTestParams inpCustomerID="" ShipCountry="" CustomerID="" />
+<Report
+	ID="InfoReports.DrillDown"
+	>
+	<StyleSheet/>
+	<Body>
+		<Division
+			HtmlDiv="True"
+			ID="div_nav"
+			>
+			<Label
+				Caption="Dashboard"
+				>
+				<Action
+					Type="Report"
+					>
+					<Target
+						Report="InfoReports.Dashboard"
+						Type="Report"
+					/>
+				</Action>
+			</Label>
+		</Division>
+		<AnalysisGrid
+			AjaxPaging="True"
+			DraggableColumns="True"
+			ID="AnalysisGrid1"
+			ShowPageNumber="True"
+			SortArrows="True"
+			>
+			<DataLayer
+				ConnectionID="Northwind"
+				HandleQuotesInTokens="True"
+				ID="SQLDataLayer1"
+				Source="with
+descendants as
+  ( select [ReportsTo] as parent, [EmployeeID] as descendant, 1 as level
+    from [Northwind].[dbo].[Employees]
+  union all
+    select [ReportsTo] as parent, [EmployeeID] as child, d.level + 1
+    from descendants as d
+      join [Northwind].[dbo].[Employees] s
+        on d.descendant = s.[ReportsTo]
+  ) 
+
+
+Select Orders.CustomerID,
+  Orders.EmployeeID,
+  Orders.OrderDate,
+  Orders.ShipCountry,
+  Orders.ShipRegion,
+  [Order Details].UnitPrice,
+  [Order Details].Quantity,
+  [Order Details].UnitPrice * [Order Details].Quantity As SaleAmount,
+  Employees.LastName,
+  Customers.CompanyName
+From Orders
+  Inner Join [Order Details] On Orders.OrderID = [Order Details].OrderID
+  Inner Join Employees On Employees.EmployeeID = Orders.EmployeeID
+  Inner Join Customers On Customers.CustomerID = Orders.CustomerID
+where
+	(Orders.CustomerID = &apos;@Request.CustomerID~&apos; or &apos;&apos;=&apos;@Request.CustomerID~&apos;)
+	and (Orders.ShipCountry = &apos;@Request.ShipCountry~&apos; or &apos;&apos;=&apos;@Request.ShipCountry~&apos;)
+	and (Orders.CustomerID in (@SingleQuote.Request.inpCustomerID~) or &apos;@Request.inpCustomerID~&apos;=&apos;&apos;)
+	and
+	Orders.EmployeeID in (select descendant from descendants where parent =  &apos;@Session.EmployeeID~&apos; or descendant = &apos;@Session.EmployeeID~&apos; or &apos;@Session.EmployeeID~&apos;=&apos;&apos;)"
+				Type="SQL"
+			/>
+			<AnalysisGridColumn
+				DataColumn="CompanyName"
+				DataType="Text"
+				Header="CompanyName"
+				ID="colCompanyName"
+			/>
+			<AnalysisGridColumn
+				DataColumn="CustomerID"
+				DataType="Text"
+				Header="CustomerID"
+				ID="colCustomerID"
+			/>
+			<AnalysisGridColumn
+				DataColumn="LastName"
+				DataType="Text"
+				Header="LastName"
+				ID="colLastName"
+			/>
+			<AnalysisGridColumn
+				DataColumn="EmployeeID"
+				DataType="Number"
+				Header="EmployeeID"
+				ID="colEmployeeID"
+			/>
+			<AnalysisGridColumn
+				DataColumn="OrderDate"
+				DataType="Date"
+				Format="Short Date"
+				Header="OrderDate"
+				ID="colOrderDate"
+			/>
+			<AnalysisGridColumn
+				DataColumn="ShipCountry"
+				DataType="Text"
+				Header="ShipCountry"
+				ID="colShipCountry"
+			/>
+			<AnalysisGridColumn
+				DataColumn="ShipRegion"
+				DataType="Text"
+				Header="ShipRegion"
+				ID="colShipRegion"
+			/>
+			<AnalysisGridColumn
+				DataColumn="UnitPrice"
+				DataType="Number"
+				Header="UnitPrice"
+				ID="colUnitPrice"
+			/>
+			<AnalysisGridColumn
+				DataColumn="Quantity"
+				DataType="Number"
+				Header="Quantity"
+				ID="colQuantity"
+			/>
+			<AnalysisGridColumn
+				DataColumn="SaleAmount"
+				DataType="Number"
+				Header="SaleAmount"
+				ID="colSaleAmount"
+			/>
+		</AnalysisGrid>
+		<InputHidden
+			DefaultValue="@Request.inpCustomerID~"
+			ID="inpCustomerID"
+		/>
+		<InputHidden
+			DefaultValue="@Request.ShipCountry~"
+			ID="ShipCountry"
+		/>
+	</Body>
+	<IncludeSharedElement
+		DefinitionFile="_ShareElements"
+		SharedElementID="userState"
+	/>
+	<ideTestParams
+		CustomerID=""
+		inpCustomerID=""
+		ShipCountry=""
+	/>
 </Report>
