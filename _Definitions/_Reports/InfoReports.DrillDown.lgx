@@ -17,11 +17,6 @@
 					<Target
 						Report="InfoReports.Dashboard"
 						Type="Report"
-						>
-						<WaitPage/>
-					</Target>
-					<LinkParams
-						inpCustomerID="@Request.inpCustomerID~"
 					/>
 				</Action>
 			</Label>
@@ -133,19 +128,11 @@ where
 				ID="colSaleAmount"
 			/>
 		</AnalysisGrid>
-		<InputHidden
-			DefaultValue="@Request.inpCustomerID~"
-			ID="inpCustomerID"
-		/>
-		<InputHidden
-			DefaultValue="@Request.ShipCountry~"
-			ID="ShipCountry"
+		<IncludeSharedElement
+			DefinitionFile="_ShareElements"
+			SharedElementID="userState"
 		/>
 	</Body>
-	<IncludeSharedElement
-		DefinitionFile="_ShareElements"
-		SharedElementID="userState"
-	/>
 	<ideTestParams
 		CustomerID=""
 		inpCustomerID=""
