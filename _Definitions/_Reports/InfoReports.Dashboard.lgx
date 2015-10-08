@@ -49,46 +49,6 @@ Order by CompanyName"
 							<Spaces
 								Size="5"
 							/>
-							<InputSelectList
-								Caption="Ship Country: "
-								Class="chosen"
-								ID="inpShipCountry"
-								MultiSelect="True"
-								OptionCaptionColumn="ShipCountry"
-								OptionValueColumn="ShipCountry"
-								>
-								<DataLayer
-									ConnectionID="Northwind"
-									ID="dlShipCountry"
-									Source="with
-descendants as
-  ( select [ReportsTo] as parent, [EmployeeID] as descendant, 1 as level
-    from [Northwind].[dbo].[Employees]
-  union all
-    select [ReportsTo] as parent, [EmployeeID] as child, d.level + 1
-    from descendants as d
-      join [Northwind].[dbo].[Employees] s
-        on d.descendant = s.[ReportsTo]
-  ) 
-
-
-Select  distinct
-  Orders.ShipCountry
-From Orders
-where
-	Orders.EmployeeID in (select descendant from descendants where parent =  &apos;@Session.EmployeeID~&apos; or descendant = &apos;@Session.EmployeeID~&apos; or &apos;@Session.EmployeeID~&apos;=&apos;&apos;)"
-									Type="SQL"
-								/>
-								<EventHandler
-									DhtmlEvent="onchange"
-									>
-									<Action
-										ElementID="BodyMain"
-										ID="actRefreshBodyMain"
-										Type="RefreshElement"
-									/>
-								</EventHandler>
-							</InputSelectList>
 						</Division>
 					</Division>
 					<Division
@@ -110,6 +70,7 @@ where
 										HtmlDiv="True"
 										>
 										<ChartCanvas
+											AutoQuicktip="False"
 											ChartCaption="Top 10 Customer Sales"
 											>
 											<DataLayer
@@ -179,6 +140,14 @@ where
 													Javascript="updateClient(&apos;@Chart.CustomerID~&apos;,&apos;@Chart.CompanyName~&apos;);"
 													Type="Javascript"
 												/>
+												<Quicktip
+													Title="@Chart.CompanyName~"
+													>
+													<QuicktipRow
+														Format="$ ###,###,###;($ ###,###,###)"
+														Value="@Chart.gacSaleAmount~"
+													/>
+												</Quicktip>
 											</Series>
 										</ChartCanvas>
 									</Division>
@@ -196,6 +165,7 @@ where
 										HtmlDiv="True"
 										>
 										<ChartCanvas
+											AutoQuicktip="False"
 											ChartCaption="Sales by Country"
 											>
 											<DataLayer
@@ -266,6 +236,14 @@ where
 														ShipCountry="@Chart.ShipCountry~"
 													/>
 												</Action>
+												<Quicktip
+													Title="@Chart.CompanyName~"
+													>
+													<QuicktipRow
+														Format="$ ###,###,###;($ ###,###,###)"
+														Value="@Chart.gacSaleAmount~"
+													/>
+												</Quicktip>
 											</Series>
 										</ChartCanvas>
 									</Division>
@@ -380,14 +358,9 @@ where
 	}	
 }
 $( document ).ready(function() {
-	$(&quot;#inpCustomerID&quot;).attr(&quot;data-placeholder&quot;,&quot;companies&quot;);
-	$(&quot;#inpShipCountry&quot;).attr(&quot;data-placeholder&quot;,&quot;ship country&quot;);
 	$(&apos;.chosen&apos;).chosen();
-	
-	
 
-});
-"
+});"
 		/>
 		<Button
 			Class="ThemeHidden"
