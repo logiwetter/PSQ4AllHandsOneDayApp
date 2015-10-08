@@ -3,7 +3,7 @@
 	ID="_settings"
 	>
 	<Application
-		Caption="Rainbows and Ponies"
+		Caption="Awesome Sauce"
 		DefaultReport="InfoReports.Dashboard"
 	/>
 	<Path
