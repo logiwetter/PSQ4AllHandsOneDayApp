@@ -7,7 +7,7 @@
 		>
 		<InputHidden
 			DefaultValue="@Request.ShipCountry~"
-			ID="ShipCountry"
+			ID="inpShipCountry"
 		/>
 		<InputHidden
 			DefaultValue="@Request.inpCustomerID~"

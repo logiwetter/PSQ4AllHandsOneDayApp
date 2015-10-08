@@ -23,7 +23,7 @@
 							>
 							<InputSelectList
 								Class="chosen"
-								ID="inpCustomerID"
+								ID="inpCustomerIDui"
 								MultiSelect="True"
 								OptionCaptionColumn="CompanyName"
 								OptionValueColumn="CustomerID"
@@ -39,10 +39,17 @@ Order by CompanyName"
 								<EventHandler
 									DhtmlEvent="onchange"
 									>
+									<Remark>
+										<Action
+											ElementID="BodyMain"
+											ID="actRefreshBodyMain"
+											Type="RefreshElement"
+										/>
+									</Remark>
 									<Action
-										ElementID="BodyMain"
-										ID="actRefreshBodyMain"
-										Type="RefreshElement"
+										ID="actSetClientList"
+										Javascript="updateClientList();"
+										Type="Javascript"
 									/>
 								</EventHandler>
 							</InputSelectList>
@@ -53,7 +60,7 @@ Order by CompanyName"
 =======
 							<InputSelectList
 								Class="chosen"
-								ID="inpShipCountry"
+								ID="inpShipCountryUI"
 								MultiSelect="True"
 								OptionCaptionColumn="ShipCountry"
 								OptionValueColumn="ShipCountry"
@@ -83,10 +90,17 @@ where
 								<EventHandler
 									DhtmlEvent="onchange"
 									>
+									<Remark>
+										<Action
+											ElementID="BodyMain"
+											ID="actRefreshBodyMain"
+											Type="RefreshElement"
+										/>
+									</Remark>
 									<Action
-										ElementID="BodyMain"
-										ID="actRefreshBodyMain"
-										Type="RefreshElement"
+										ID="actSetShipCountry"
+										Javascript="updateShipCountry();"
+										Type="Javascript"
 									/>
 								</EventHandler>
 							</InputSelectList>
@@ -439,6 +453,22 @@ where
 		document.getElementById(&apos;RefreshTable&apos;).click();
 	}	
 }
+function updateClientList() {
+	
+	document.getElementById(&apos;inpCustomerID&apos;).value = $(&apos;#inpCustomerIDui&apos;).val();
+	window.parent.document.getElementById(&apos;ParentClientIdList&apos;).value = $(&apos;#inpCustomerIDui&apos;).val();
+	document.getElementById(&apos;RefreshTable&apos;).click();
+		
+}
+function updateShipCountry() {
+	
+	document.getElementById(&apos;inpShipCountry&apos;).value = $(&apos;#inpShipCountryUI&apos;).val();
+	window.parent.document.getElementById(&apos;ParentShipCountry&apos;).value = $(&apos;#inpShipCountryUI&apos;).val();
+	document.getElementById(&apos;RefreshTable&apos;).click();
+		
+}
+
+
 $( document ).ready(function() {
 <<<<<<< HEAD
 =======
