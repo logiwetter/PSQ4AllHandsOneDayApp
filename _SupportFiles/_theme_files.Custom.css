@@ -2,3 +2,10 @@
 Custom.css is used for theme and style overrides.
 Extra application styles can also be stored here.
 *************************************************/
+
+
+/* Fix InfoGo Schedule popup */
+
+iframe[id^="frameSchedule"] {
+	width: 400px;	
+}
