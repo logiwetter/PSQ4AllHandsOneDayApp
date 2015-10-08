@@ -74,13 +74,8 @@ descendants as
 
 Select  distinct
   Orders.ShipCountry
-
-
 From Orders
-	(Orders.CustomerID = &apos;@Request.CustomerID~&apos;)
-	and (Orders.ShipCountry = &apos;@Request.ShipCountry~&apos; or &apos;&apos;=&apos;@Request.ShipCountry~&apos;)
-	and (Orders.CustomerID = &apos;@Request.inpCustomerID~&apos; or &apos;@Request.inpCustomerID~&apos;=&apos;&apos;)
-	and Orders.EmployeeID in (select descendant from descendants where parent =  &apos;@Session.EmployeeID~&apos; or descendant = &apos;@Session.EmployeeID~&apos; or &apos;@Session.EmployeeID~&apos;=&apos;&apos;)"
+	Orders.EmployeeID in (select descendant from descendants where parent =  &apos;@Session.EmployeeID~&apos; or descendant = &apos;@Session.EmployeeID~&apos; or &apos;@Session.EmployeeID~&apos;=&apos;&apos;)"
 									Type="SQL"
 								/>
 								<EventHandler
@@ -385,12 +380,13 @@ where
 }
 $( document ).ready(function() {
 	$(&quot;#inpCustomerID&quot;).attr(&quot;data-placeholder&quot;,&quot;companies&quot;);
+	$(&quot;#inpShipCountry&quot;).attr(&quot;data-placeholder&quot;,&quot;ship country&quot;);
 	$(&apos;.chosen&apos;).chosen();
 	
-	$(&quot;#inpCustomerID&quot;).attr(&quot;data-placeholder&quot;,&quot;companies&quot;);
+	
 
 });
-//&lt;select data-placeholder=&quot;Choose a country...&quot; style=&quot;width:350px;&quot; multiple class=&quot;chosen-select&quot;&gt;"
+"
 		/>
 		<Button
 			Class="ThemeHidden"
