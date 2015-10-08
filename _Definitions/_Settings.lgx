@@ -13,7 +13,7 @@
 		BookmarkCollectionDefault="@Function.UserName~goCollection"
 		BookmarkLocation="@Function.AppPhysicalPath~\goBookmarks\UserName@Function.UserName~"
 		DoctypeDeclaration="Html5"
-		rdDebuggerStyle="DebuggerLinks"
+		rdDebuggerStyle="NoDetail"
 		RedirectErrorUrl="rdPage.aspx?rdReport=_Layout.Error"
 		RepoFriendly="True"
 	/>
