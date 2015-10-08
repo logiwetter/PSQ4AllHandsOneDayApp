@@ -1,14 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Settings>
   <CollapsedDef>
-    <File Name="C:\inetpub\wwwroot\Accelerate\_Definitions\_Reports\InfoGo.goHome.lgx">
-      <Element Key="4\0\0\1" />
-    </File>
-    <File Name="C:\inetpub\wwwroot\Accelerate\_Definitions\_Reports\InfoGo.goShared.lgx">
-      <Element Key="0\1" />
-      <Element Key="0\2" />
-      <Element Key="0\3" />
-    </File>
     <File Name="C:\inetpub\wwwroot\Accelerate\_Definitions\_Reports\_Layout._Config.Menu-Administration.lgx">
       <Element Key="0" />
       <Element Key="0\0" />
@@ -152,6 +144,7 @@
       <Element Key="0\7\6" />
     </File>
     <File Name="C:\Users\Sean\Documents\GitHub\PSQ4AllHandsOneDayApp\_Definitions\_Settings.lgx">
+      <Element Key="8\1" />
       <Element Key="9" />
       <Element Key="11" />
     </File>
@@ -191,6 +184,14 @@
       <Element Key="1\2\1\0\1\0\0\0" />
       <Element Key="1\2\1\0\1\0\1" />
       <Element Key="1\2\1\0\1\0\1\0" />
+    </File>
+    <File Name="C:\Users\Sean\Documents\GitHub\PSQ4AllHandsOneDayApp\_Definitions\_Reports\Dashboard.lgx">
+      <Element Key="0\1" />
+    </File>
+    <File Name="C:\Users\Sean\Documents\GitHub\PSQ4AllHandsOneDayApp\_Definitions\_Reports\InfoReports.Dashboard.lgx">
+      <Element Key="1\0\0\0\0\1" />
+      <Element Key="1\0\0\0\1\0\1" />
+      <Element Key="1\0\0\0\1\1\0\0\0\2\0" />
     </File>
   </CollapsedDef>
 </Settings>

@@ -1,54 +1,408 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report ID="InfoReports.Dashboard" SavedBy="LOGIXML\mark" SavedAt="10/7/2015 3:32:46 PM" EngineVersion="12.0.036-SP3">
-  <StyleSheet />
-  <Body>
-    <Division ID="div_inputs" HtmlDiv="True">
-      <InputCheckboxList OptionCaptionColumn="CompanyName" OptionValueColumn="CustomerID" ID="inpCustomerID" CheckboxListDropdown="True" MultiSelect="True" Caption="Customer: " DefaultValue="@Request.inpCustomerID~">
-        <DataLayer Type="SQL" ID="dlCustomers" ConnectionID="Northwind" Source="Select CustomerID, CompanyName&#xD;&#xA;From  Customers &#xD;&#xA;Order by CompanyName" />
-      </InputCheckboxList>
-      <Spaces Size="5" />
-      <Button Caption="Filter">
-        <Action Type="Report">
-          <Target Type="Report" />
-        </Action>
-      </Button>
-    </Division>
-    <ResponsiveRow>
-      <ResponsiveColumn>
-        <ChartCanvas ChartCaption="Top 10 Customer Sales">
-          <DataLayer Type="SQL" ID="SQLDataLayer1" ConnectionID="Northwind" Source="with&#xD;&#xA;descendants as&#xD;&#xA;  ( select [ReportsTo] as parent, [EmployeeID] as descendant, 1 as level&#xD;&#xA;    from [Northwind].[dbo].[Employees]&#xD;&#xA;  union all&#xD;&#xA;    select [ReportsTo] as parent, [EmployeeID] as child, d.level + 1&#xD;&#xA;    from descendants as d&#xD;&#xA;      join [Northwind].[dbo].[Employees] s&#xD;&#xA;        on d.descendant = s.[ReportsTo]&#xD;&#xA;  ) &#xD;&#xA;&#xD;&#xA;&#xD;&#xA;Select Orders.CustomerID,&#xD;&#xA;  Orders.EmployeeID,&#xD;&#xA;  Orders.OrderDate,&#xD;&#xA;  Orders.ShipCountry,&#xD;&#xA;  Orders.ShipRegion,&#xD;&#xA;  [Order Details].UnitPrice,&#xD;&#xA;  [Order Details].Quantity,&#xD;&#xA;  [Order Details].UnitPrice * [Order Details].Quantity As SaleAmount,&#xD;&#xA;  Employees.LastName,&#xD;&#xA;  Customers.CompanyName&#xD;&#xA;From Orders&#xD;&#xA;  Inner Join [Order Details] On Orders.OrderID = [Order Details].OrderID&#xD;&#xA;  Inner Join Employees On Employees.EmployeeID = Orders.EmployeeID&#xD;&#xA;  Inner Join Customers On Customers.CustomerID = Orders.CustomerID&#xD;&#xA;where&#xD;&#xA;	(Orders.CustomerID in (@SingleQuote.Request.inpCustomerID~) or '@Request.inpCustomerID~'='')&#xD;&#xA;	and&#xD;&#xA;	Orders.EmployeeID in (select descendant from descendants where parent =  '@Session.EmployeeID~' or descendant = '@Session.EmployeeID~' or '@Session.EmployeeID~'='')">
-            <GroupFilter GroupColumn="CompanyName" KeepGroupedRows="False">
-              <GroupAggregateColumn AggregateColumn="SaleAmount" AggregateFunction="Sum" ID="gacSaleAmount" />
-            </GroupFilter>
-            <SortFilter SortColumn="gacSaleAmount" DataType="Number" SortSequence="Descending" />
-            <SequenceColumn ID="seq" />
-            <ConditionFilter Condition="0@Data.seq~&lt;=10" />
-          </DataLayer>
-          <Series Type="Pie" ChartYDataColumn="gacSaleAmount" ChartLabelColumn="CompanyName">
-            <Action Type="Report">
-              <Target Type="Report" Report="InfoReports.DrillDown" />
-              <LinkParams rdAgReset="True" CustomerID="@Chart.CustomerID~" />
-            </Action>
-          </Series>
-        </ChartCanvas>
-      </ResponsiveColumn>
-      <ResponsiveColumn>
-        <ChartCanvas ChartCaption="Sales by Country">
-          <DataLayer Type="SQL" ID="SQLDataLayer1" ConnectionID="Northwind" Source="with&#xD;&#xA;descendants as&#xD;&#xA;  ( select [ReportsTo] as parent, [EmployeeID] as descendant, 1 as level&#xD;&#xA;    from [Northwind].[dbo].[Employees]&#xD;&#xA;  union all&#xD;&#xA;    select [ReportsTo] as parent, [EmployeeID] as child, d.level + 1&#xD;&#xA;    from descendants as d&#xD;&#xA;      join [Northwind].[dbo].[Employees] s&#xD;&#xA;        on d.descendant = s.[ReportsTo]&#xD;&#xA;  ) &#xD;&#xA;&#xD;&#xA;&#xD;&#xA;Select Orders.CustomerID,&#xD;&#xA;  Orders.EmployeeID,&#xD;&#xA;  Orders.OrderDate,&#xD;&#xA;  Orders.ShipCountry,&#xD;&#xA;  Orders.ShipRegion,&#xD;&#xA;  [Order Details].UnitPrice,&#xD;&#xA;  [Order Details].Quantity,&#xD;&#xA;  [Order Details].UnitPrice * [Order Details].Quantity As SaleAmount,&#xD;&#xA;  Employees.LastName,&#xD;&#xA;  Customers.CompanyName&#xD;&#xA;From Orders&#xD;&#xA;  Inner Join [Order Details] On Orders.OrderID = [Order Details].OrderID&#xD;&#xA;  Inner Join Employees On Employees.EmployeeID = Orders.EmployeeID&#xD;&#xA;  Inner Join Customers On Customers.CustomerID = Orders.CustomerID&#xD;&#xA;where&#xD;&#xA;	(Orders.CustomerID in (@SingleQuote.Request.inpCustomerID~) or '@Request.inpCustomerID~'='')&#xD;&#xA;	and&#xD;&#xA;	Orders.EmployeeID in (select descendant from descendants where parent =  '@Session.EmployeeID~' or descendant = '@Session.EmployeeID~' or '@Session.EmployeeID~'='')">
-            <GroupFilter GroupColumn="ShipCountry" KeepGroupedRows="False">
-              <GroupAggregateColumn AggregateColumn="SaleAmount" AggregateFunction="Sum" ID="gacSaleAmount" />
-            </GroupFilter>
-            <SortFilter SortColumn="gacSaleAmount" DataType="Number" SortSequence="Descending" />
-          </DataLayer>
-          <Series Type="Bar" ChartYDataColumn="gacSaleAmount" ChartXDataColumn="ShipCountry">
-            <Action Type="Report">
-              <Target Type="Report" Report="InfoReports.DrillDown" />
-              <LinkParams ShipCountry="@Chart.ShipCountry~" rdAgReset="True" />
-            </Action>
-          </Series>
-        </ChartCanvas>
-      </ResponsiveColumn>
-    </ResponsiveRow>
-  </Body>
-  <ideTestParams inpCustomerID="" />
+<Report
+	ID="InfoReports.Dashboard"
+	>
+	<StyleSheet/>
+	<Body>
+		<ResponsiveRow>
+			<ResponsiveColumn
+				ColspanLargeScreen="12"
+				>
+				<Division
+					Class="panel panel-default"
+					HtmlDiv="True"
+					>
+					<Division
+						Class="panel-heading"
+						HtmlDiv="True"
+						ID="HeaderMain"
+						>
+						<Division
+							HtmlDiv="True"
+							ID="div_inputs"
+							>
+							<InputSelectList
+								ID="inpCustomerID"
+								IncludeBlank="True"
+								IncludeBlankCaption="All Customers"
+								OptionCaptionColumn="CompanyName"
+								OptionValueColumn="CustomerID"
+								>
+								<DataLayer
+									ConnectionID="Northwind"
+									ID="dlCustomers"
+									Source="Select CustomerID, CompanyName
+From  Customers 
+Order by CompanyName"
+									Type="SQL"
+								/>
+								<EventHandler
+									DhtmlEvent="onchange"
+									>
+									<Action
+										ElementID="BodyMain"
+										ID="actRefreshBodyMain"
+										Type="RefreshElement"
+									/>
+								</EventHandler>
+							</InputSelectList>
+							<Remark>
+								<InputCheckboxList
+									CheckboxListDropdown="True"
+									DefaultValue="@Request.inpCustomerID~"
+									ID="inpCustomerID"
+									MultiSelect="True"
+									OptionCaptionColumn="CompanyName"
+									OptionValueColumn="CustomerID"
+									>
+									<DataLayer
+										ConnectionID="Northwind"
+										ID="dlCustomers"
+										Source="Select CustomerID, CompanyName
+From  Customers 
+Order by CompanyName"
+										Type="SQL"
+									/>
+								</InputCheckboxList>
+							</Remark>
+							<Spaces
+								Size="5"
+							/>
+							<Remark>
+								<Button
+									Caption="Filter"
+									>
+									<Action
+										Type="Report"
+										>
+										<Target
+											Type="Report"
+										/>
+									</Action>
+								</Button>
+							</Remark>
+						</Division>
+						<Remark>
+							<Label
+								Caption="Text!"
+								>
+								<Action
+									ElementID="panelDetailTable"
+									ID="actRefreshTable"
+									Type="RefreshElement"
+									>
+									<LinkParams
+										CustomerID="@Chart.CustomerID~"
+										rdAgReset=""
+									/>
+								</Action>
+							</Label>
+						</Remark>
+					</Division>
+					<Division
+						Class="panel-body"
+						ID="BodyMain"
+						>
+						<ResponsiveRow
+							ID="ChartRows"
+							>
+							<ResponsiveColumn
+								ColspanLargeScreen="6"
+								>
+								<Division
+									Class="panel panel-default"
+									HtmlDiv="True"
+									>
+									<Division
+										Class="panel-body"
+										HtmlDiv="True"
+										>
+										<ChartCanvas
+											ChartCaption="Top 10 Customer Sales"
+											>
+											<DataLayer
+												ConnectionID="Northwind"
+												ID="SQLDataLayer1"
+												Source="with
+descendants as
+  ( select [ReportsTo] as parent, [EmployeeID] as descendant, 1 as level
+    from [Northwind].[dbo].[Employees]
+  union all
+    select [ReportsTo] as parent, [EmployeeID] as child, d.level + 1
+    from descendants as d
+      join [Northwind].[dbo].[Employees] s
+        on d.descendant = s.[ReportsTo]
+  ) 
+
+
+Select Orders.CustomerID,
+  Orders.EmployeeID,
+  Orders.OrderDate,
+  Orders.ShipCountry,
+  Orders.ShipRegion,
+  [Order Details].UnitPrice,
+  [Order Details].Quantity,
+  [Order Details].UnitPrice * [Order Details].Quantity As SaleAmount,
+  Employees.LastName,
+  Customers.CompanyName
+From Orders
+  Inner Join [Order Details] On Orders.OrderID = [Order Details].OrderID
+  Inner Join Employees On Employees.EmployeeID = Orders.EmployeeID
+  Inner Join Customers On Customers.CustomerID = Orders.CustomerID
+where
+	(Orders.CustomerID in (@SingleQuote.Request.inpCustomerID~) or &apos;@Request.inpCustomerID~&apos;=&apos;&apos;)
+	and
+	Orders.EmployeeID in (select descendant from descendants where parent =  &apos;@Session.EmployeeID~&apos; or descendant = &apos;@Session.EmployeeID~&apos; or &apos;@Session.EmployeeID~&apos;=&apos;&apos;)"
+												Type="SQL"
+												>
+												<GroupFilter
+													GroupColumn="CompanyName"
+													KeepGroupedRows="False"
+													>
+													<GroupAggregateColumn
+														AggregateColumn="SaleAmount"
+														AggregateFunction="Sum"
+														ID="gacSaleAmount"
+													/>
+												</GroupFilter>
+												<SortFilter
+													DataType="Number"
+													SortColumn="gacSaleAmount"
+													SortSequence="Descending"
+												/>
+												<SequenceColumn
+													ID="seq"
+												/>
+												<ConditionFilter
+													Condition="0@Data.seq~&lt;=10"
+												/>
+											</DataLayer>
+											<Series
+												ChartLabelColumn="CompanyName"
+												ChartYDataColumn="gacSaleAmount"
+												Type="Pie"
+												>
+												<Action
+													ID="actJS"
+													Javascript="updateClient(&apos;@Chart.CustomerID~&apos;);"
+													Type="Javascript"
+												/>
+											</Series>
+										</ChartCanvas>
+									</Division>
+								</Division>
+							</ResponsiveColumn>
+							<ResponsiveColumn
+								ColspanLargeScreen="6"
+								>
+								<Division
+									Class="panel panel-default"
+									HtmlDiv="True"
+									>
+									<Division
+										Class="panel-body"
+										HtmlDiv="True"
+										>
+										<ChartCanvas
+											ChartCaption="Sales by Country"
+											>
+											<DataLayer
+												ConnectionID="Northwind"
+												ID="SQLDataLayer1"
+												Source="with
+descendants as
+  ( select [ReportsTo] as parent, [EmployeeID] as descendant, 1 as level
+    from [Northwind].[dbo].[Employees]
+  union all
+    select [ReportsTo] as parent, [EmployeeID] as child, d.level + 1
+    from descendants as d
+      join [Northwind].[dbo].[Employees] s
+        on d.descendant = s.[ReportsTo]
+  ) 
+
+
+Select Orders.CustomerID,
+  Orders.EmployeeID,
+  Orders.OrderDate,
+  Orders.ShipCountry,
+  Orders.ShipRegion,
+  [Order Details].UnitPrice,
+  [Order Details].Quantity,
+  [Order Details].UnitPrice * [Order Details].Quantity As SaleAmount,
+  Employees.LastName,
+  Customers.CompanyName
+From Orders
+  Inner Join [Order Details] On Orders.OrderID = [Order Details].OrderID
+  Inner Join Employees On Employees.EmployeeID = Orders.EmployeeID
+  Inner Join Customers On Customers.CustomerID = Orders.CustomerID
+where
+	(Orders.CustomerID in (@SingleQuote.Request.inpCustomerID~) or &apos;@Request.inpCustomerID~&apos;=&apos;&apos;)
+	and
+	Orders.EmployeeID in (select descendant from descendants where parent =  &apos;@Session.EmployeeID~&apos; or descendant = &apos;@Session.EmployeeID~&apos; or &apos;@Session.EmployeeID~&apos;=&apos;&apos;)"
+												Type="SQL"
+												>
+												<GroupFilter
+													GroupColumn="ShipCountry"
+													KeepGroupedRows="False"
+													>
+													<GroupAggregateColumn
+														AggregateColumn="SaleAmount"
+														AggregateFunction="Sum"
+														ID="gacSaleAmount"
+													/>
+												</GroupFilter>
+												<SortFilter
+													DataType="Number"
+													SortColumn="gacSaleAmount"
+													SortSequence="Descending"
+												/>
+											</DataLayer>
+											<Series
+												ChartXDataColumn="ShipCountry"
+												ChartYDataColumn="gacSaleAmount"
+												Type="Bar"
+												>
+												<Action
+													Type="Report"
+													>
+													<Target
+														Report="InfoReports.DrillDown"
+														Type="Report"
+													/>
+													<LinkParams
+														rdAgReset="True"
+														ShipCountry="@Chart.ShipCountry~"
+													/>
+												</Action>
+											</Series>
+										</ChartCanvas>
+									</Division>
+								</Division>
+							</ResponsiveColumn>
+						</ResponsiveRow>
+						<ResponsiveRow
+							ID="DetailTable"
+							>
+							<ResponsiveColumn
+								ColspanLargeScreen="12"
+								>
+								<Division
+									ID="divTablePanelContainer"
+									>
+									<Division
+										Class="panel panel-default"
+										HtmlDiv="True"
+										ID="panelDetailTable"
+										>
+										<Division
+											Class="panel-heading"
+											HtmlDiv="True"
+											ID="table-header"
+											>
+											<Label
+												Caption="Header Text"
+												Class="panel-title"
+											/>
+										</Division>
+										<ConditionalClass
+											Class="ThemeHidden"
+											Condition="&apos;@Request.CustomerID~&apos; == &apos;&apos;"
+										/>
+										<Division
+											Class="panel-body"
+											HtmlDiv="True"
+											ID="table-body"
+											>
+											<DataTable
+												ID="dtDetails"
+												Width="100"
+												WidthScale="%"
+												>
+												<DataLayer
+													ConnectionID="Northwind"
+													HandleQuotesInTokens="True"
+													ID="SQLDataLayer1"
+													Source="with
+descendants as
+  ( select [ReportsTo] as parent, [EmployeeID] as descendant, 1 as level
+    from [Northwind].[dbo].[Employees]
+  union all
+    select [ReportsTo] as parent, [EmployeeID] as child, d.level + 1
+    from descendants as d
+      join [Northwind].[dbo].[Employees] s
+        on d.descendant = s.[ReportsTo]
+  ) 
+
+
+Select Orders.CustomerID,
+  Orders.EmployeeID,
+  Orders.OrderDate,
+  Orders.ShipCountry,
+  Orders.ShipRegion,
+  [Order Details].UnitPrice,
+  [Order Details].Quantity,
+  [Order Details].UnitPrice * [Order Details].Quantity As SaleAmount,
+  Employees.LastName,
+  Customers.CompanyName
+From Orders
+  Inner Join [Order Details] On Orders.OrderID = [Order Details].OrderID
+  Inner Join Employees On Employees.EmployeeID = Orders.EmployeeID
+  Inner Join Customers On Customers.CustomerID = Orders.CustomerID
+where
+	(Orders.CustomerID = &apos;@Request.CustomerID~&apos; or &apos;&apos;=&apos;@Request.CustomerID~&apos;)
+	and (Orders.ShipCountry = &apos;@Request.ShipCountry~&apos; or &apos;&apos;=&apos;@Request.ShipCountry~&apos;)
+	and (Orders.CustomerID = &apos;@Request.inpCustomerID~&apos; or &apos;@Request.inpCustomerID~&apos;=&apos;&apos;)
+	and Orders.EmployeeID in (select descendant from descendants where parent =  &apos;@Session.EmployeeID~&apos; or descendant = &apos;@Session.EmployeeID~&apos; or &apos;@Session.EmployeeID~&apos;=&apos;&apos;)"
+													Type="SQL"
+												/>
+												<AutoColumns/>
+											</DataTable>
+										</Division>
+									</Division>
+								</Division>
+							</ResponsiveColumn>
+						</ResponsiveRow>
+					</Division>
+				</Division>
+			</ResponsiveColumn>
+		</ResponsiveRow>
+		<IncludeScript
+			IncludedScript="function updateClient(clientId) {
+	document.getElementById(&apos;CustomerID&apos;).value = clientId;
+	console.log(document.getElementById(&apos;CustomerID&apos;).value);
+	document.getElementById(&apos;RefreshTable&apos;).click();
+}"
+		/>
+		<InputHidden
+			DefaultValue="@Request.ShipCountry~"
+			ID="ShipCountry"
+		/>
+		<InputHidden
+			DefaultValue="@Request.inpCustomerID~"
+			ID="inpCustomerID"
+		/>
+		<InputHidden
+			DefaultValue="@Request.CustomerID~"
+			ID="CustomerID"
+		/>
+		<Button
+			Class="ThemeHidden"
+			ID="RefreshTable"
+			>
+			<Action
+				ElementID="divTablePanelContainer"
+				ID="actRefreshTable"
+				Type="RefreshElement"
+				>
+				<Remark>
+					<WaitPage/>
+				</Remark>
+			</Action>
+		</Button>
+	</Body>
+	<ideTestParams
+		CustomerID=""
+		inpCustomerID=""
+		ShipCountry=""
+	/>
 </Report>
