@@ -18,37 +18,19 @@
     <Column ColumnName="Phone" FriendlyName="Phone" DataType="Text" Format="" Alignment="" NoSorting="False" NoGrouping="False" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
     <Column ColumnName="Fax" FriendlyName="Fax" DataType="Text" Format="" Alignment="" NoSorting="False" NoGrouping="False" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
   </Table>
-  <Table TableName="Employees" Schema="" FriendlyName="Employees" TableType="U" HideTable="False" SecurityRightID="">
-    <Column ColumnName="EmployeeID" FriendlyName="Employee Id" DataType="Number" Format="General Number" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-    <Column ColumnName="LastName" FriendlyName="Last Name" DataType="Text" Format="" Alignment="" NoSorting="False" NoGrouping="False" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-    <Column ColumnName="FirstName" FriendlyName="First Name" DataType="Text" Format="" Alignment="" NoSorting="False" NoGrouping="False" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-    <Column ColumnName="Title" FriendlyName="Title" DataType="Text" Format="" Alignment="" NoSorting="False" NoGrouping="False" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-    <Column ColumnName="TitleOfCourtesy" FriendlyName="Title Of Courtesy" DataType="Text" Format="" Alignment="" NoSorting="False" NoGrouping="False" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-    <Column ColumnName="BirthDate" FriendlyName="Birth Date" DataType="DateTime" Format="Short Date" Alignment="" NoSorting="False" NoGrouping="False" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-    <Column ColumnName="HireDate" FriendlyName="Hire Date" DataType="DateTime" Format="Short Date" Alignment="" NoSorting="False" NoGrouping="False" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-    <Column ColumnName="Address" FriendlyName="Address" DataType="Text" Format="" Alignment="" NoSorting="False" NoGrouping="False" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-    <Column ColumnName="City" FriendlyName="City" DataType="Text" Format="" Alignment="" NoSorting="False" NoGrouping="False" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-    <Column ColumnName="Region" FriendlyName="Region" DataType="Text" Format="" Alignment="" NoSorting="False" NoGrouping="False" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-    <Column ColumnName="PostalCode" FriendlyName="Postal Code" DataType="Text" Format="" Alignment="" NoSorting="False" NoGrouping="False" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-    <Column ColumnName="Country" FriendlyName="Country" DataType="Text" Format="" Alignment="" NoSorting="False" NoGrouping="False" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-    <Column ColumnName="HomePhone" FriendlyName="Home Phone" DataType="Text" Format="" Alignment="" NoSorting="False" NoGrouping="False" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-    <Column ColumnName="Extension" FriendlyName="Extension" DataType="Text" Format="" Alignment="" NoSorting="False" NoGrouping="False" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-    <Column ColumnName="Notes" FriendlyName="Notes" DataType="Text" Format="" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-    <Column ColumnName="ReportsTo" FriendlyName="Reports To" DataType="Number" Format="General Number" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-    <Column ColumnName="PhotoPath" FriendlyName="Photo Path" DataType="Text" Format="" Alignment="" NoSorting="False" NoGrouping="False" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-  </Table>
-  <Table TableName="EmployeeTerritories" Schema="" FriendlyName="Employee Territories" TableType="U" HideTable="False" SecurityRightID="">
-    <Column ColumnName="EmployeeID" FriendlyName="Employee Id" DataType="Number" Format="General Number" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-    <Column ColumnName="TerritoryID" FriendlyName="Territory Id" DataType="Text" Format="" Alignment="" NoSorting="False" NoGrouping="False" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-  </Table>
-  <Table TableName="Order Details" Schema="" FriendlyName="Order Details" TableType="U" HideTable="False" SecurityRightID="">
-    <Column ColumnName="OrderID" FriendlyName="Order Id" DataType="Number" Format="General Number" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
+  <Table TableName="Products" Schema="" FriendlyName="Products" TableType="U" HideTable="False" SecurityRightID="">
     <Column ColumnName="ProductID" FriendlyName="Product Id" DataType="Number" Format="General Number" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
+    <Column ColumnName="ProductName" FriendlyName="Product Name" DataType="Text" Format="" Alignment="" NoSorting="False" NoGrouping="False" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
+    <Column ColumnName="SupplierID" FriendlyName="Supplier Id" DataType="Number" Format="General Number" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
+    <Column ColumnName="CategoryID" FriendlyName="Category Id" DataType="Number" Format="General Number" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
+    <Column ColumnName="QuantityPerUnit" FriendlyName="Quantity Per Unit" DataType="Text" Format="" Alignment="" NoSorting="False" NoGrouping="False" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
     <Column ColumnName="UnitPrice" FriendlyName="Unit Price" DataType="Number" Format="General Number" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-    <Column ColumnName="Quantity" FriendlyName="Quantity" DataType="Number" Format="General Number" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-    <Column ColumnName="Discount" FriendlyName="Discount" DataType="Number" Format="General Number" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
+    <Column ColumnName="UnitsInStock" FriendlyName="Units In Stock" DataType="Number" Format="General Number" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
+    <Column ColumnName="UnitsOnOrder" FriendlyName="Units On Order" DataType="Number" Format="General Number" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
+    <Column ColumnName="ReorderLevel" FriendlyName="Reorder Level" DataType="Number" Format="General Number" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
+    <Column ColumnName="Discontinued" FriendlyName="Discontinued" DataType="Boolean" Format="True/False" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
   </Table>
-  <Table TableName="Orders" Schema="" FriendlyName="Orders" TableType="U" HideTable="False" SecurityRightID="">
+  <Table TableName="OrdersWithRowLevelSecurity" Schema="" FriendlyName="OrdersWithRowLevelSecurity" TableType="U" HideTable="False" SecurityRightID="" SqlSource="Select [OrderID]&#xD;&#xA;      ,[CustomerID]&#xD;&#xA;      ,[EmployeeID]&#xD;&#xA;      ,[OrderDate]&#xD;&#xA;      ,[RequiredDate]&#xD;&#xA;      ,[ShippedDate]&#xD;&#xA;      ,[ShipVia]&#xD;&#xA;      ,[Freight]&#xD;&#xA;      ,[ShipName]&#xD;&#xA;      ,[ShipAddress]&#xD;&#xA;      ,[ShipCity]&#xD;&#xA;      ,[ShipRegion]&#xD;&#xA;      ,[ShipPostalCode]&#xD;&#xA;      ,[ShipCountry] from [Northwind].[dbo].Orders where CAST(EmployeeID as varchar(1)) = '@Session.EmployeeID~'">
     <Column ColumnName="OrderID" FriendlyName="Order Id" DataType="Number" Format="General Number" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
     <Column ColumnName="CustomerID" FriendlyName="Customer Id" DataType="Text" Format="" Alignment="" NoSorting="False" NoGrouping="False" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
     <Column ColumnName="EmployeeID" FriendlyName="Employee Id" DataType="Number" Format="General Number" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
@@ -64,121 +46,31 @@
     <Column ColumnName="ShipPostalCode" FriendlyName="Ship Postal Code" DataType="Text" Format="" Alignment="" NoSorting="False" NoGrouping="False" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
     <Column ColumnName="ShipCountry" FriendlyName="Ship Country" DataType="Text" Format="" Alignment="" NoSorting="False" NoGrouping="False" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
   </Table>
-  <Table TableName="Products" Schema="" FriendlyName="Products" TableType="U" HideTable="False" SecurityRightID="">
+  <Table TableName="OrderDetailsWIthRowLevelSecurity" Schema="" FriendlyName="OrderDetailsWIthRowLevelSecurity" TableType="U" HideTable="False" SecurityRightID="" SqlSource="SELECT [OrderID]&#xD;&#xA;      ,[ProductID]&#xD;&#xA;      ,[ProductName]&#xD;&#xA;      ,[UnitPrice]&#xD;&#xA;      ,[Quantity]&#xD;&#xA;      ,[Discount]&#xD;&#xA;      ,[ExtendedPrice]&#xD;&#xA;  FROM [Northwind].[dbo].[Order Details Extended] where OrderID in (select OrderID from [Northwind].[dbo].Orders where CAST(EmployeeID as varchar(1)) = '@Session.EmployeeID~')">
+    <Column ColumnName="OrderID" FriendlyName="Order Id" DataType="Number" Format="General Number" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
     <Column ColumnName="ProductID" FriendlyName="Product Id" DataType="Number" Format="General Number" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
     <Column ColumnName="ProductName" FriendlyName="Product Name" DataType="Text" Format="" Alignment="" NoSorting="False" NoGrouping="False" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-    <Column ColumnName="SupplierID" FriendlyName="Supplier Id" DataType="Number" Format="General Number" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-    <Column ColumnName="CategoryID" FriendlyName="Category Id" DataType="Number" Format="General Number" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-    <Column ColumnName="QuantityPerUnit" FriendlyName="Quantity Per Unit" DataType="Text" Format="" Alignment="" NoSorting="False" NoGrouping="False" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
     <Column ColumnName="UnitPrice" FriendlyName="Unit Price" DataType="Number" Format="General Number" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-    <Column ColumnName="UnitsInStock" FriendlyName="Units In Stock" DataType="Number" Format="General Number" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-    <Column ColumnName="UnitsOnOrder" FriendlyName="Units On Order" DataType="Number" Format="General Number" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-    <Column ColumnName="ReorderLevel" FriendlyName="Reorder Level" DataType="Number" Format="General Number" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-    <Column ColumnName="Discontinued" FriendlyName="Discontinued" DataType="Boolean" Format="True/False" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
+    <Column ColumnName="Quantity" FriendlyName="Quantity" DataType="Number" Format="General Number" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
+    <Column ColumnName="Discount" FriendlyName="Discount" DataType="Number" Format="General Number" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
+    <Column ColumnName="ExtendedPrice" FriendlyName="Extended Price" DataType="Number" Format="General Number" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
   </Table>
-  <Table TableName="Region" Schema="" FriendlyName="Region" TableType="U" HideTable="False" SecurityRightID="">
-    <Column ColumnName="RegionID" FriendlyName="Region Id" DataType="Number" Format="General Number" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-    <Column ColumnName="RegionDescription" FriendlyName="Region Description" DataType="Text" Format="" Alignment="" NoSorting="False" NoGrouping="False" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-  </Table>
-  <Table TableName="Territories" Schema="" FriendlyName="Territories" TableType="U" HideTable="False" SecurityRightID="">
-    <Column ColumnName="TerritoryID" FriendlyName="Territory Id" DataType="Text" Format="" Alignment="" NoSorting="False" NoGrouping="False" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-    <Column ColumnName="TerritoryDescription" FriendlyName="Territory Description" DataType="Text" Format="" Alignment="" NoSorting="False" NoGrouping="False" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-    <Column ColumnName="RegionID" FriendlyName="Region Id" DataType="Number" Format="General Number" Alignment="" NoSorting="False" NoGrouping="True" NoAggregation="False" ValuesForFilter="" LinkURL="" FrameID="" SecurityRightID="" HideColumn="False" />
-  </Table>
-  <JoinRelation FromTableName="EmployeeTerritories" ToTableName="Employees" Relation="Inner Join" FriendlyName="Employee Territories - Employees" Explanation="" JoinRelationID="928cd7ef-da0f-44b8-8cb8-f6c088932ade" SecurityRightID="">
-    <JoinRelationDetails FromColumnName="EmployeeID" ToColumnName="EmployeeID" />
-  </JoinRelation>
-  <JoinRelation FromTableName="EmployeeTerritories" ToTableName="Employees" Relation="Left Outer Join" FriendlyName="Employee Territories -&gt; Employees" Explanation="" JoinRelationID="ef601faa-38e3-4033-bfe6-fee9c18312a1" SecurityRightID="">
-    <JoinRelationDetails FromColumnName="EmployeeID" ToColumnName="EmployeeID" />
-  </JoinRelation>
-  <JoinRelation FromTableName="Employees" ToTableName="EmployeeTerritories" Relation="Inner Join" FriendlyName="Employees - Employee Territories" Explanation="" JoinRelationID="2dc28c7e-8541-4a23-9a8e-e22c89cb8296" SecurityRightID="">
-    <JoinRelationDetails FromColumnName="EmployeeID" ToColumnName="EmployeeID" />
-  </JoinRelation>
-  <JoinRelation FromTableName="Employees" ToTableName="EmployeeTerritories" Relation="Left Outer Join" FriendlyName="Employees -&gt; Employee Territories" Explanation="" JoinRelationID="bb856a25-9204-4167-ba1d-dadda90012f3" SecurityRightID="">
-    <JoinRelationDetails FromColumnName="EmployeeID" ToColumnName="EmployeeID" />
-  </JoinRelation>
-  <JoinRelation FromTableName="EmployeeTerritories" ToTableName="Territories" Relation="Inner Join" FriendlyName="Employee Territories - Territories" Explanation="" JoinRelationID="c010ec77-2ed4-4840-a65f-57e8cdf946fd" SecurityRightID="">
-    <JoinRelationDetails FromColumnName="TerritoryID" ToColumnName="TerritoryID" />
-  </JoinRelation>
-  <JoinRelation FromTableName="EmployeeTerritories" ToTableName="Territories" Relation="Left Outer Join" FriendlyName="Employee Territories -&gt; Territories" Explanation="" JoinRelationID="13138b8e-254f-4f9a-8140-aaafafffb00a" SecurityRightID="">
-    <JoinRelationDetails FromColumnName="TerritoryID" ToColumnName="TerritoryID" />
-  </JoinRelation>
-  <JoinRelation FromTableName="Territories" ToTableName="EmployeeTerritories" Relation="Inner Join" FriendlyName="Territories - Employee Territories" Explanation="" JoinRelationID="add4665d-ab19-4b04-b9fd-7210ebd61f5e" SecurityRightID="">
-    <JoinRelationDetails FromColumnName="TerritoryID" ToColumnName="TerritoryID" />
-  </JoinRelation>
-  <JoinRelation FromTableName="Territories" ToTableName="EmployeeTerritories" Relation="Left Outer Join" FriendlyName="Territories -&gt; Employee Territories" Explanation="" JoinRelationID="f3896e34-0eb2-4e6e-a448-3b18eccc75b4" SecurityRightID="">
-    <JoinRelationDetails FromColumnName="TerritoryID" ToColumnName="TerritoryID" />
-  </JoinRelation>
-  <JoinRelation FromTableName="Order Details" ToTableName="Orders" Relation="Inner Join" FriendlyName="Order Details - Orders" Explanation="" JoinRelationID="eff657bd-7d56-4b70-b5e5-4747e950d4c6" SecurityRightID="">
-    <JoinRelationDetails FromColumnName="OrderID" ToColumnName="OrderID" />
-  </JoinRelation>
-  <JoinRelation FromTableName="Order Details" ToTableName="Orders" Relation="Left Outer Join" FriendlyName="Order Details -&gt; Orders" Explanation="" JoinRelationID="5f9c2ed0-9f14-44ec-8903-ce32a97ee1ac" SecurityRightID="">
-    <JoinRelationDetails FromColumnName="OrderID" ToColumnName="OrderID" />
-  </JoinRelation>
-  <JoinRelation FromTableName="Orders" ToTableName="Order Details" Relation="Inner Join" FriendlyName="Orders - Order Details" Explanation="" JoinRelationID="e77e2189-3290-47f3-b512-4e599c82b4eb" SecurityRightID="">
-    <JoinRelationDetails FromColumnName="OrderID" ToColumnName="OrderID" />
-  </JoinRelation>
-  <JoinRelation FromTableName="Orders" ToTableName="Order Details" Relation="Left Outer Join" FriendlyName="Orders -&gt; Order Details" Explanation="" JoinRelationID="a665c871-062e-4343-a07d-f931b2e41ca5" SecurityRightID="">
-    <JoinRelationDetails FromColumnName="OrderID" ToColumnName="OrderID" />
-  </JoinRelation>
-  <JoinRelation FromTableName="Order Details" ToTableName="Products" Relation="Inner Join" FriendlyName="Order Details - Products" Explanation="" JoinRelationID="01214490-1db9-40a2-997c-b609d850e89e" SecurityRightID="">
-    <JoinRelationDetails FromColumnName="ProductID" ToColumnName="ProductID" />
-  </JoinRelation>
-  <JoinRelation FromTableName="Order Details" ToTableName="Products" Relation="Left Outer Join" FriendlyName="Order Details -&gt; Products" Explanation="" JoinRelationID="bc908914-22bc-449a-83ff-18547cd38545" SecurityRightID="">
-    <JoinRelationDetails FromColumnName="ProductID" ToColumnName="ProductID" />
-  </JoinRelation>
-  <JoinRelation FromTableName="Products" ToTableName="Order Details" Relation="Inner Join" FriendlyName="Products - Order Details" Explanation="" JoinRelationID="bc0d6ba3-763e-4262-b036-840ab45b2ac7" SecurityRightID="">
-    <JoinRelationDetails FromColumnName="ProductID" ToColumnName="ProductID" />
-  </JoinRelation>
-  <JoinRelation FromTableName="Products" ToTableName="Order Details" Relation="Left Outer Join" FriendlyName="Products -&gt; Order Details" Explanation="" JoinRelationID="905eca03-bd12-4990-940e-fb12ed95b09d" SecurityRightID="">
-    <JoinRelationDetails FromColumnName="ProductID" ToColumnName="ProductID" />
-  </JoinRelation>
-  <JoinRelation FromTableName="Orders" ToTableName="Customers" Relation="Inner Join" FriendlyName="Orders - Customers" Explanation="" JoinRelationID="76015223-4645-4ccf-8c58-6c41d0a77236" SecurityRightID="">
-    <JoinRelationDetails FromColumnName="CustomerID" ToColumnName="CustomerID" />
-  </JoinRelation>
-  <JoinRelation FromTableName="Orders" ToTableName="Customers" Relation="Left Outer Join" FriendlyName="Orders -&gt; Customers" Explanation="" JoinRelationID="50cb0b25-db5b-450d-b36e-f0cc776d52aa" SecurityRightID="">
-    <JoinRelationDetails FromColumnName="CustomerID" ToColumnName="CustomerID" />
-  </JoinRelation>
-  <JoinRelation FromTableName="Customers" ToTableName="Orders" Relation="Inner Join" FriendlyName="Customers - Orders" Explanation="" JoinRelationID="3fd3c77e-07c9-49d4-bf68-68ea57f7bff1" SecurityRightID="">
-    <JoinRelationDetails FromColumnName="CustomerID" ToColumnName="CustomerID" />
-  </JoinRelation>
-  <JoinRelation FromTableName="Customers" ToTableName="Orders" Relation="Left Outer Join" FriendlyName="Customers -&gt; Orders" Explanation="" JoinRelationID="258c9f23-55be-4f42-bb7a-3a52cf4be067" SecurityRightID="">
-    <JoinRelationDetails FromColumnName="CustomerID" ToColumnName="CustomerID" />
-  </JoinRelation>
-  <JoinRelation FromTableName="Orders" ToTableName="Employees" Relation="Inner Join" FriendlyName="Orders - Employees" Explanation="" JoinRelationID="4397d024-41f4-4523-aeb7-b44a7267d090" SecurityRightID="">
-    <JoinRelationDetails FromColumnName="EmployeeID" ToColumnName="EmployeeID" />
-  </JoinRelation>
-  <JoinRelation FromTableName="Orders" ToTableName="Employees" Relation="Left Outer Join" FriendlyName="Orders -&gt; Employees" Explanation="" JoinRelationID="d826fde1-0938-4a18-a020-1040d16ce7fa" SecurityRightID="">
-    <JoinRelationDetails FromColumnName="EmployeeID" ToColumnName="EmployeeID" />
-  </JoinRelation>
-  <JoinRelation FromTableName="Employees" ToTableName="Orders" Relation="Inner Join" FriendlyName="Employees - Orders" Explanation="" JoinRelationID="5b031e22-3c31-40e4-b8fd-54bae2ac50de" SecurityRightID="">
-    <JoinRelationDetails FromColumnName="EmployeeID" ToColumnName="EmployeeID" />
-  </JoinRelation>
-  <JoinRelation FromTableName="Employees" ToTableName="Orders" Relation="Left Outer Join" FriendlyName="Employees -&gt; Orders" Explanation="" JoinRelationID="81d07c24-ea17-4ae9-80b0-f5f14e9f7d85" SecurityRightID="">
-    <JoinRelationDetails FromColumnName="EmployeeID" ToColumnName="EmployeeID" />
-  </JoinRelation>
-  <JoinRelation FromTableName="Products" ToTableName="Categories" Relation="Inner Join" FriendlyName="Products - Categories" Explanation="" JoinRelationID="74eb52e1-fdec-454e-880c-bbaa7b89b662" SecurityRightID="">
+  <JoinRelation FromTableName="Products" ToTableName="Categories" Relation="Inner Join" FriendlyName="Products - Categories" Explanation="" JoinRelationID="6ea3bd7d-1049-45a0-b7f1-5aaaf948d63d" SecurityRightID="">
     <JoinRelationDetails FromColumnName="CategoryID" ToColumnName="CategoryID" />
   </JoinRelation>
-  <JoinRelation FromTableName="Products" ToTableName="Categories" Relation="Left Outer Join" FriendlyName="Products -&gt; Categories" Explanation="" JoinRelationID="011a9c31-0b69-4aeb-bfbd-67a13ab7c51a" SecurityRightID="">
+  <JoinRelation FromTableName="Categories" ToTableName="Products" Relation="Inner Join" FriendlyName="Categories - Products" Explanation="" JoinRelationID="029fb811-90ca-42a1-a104-834f48e339a6" SecurityRightID="">
     <JoinRelationDetails FromColumnName="CategoryID" ToColumnName="CategoryID" />
   </JoinRelation>
-  <JoinRelation FromTableName="Categories" ToTableName="Products" Relation="Inner Join" FriendlyName="Categories - Products" Explanation="" JoinRelationID="899a9ac0-3241-4ad2-ab9b-961e4de4a7ed" SecurityRightID="">
-    <JoinRelationDetails FromColumnName="CategoryID" ToColumnName="CategoryID" />
+  <JoinRelation FromTableName="OrderDetailsWIthRowLevelSecurity" ToTableName="Products" Relation="Inner Join" FriendlyName="Order Details Extended - Products" Explanation="" JoinRelationID="600b2d05-f786-478c-aba0-8e2129a16bb5" SecurityRightID="">
+    <JoinRelationDetails FromColumnName="ProductID" ToColumnName="ProductID" />
   </JoinRelation>
-  <JoinRelation FromTableName="Categories" ToTableName="Products" Relation="Left Outer Join" FriendlyName="Categories -&gt; Products" Explanation="" JoinRelationID="3e9c8bc3-d388-4ec3-982c-cadc4971a731" SecurityRightID="">
-    <JoinRelationDetails FromColumnName="CategoryID" ToColumnName="CategoryID" />
+  <JoinRelation FromTableName="OrderDetailsWIthRowLevelSecurity" ToTableName="OrdersWithRowLevelSecurity" Relation="Inner Join" FriendlyName="Orders - Customers" Explanation="" JoinRelationID="9ca82efa-8c0b-404d-8954-b0645ab1de8e" SecurityRightID="">
+    <JoinRelationDetails FromColumnName="OrderID" ToColumnName="OrderID" />
   </JoinRelation>
-  <JoinRelation FromTableName="Territories" ToTableName="Region" Relation="Inner Join" FriendlyName="Territories - Region" Explanation="" JoinRelationID="8881c7c5-cb8c-4fde-b649-5b25a2d74372" SecurityRightID="">
-    <JoinRelationDetails FromColumnName="RegionID" ToColumnName="RegionID" />
+  <JoinRelation FromTableName="OrdersWithRowLevelSecurity" ToTableName="OrderDetailsWIthRowLevelSecurity" Relation="Inner Join" FriendlyName="Orderswithrowlevelsecurity - Orderdetailswithrowlevelsecurity" Explanation="" JoinRelationID="e5bd746b-1603-493e-9e90-eed10fce4b55" SecurityRightID="">
+    <JoinRelationDetails FromColumnName="OrderID" ToColumnName="OrderID" />
   </JoinRelation>
-  <JoinRelation FromTableName="Territories" ToTableName="Region" Relation="Left Outer Join" FriendlyName="Territories -&gt; Region" Explanation="" JoinRelationID="362f8220-9833-44a3-aed2-889bb8ecb842" SecurityRightID="">
-    <JoinRelationDetails FromColumnName="RegionID" ToColumnName="RegionID" />
-  </JoinRelation>
-  <JoinRelation FromTableName="Region" ToTableName="Territories" Relation="Inner Join" FriendlyName="Region - Territories" Explanation="" JoinRelationID="22d0f393-3489-4720-9b2d-d9678af85975" SecurityRightID="">
-    <JoinRelationDetails FromColumnName="RegionID" ToColumnName="RegionID" />
-  </JoinRelation>
-  <JoinRelation FromTableName="Region" ToTableName="Territories" Relation="Left Outer Join" FriendlyName="Region -&gt; Territories" Explanation="" JoinRelationID="fe40edca-6dea-4836-a449-a40a01221071" SecurityRightID="">
-    <JoinRelationDetails FromColumnName="RegionID" ToColumnName="RegionID" />
+  <JoinRelation FromTableName="OrdersWithRowLevelSecurity" ToTableName="Customers" Relation="Inner Join" FriendlyName="Orderswithrowlevelsecurity - Customers" Explanation="" JoinRelationID="3c5df52f-6095-46f6-9067-988b4a21c89b" SecurityRightID="">
+    <JoinRelationDetails FromColumnName="CustomerID" ToColumnName="CustomerID" />
   </JoinRelation>
 </Metadata>

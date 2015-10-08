@@ -2,13 +2,14 @@
   <Folders>
     <Folder Name="My Items" ID="" />
   </Folders>
-  <Bookmark Report="InfoGo.goAnalysisGrid" Name="" CustomColumn1="" CustomColumn2="" Description="Units in Stock" SaveTime="2015-10-07T11:43:50-04:00" BookmarkID="d657d44f-08c8-4dba-a0fe-06c02d9ebcfb" ExtraFile="AdmingoCollection_d657d44f-08c8-4dba-a0fe-06c02d9ebcfb.xml">
-    <RequestParameters rdAgLoadSaved="AdmingoCollection_d657d44f-08c8-4dba-a0fe-06c02d9ebcfb.xml" />
+  <Bookmark Report="InfoGo.goAnalysisGrid" Name="" CustomColumn1="" CustomColumn2="" Description="Orders - Order Details - Customer - Product" SaveTime="2015-10-07T16:31:42-04:00" BookmarkID="d2fa6e4b-6597-433b-a6ff-63b2ca3f9cd4" ExtraFile="AdmingoCollection_d2fa6e4b-6597-433b-a6ff-63b2ca3f9cd4.xml">
+    <RequestParameters rdAgLoadSaved="AdmingoCollection_d2fa6e4b-6597-433b-a6ff-63b2ca3f9cd4.xml" />
     <SessionParameters />
   </Bookmark>
-  <Bookmark Report="InfoGo.goReport" Name="" CustomColumn1="" CustomColumn2="" Description="Units in Stock Report" SaveTime="2015-10-07T11:55:31-04:00" BookmarkID="5fdcac60-d161-4694-b61b-f42940aa92ef" ExtraFile="AdmingoCollection_5fdcac60-d161-4694-b61b-f42940aa92ef.xml">
+  <Bookmark Report="InfoGo.goReport" Name="" CustomColumn1="" CustomColumn2="" Description="Top Products &amp; Customers" SaveTime="2015-10-07T16:39:59-04:00" BookmarkID="acdb143a-8953-432d-ba93-7e09538eea1e" ExtraFile="AdmingoCollection_acdb143a-8953-432d-ba93-7e09538eea1e.xml">
     <RequestParameters />
     <SessionParameters />
-    <Schedule SchedulerTaskID="22" Description="At 8:00 AM on 10/07/2015" />
+    <Schedule SchedulerTaskID="23" Description="At 8:00 AM on 10/07/2015" />
+    <SharedWith BookmarkCollection="Nancy DavoliogoCollection" BookmarkUserName="Nancy Davolio" />
   </Bookmark>
 </rdBookmarks>

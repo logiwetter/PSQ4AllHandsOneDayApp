@@ -4,14 +4,10 @@
 	>
 	<Application
 		Caption="Accelerate"
-		DefaultReport="Default"
-		>
-		<Note
-			Note="test note"
-		/>
-	</Application>
+		DefaultReport="InfoReports.Dashboard"
+	/>
 	<Path
-		AppPath="http://localhost/PSQ4AllHandsOneDayApp/"
+		AppPath="http://localhost/PSQ4AllHandsOneDayApp"
 	/>
 	<General
 		BookmarkCollectionDefault="@Function.UserName~goCollection"
@@ -62,15 +58,36 @@
 			SqlServer="209.48.69.227"
 			SqlServerDatabase="Northwind"
 			SqlServerPassword="Logipass"
-			SqlServerPort=""
 			SqlServerUser="Training_User"
 			Type="SqlServer"
-		/>
+			>
+			<Remark>
+				<Metadata
+					ID="metaNorthwind"
+					MetadataName="Northwind"
+				/>
+			</Remark>
+			<Metadata
+				ID="metaNorthwind"
+				MetadataName="Northwind"
+			/>
+		</Connection>
+		<Remark>
+			<Connection
+				ID="Northwind"
+				SqlServer="localhost"
+				SqlServerDatabase="Northwind"
+				SqlServerPassword="lgxpass000"
+				SqlServerPort=""
+				SqlServerUser="sa"
+				Type="SqlServer"
+			/>
+		</Remark>
 		<Remark>
 			<Connection
 				ID="AdventureWorks"
 				SqlServer="localhost"
-				SqlServerDatabase="AdventureWorks"
+				SqlServerDatabase="AdventureWorks2014"
 				SqlServerPassword="lgxpass000"
 				SqlServerPort=""
 				SqlServerUser="sa"
@@ -100,102 +117,188 @@
 			Type="Smtp"
 		/>
 	</Connections>
-	<Remark>
-		<Security
-			AuthenticationSource="Standard"
-			CacheRights="Session"
-			SecurityEnabled="True"
+	<Security
+		AuthenticationSource="Standard"
+		CacheRights="Session"
+		SecurityEnabled="True"
+		>
+		<AuthenticationRule
+			ID="AuthStatic"
+			UsernameDataColumn="userName"
 			>
-			<AuthenticationRule
-				ID="AuthStatic"
-				UsernameDataColumn="userName"
+			<DataLayer
+				ID="dlStaticAuth"
+				Type="Static"
 				>
-				<DataLayer
-					ID="dlStaticAuth"
-					Type="Static"
-					>
-					<StaticDataRow
-						password="password"
-						userID="0"
-						userName="Admin"
-					/>
+				<StaticDataRow
+					password="password"
+					userID="0"
+					userName="Admin"
+				/>
+				<Remark>
 					<StaticDataRow
 						password="password"
 						userID="1"
 						userName="StandardUser"
 					/>
-					<Note
-						Note="Always supply a role for new login"
-					/>
-					<CompareFilter
-						CaseSensitive="False"
-						CompareType="="
-						CompareValue="@Request.rdUsername~"
-						DataColumn="userName"
-						DataType="Text"
-						ID="compareUserName"
-					/>
-					<CompareFilter
-						CaseSensitive="True"
-						CompareType="="
-						CompareValue="@Request.rdPassword~"
-						DataColumn="password"
-						DataType="Text"
-						ID="comparePassword"
-					/>
-				</DataLayer>
-			</AuthenticationRule>
-			<UserRoles
-				ID="RoleStatic"
-				>
-				<DataLayer
-					ID="dlRoles"
-					Type="Static"
-					>
-					<StaticDataRow
-						roleName="Admin"
-						userName="Admin"
-					/>
-					<StaticDataRow
-						roleName="User"
-						userName="StandardUser"
-					/>
-					<Note
-						Note="Add role for login"
-					/>
-					<ConditionFilter
-						Condition="&quot;@Function.UserName~&quot; == &quot;@Data.userName~&quot;"
-					/>
-				</DataLayer>
-			</UserRoles>
-			<Rights>
-				<Remark>
-					<RightFromRole
-						ID="SeeAll"
-						>
-						<DataLayer
-							ID="dlRoleRights"
-							Type="Static"
-							>
-							<StaticDataRow
-								role="Master"
-							/>
-						</DataLayer>
-					</RightFromRole>
 				</Remark>
+				<Note
+					Note="Always supply a role for new login"
+				/>
+				<StaticDataRow
+					password=""
+					userID="1"
+					userName="Nancy Davolio"
+				/>
+				<StaticDataRow
+					password=""
+					userID="2"
+					userName="Andrew Fuller"
+				/>
+				<StaticDataRow
+					password=""
+					userID="3"
+					userName="Janet Leverling"
+				/>
+				<StaticDataRow
+					password=""
+					userID="4"
+					userName="Margaret Peacock"
+				/>
+				<StaticDataRow
+					password=""
+					userID="5"
+					userName="Steven Buchanan"
+				/>
+				<StaticDataRow
+					password=""
+					userID="6"
+					userName="Michael Suyama"
+				/>
+				<StaticDataRow
+					password=""
+					userID="7"
+					userName="Robert King"
+				/>
+				<StaticDataRow
+					password=""
+					userID="8"
+					userName="Laura Callahan"
+				/>
+				<StaticDataRow
+					password=""
+					userID="9"
+					userName="Anne Dodsworth"
+				/>
+				<CompareFilter
+					CaseSensitive="False"
+					CompareType="="
+					CompareValue="@Request.rdUsername~"
+					DataColumn="userName"
+					DataType="Text"
+					ID="compareUserName"
+				/>
+				<CompareFilter
+					CaseSensitive="True"
+					CompareType="="
+					CompareValue="@Request.rdPassword~"
+					DataColumn="password"
+					DataType="Text"
+					ID="comparePassword"
+				/>
+			</DataLayer>
+		</AuthenticationRule>
+		<UserRoles
+			ID="RoleStatic"
+			>
+			<DataLayer
+				ID="dlRoles"
+				Type="Static"
+				>
+				<StaticDataRow
+					roleName="Admin"
+					userName="Admin"
+				/>
+				<StaticDataRow
+					roleName="User"
+					userName="StandardUser"
+				/>
+				<Note
+					Note="Add role for login"
+				/>
+				<StaticDataRow
+					roleName="User"
+					userName="Nancy Davolio"
+				/>
+				<StaticDataRow
+					roleName="User"
+					userName="Andrew Fuller"
+				/>
+				<StaticDataRow
+					roleName="User"
+					userName="Janet Leverling"
+				/>
+				<StaticDataRow
+					roleName="User"
+					userName="Margaret Peacock"
+				/>
+				<StaticDataRow
+					roleName="User"
+					userName="Steven Buchanan"
+				/>
+				<StaticDataRow
+					roleName="User"
+					userName="Michael Suyama"
+				/>
+				<StaticDataRow
+					roleName="User"
+					userName="Robert King"
+				/>
+				<StaticDataRow
+					roleName="User"
+					userName="Laura Callahan"
+				/>
+				<StaticDataRow
+					roleName="User"
+					userName="Anne Dodsworth"
+				/>
+				<ConditionFilter
+					Condition="&quot;@Function.UserName~&quot; == &quot;@Data.userName~&quot;"
+				/>
+			</DataLayer>
+		</UserRoles>
+		<Rights>
+			<Remark>
+				<RightFromRole
+					ID="SeeAll"
+					>
+					<DataLayer
+						ID="dlRoleRights"
+						Type="Static"
+						>
+						<StaticDataRow
+							role="Master"
+						/>
+					</DataLayer>
+				</RightFromRole>
+			</Remark>
+			<RightsFromRoles/>
+		</Rights>
+	</Security>
+	<Remark>
+		<Security
+			AuthenticationClientAddresses="127.0.0.1,::1"
+			AuthenticationSource="SecureKey"
+			CacheRights="Session"
+			ID="SecureKey"
+			RestartSession="True"
+			SecurityEnabled="True"
+			>
+			<Rights>
 				<RightsFromRoles/>
 			</Rights>
 		</Security>
 	</Remark>
-	<Security
-		AuthenticationClientAddresses="127.0.0.1,::1"
-		AuthenticationSource="SecureKey"
-		CacheRights="Session"
-		DevelopmentUsername="Admin"
-		ID="SecureKey"
-		RestartSession="True"
-		SecurityEnabled="True"
-	/>
 	<StartupProcess
 		Process="proc_Theme-Settings"
 		TaskID="startup-SetThemeSettings"
@@ -204,5 +307,8 @@
 			Note="This process sets the theme color settings"
 		/>
 	</StartupProcess>
-	<ideTestParams/>
+	<ideTestParams
+		rdPassword=""
+		rdUsername="2"
+	/>
 </Setting>

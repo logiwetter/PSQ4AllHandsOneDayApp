@@ -1,23 +1,81 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report ID="goCustomizations.goBookmarkSharingUserlist">
-  <SharedElement ID="sharedDataLayer">
-    <Remark>
-      <SharingList SharingCollectionColumn="Username">
-        <DataLayer Type="Static" ID="dlBookmarkSharingUserlist">
-          <StaticDataRow Username="George" Department="Executive" />
-          <StaticDataRow Username="Thomas" Department="Executive" />
-          <StaticDataRow Username="John" Department="Executive" />
-        </DataLayer>
-        <DataTableColumn ID="colUsername">
-          <Label Caption="@Data.Username~" />
-        </DataTableColumn>
-        <DataTableColumn ID="colDepartment">
-          <Label Caption="@Data.Department~" />
-        </DataTableColumn>
-      </SharingList>
-    </Remark>
-    <Note Note="This DataLayer can be used to return a list of users in the Bookmark sharing screen, allowing the user to pick users instead of typing them in.  " />
-    <Note Note="To use it, create a new DataLayer which returns the list of usernames.  Set the SharingList ShareNameColumn attribute to the column containing usernames." />
-  </SharedElement>
-  <ideTestParams />
+<Report
+	ID="goCustomizations.goBookmarkSharingUserlist"
+	>
+	<SharedElement
+		ID="sharedDataLayer"
+		>
+		<SharingList
+			SharingCollectionColumn="userName"
+			>
+			<DataLayer
+				ID="dlBookmarkSharingUserlist"
+				Type="Static"
+				>
+				<Remark>
+					<StaticDataRow
+						Department="Executive"
+						Username="George"
+					/>
+				</Remark>
+				<StaticDataRow
+					title="Sales Representative"
+					userName="Nancy Davolio"
+				/>
+				<StaticDataRow
+					title="Vice President, Sales"
+					userName="Andrew Fuller"
+				/>
+				<StaticDataRow
+					title="Sales Representative"
+					userName="Janet Leverling"
+				/>
+				<StaticDataRow
+					title="Sales Representative"
+					userName="Margaret Peacock"
+				/>
+				<StaticDataRow
+					title="Sales Manager"
+					userName="Steven Buchanan"
+				/>
+				<StaticDataRow
+					title="Sales Representative"
+					userName="Michael Suyama"
+				/>
+				<StaticDataRow
+					title="Sales Representative"
+					userName="Robert King"
+				/>
+				<StaticDataRow
+					title="Inside Sales Coordinator"
+					userName="Laura Callahan"
+				/>
+				<StaticDataRow
+					title="Sales Representative"
+					userName="Anne Dodsworth"
+				/>
+			</DataLayer>
+			<DataTableColumn
+				ID="colUsername"
+				>
+				<Label
+					Caption="@Data.userName~"
+				/>
+			</DataTableColumn>
+			<DataTableColumn
+				ID="colDepartment"
+				>
+				<Label
+					Caption="@Data.title~"
+				/>
+			</DataTableColumn>
+		</SharingList>
+		<Note
+			Note="This DataLayer can be used to return a list of users in the Bookmark sharing screen, allowing the user to pick users instead of typing them in.  "
+		/>
+		<Note
+			Note="To use it, create a new DataLayer which returns the list of usernames.  Set the SharingList ShareNameColumn attribute to the column containing usernames."
+		/>
+	</SharedElement>
+	<ideTestParams/>
 </Report>
