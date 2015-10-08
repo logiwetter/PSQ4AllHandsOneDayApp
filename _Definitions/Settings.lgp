@@ -190,7 +190,6 @@
     </File>
     <File Name="C:\Users\Sean\Documents\GitHub\PSQ4AllHandsOneDayApp\_Definitions\_Reports\InfoReports.Dashboard.lgx">
       <Element Key="1\0\0\0\1\0\1" />
-      <Element Key="1\0\0\0\1\1\0\0\0\2\0" />
     </File>
     <File Name="C:\inetpub\wwwroot\PSQ4AllHandsOneDayApp\_Definitions\_Processes\proc_Theme-Settings.lgx">
       <Element Key="0\0" />
@@ -200,6 +199,12 @@
     </File>
     <File Name="C:\inetpub\wwwroot\PSQ4AllHandsOneDayApp\_Definitions\_Settings.lgx">
       <Element Key="9" />
+    </File>
+    <File Name="C:\Users\Sean\Documents\GitHub\PSQ4AllHandsOneDayApp\_Definitions\_Reports\InfoGo.goHome.lgx">
+      <Element Key="0" />
+      <Element Key="2" />
+      <Element Key="4" />
+      <Element Key="5" />
     </File>
   </CollapsedDef>
 </Settings>

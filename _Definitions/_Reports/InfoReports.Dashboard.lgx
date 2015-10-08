@@ -422,7 +422,7 @@ From Orders
 where
 	(Orders.CustomerID = &apos;@Request.CustomerID~&apos;)
 	and (Orders.ShipCountry = &apos;@Request.ShipCountry~&apos; or &apos;&apos;=&apos;@Request.ShipCountry~&apos;)
-	and (Orders.CustomerID = &apos;@Request.inpCustomerID~&apos; or &apos;@Request.inpCustomerID~&apos;=&apos;&apos;)
+	and (Orders.CustomerID in (@SingleQuote.Request.inpCustomerID~) or &apos;@Request.inpCustomerID~&apos;=&apos;&apos;)
 	and Orders.EmployeeID in (select descendant from descendants where parent =  &apos;@Session.EmployeeID~&apos; or descendant = &apos;@Session.EmployeeID~&apos; or &apos;@Session.EmployeeID~&apos;=&apos;&apos;)"
 													Type="SQL"
 												/>
