@@ -1,0 +1,274 @@
+<rdSavedDashboard>
+  <Panel ID="rdCustomDashboardPanel_a39d897b36f6433dbfbd7d79a2266ea0" InstanceID="5334d7c3a6b146de87af77d528e0004d" TabID="7ef1bd895c3c4a3e9c1431de3f5cc3a6" DashboardColumn="0" />
+  <Panel ID="rdCustomDashboardPanel_24659cfe6b4c4ca2b56b2d1475272cd9" InstanceID="55302c2870014e2b9f123ded3ccf7c19" TabID="7ef1bd895c3c4a3e9c1431de3f5cc3a6" DashboardColumn="0" />
+  <Panel ID="rdCustomDashboardPanel_d8a4681c743443488d07f3750ca404f3" InstanceID="6b61315f69cc4f6790bd315eab7d750c" TabID="7ef1bd895c3c4a3e9c1431de3f5cc3a6" DashboardColumn="0" />
+  <Tabs ID="rdDashboardTabs" ActiveTabID="7ef1bd895c3c4a3e9c1431de3f5cc3a6" DashboardColumnCount="3">
+    <Tab ID="7ef1bd895c3c4a3e9c1431de3f5cc3a6" Caption="New Tab" />
+  </Tabs>
+  <ExtraPanelDefinition>
+    <Panel Caption="Top 5 Customers" PanelDescription="" SaveTime="2015-10-07T16:34:48-04:00" ID="rdCustomDashboardPanel_d8a4681c743443488d07f3750ca404f3" rdUniqueIdentifier="d8a4681c743443488d07f3750ca404f3" rdCustomDashboardPanel="True" MultipleInstances="False" Image="C:\inetpub\wwwroot\PSQ4AllHandsOneDayApp\goBookmarks\UserNameAdmin/rdThumbnails\rdThumb-2471fcc928ac47299b15bf208a0f88ac.png" rdMakeIdsUnique="True">
+      <PanelContent Height="">
+        <ChartCanvas CaptionDated="{AggrName} of {DataColumnName} by {LabelColumnName}" ChartHeight="300" ChartWidth="500" BorderColor="#7A7A7A" BorderRadius="4" ID="rdAcChart_AnalChart_1" rdUnderSuperElement="True" rdAcSavedFile="C:\inetpub\wwwroot\PSQ4AllHandsOneDayApp\goBookmarks\UserNameAdmin\AdmingoCollection_d2fa6e4b-6597-433b-a6ff-63b2ca3f9cd4.xml" rdAcIsAnalysisChart="True" rdOriginalChartLabelColumn="Customers_CompanyName" rdOriginalChartValueColumn="rdAgCalc_635798323935224692" PlotBackgroundColor="#ffffff" BackgroundColor="Transparent" BackgroundColorTransparency="15" BorderColorTransparency="15" rdThumbnailPath="C:\inetpub\wwwroot\PSQ4AllHandsOneDayApp\goBookmarks\UserNameAdmin/rdThumbnails\rdThumb-2471fcc928ac47299b15bf208a0f88ac.png">
+          <Series Type="Pie" ChartLabelColumn="Customers_CompanyName" ChartYDataColumn="rdAggrrdAgCalc_635798323935224692" ShowDataValues="True" ShowDataValuesFormat="#%" Color="#4DA8EF" Colors="#4DA8EF, #53C5B7, #EF9828, #E8CF44, #9A7AE8, #1F2B3A, #FF2C2D, #67E25C, #DADADC, #F26A66" PieBorderColor="Transparent" PieBorderColorTransparency="0" PieBorderThickness="0">
+            <Quicktip ID="rdAcPieChartQuicktip">
+              <QuicktipRow Caption="Company Name: " Value="@Chart.Customers_CompanyName~" />
+              <QuicktipRow Caption="Purchased: " Value="@Chart.rdAggrrdAgCalc_635798323935224692~" Format="$###,###,##0.00" />
+            </Quicktip>
+            <DataLabels FontFamily=" 'Lato', Helvetica, Arial, sans-serif" FontWeight="Normal" FontColor="#424242" FontSize="14" />
+          </Series>
+          <Resizer ID="rdChartResizerTemplate" MinWidth="250" MinHeight="150" />
+          <DataLayer Type="ActiveSQL" ConnectionID="Northwind" Source="Select [OrderID]&#xD;&#xA;      ,[CustomerID]&#xD;&#xA;      ,[EmployeeID]&#xD;&#xA;      ,[OrderDate]&#xD;&#xA;      ,[RequiredDate]&#xD;&#xA;      ,[ShippedDate]&#xD;&#xA;      ,[ShipVia]&#xD;&#xA;      ,[Freight]&#xD;&#xA;      ,[ShipName]&#xD;&#xA;      ,[ShipAddress]&#xD;&#xA;      ,[ShipCity]&#xD;&#xA;      ,[ShipRegion]&#xD;&#xA;      ,[ShipPostalCode]&#xD;&#xA;      ,[ShipCountry] from [Northwind].[dbo].Orders where CAST(EmployeeID as varchar(1)) = '@Session.EmployeeID~'" QueryBuilderTableID="OrdersWithRowLevelSecurity" ErrorSessionVar="rdActiveSqlErrorMsg" ID="dlAnalChart_1">
+            <SqlColumn ID="OrdersWithRowLevelSecurity_OrderID" DataColumn="OrderID" DataType="Number" Caption="Order Id" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_CustomerID" DataColumn="CustomerID" DataType="Text" Caption="Customer Id" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_EmployeeID" DataColumn="EmployeeID" DataType="Number" Caption="Employee Id" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_OrderDate" DataColumn="OrderDate" DataType="DateTime" Caption="Order Date" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_RequiredDate" DataColumn="RequiredDate" DataType="DateTime" Caption="Required Date" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_ShippedDate" DataColumn="ShippedDate" DataType="DateTime" Caption="Shipped Date" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_ShipVia" DataColumn="ShipVia" DataType="Number" Caption="Ship Via" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_Freight" DataColumn="Freight" DataType="Number" Caption="Freight" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_ShipName" DataColumn="ShipName" DataType="Text" Caption="Ship Name" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_ShipAddress" DataColumn="ShipAddress" DataType="Text" Caption="Ship Address" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_ShipCity" DataColumn="ShipCity" DataType="Text" Caption="Ship City" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_ShipRegion" DataColumn="ShipRegion" DataType="Text" Caption="Ship Region" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_ShipPostalCode" DataColumn="ShipPostalCode" DataType="Text" Caption="Ship Postal Code" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_ShipCountry" DataColumn="ShipCountry" DataType="Text" Caption="Ship Country" />
+            <SqlJoin JoinType="Inner Join">
+              <MatchCondition LeftDataColumn="OrderID" RightDataColumn="OrderID" />
+              <SqlQuery Source="SELECT [OrderID]&#xD;&#xA;      ,[ProductID]&#xD;&#xA;      ,[ProductName]&#xD;&#xA;      ,[UnitPrice]&#xD;&#xA;      ,[Quantity]&#xD;&#xA;      ,[Discount]&#xD;&#xA;      ,[ExtendedPrice]&#xD;&#xA;  FROM [Northwind].[dbo].[Order Details Extended] where OrderID in (select OrderID from [Northwind].[dbo].Orders where CAST(EmployeeID as varchar(1)) = '@Session.EmployeeID~')" QueryBuilderTableID="OrderDetailsWIthRowLevelSecurity">
+                <SqlColumn ID="OrderDetailsWIthRowLevelSecurity_OrderID" DataColumn="OrderID" DataType="Number" Caption="Order Id" />
+                <SqlColumn ID="OrderDetailsWIthRowLevelSecurity_ProductID" DataColumn="ProductID" DataType="Number" Caption="Product Id" />
+                <SqlColumn ID="OrderDetailsWIthRowLevelSecurity_ProductName" DataColumn="ProductName" DataType="Text" Caption="Product Name" />
+                <SqlColumn ID="OrderDetailsWIthRowLevelSecurity_UnitPrice" DataColumn="UnitPrice" DataType="Number" Caption="Unit Price" />
+                <SqlColumn ID="OrderDetailsWIthRowLevelSecurity_Quantity" DataColumn="Quantity" DataType="Number" Caption="Quantity" />
+                <SqlColumn ID="OrderDetailsWIthRowLevelSecurity_Discount" DataColumn="Discount" DataType="Number" Caption="Discount" />
+                <SqlColumn ID="OrderDetailsWIthRowLevelSecurity_ExtendedPrice" DataColumn="ExtendedPrice" DataType="Number" Caption="Extended Price" />
+                <SqlJoin JoinType="Inner Join">
+                  <MatchCondition LeftDataColumn="ProductID" RightDataColumn="ProductID" />
+                  <SqlQuery Source="Products" QueryBuilderTableID="Products">
+                    <SqlColumn ID="Products_ProductID" DataColumn="ProductID" DataType="Number" Caption="Product Id" />
+                    <SqlColumn ID="Products_ProductName" DataColumn="ProductName" DataType="Text" Caption="Product Name" />
+                    <SqlColumn ID="Products_SupplierID" DataColumn="SupplierID" DataType="Number" Caption="Supplier Id" />
+                    <SqlColumn ID="Products_CategoryID" DataColumn="CategoryID" DataType="Number" Caption="Category Id" />
+                    <SqlColumn ID="Products_QuantityPerUnit" DataColumn="QuantityPerUnit" DataType="Text" Caption="Quantity Per Unit" />
+                    <SqlColumn ID="Products_UnitPrice" DataColumn="UnitPrice" DataType="Number" Caption="Unit Price" />
+                    <SqlColumn ID="Products_UnitsInStock" DataColumn="UnitsInStock" DataType="Number" Caption="Units In Stock" />
+                    <SqlColumn ID="Products_UnitsOnOrder" DataColumn="UnitsOnOrder" DataType="Number" Caption="Units On Order" />
+                    <SqlColumn ID="Products_ReorderLevel" DataColumn="ReorderLevel" DataType="Number" Caption="Reorder Level" />
+                    <SqlColumn ID="Products_Discontinued" DataColumn="Discontinued" DataType="Boolean" Caption="Discontinued" />
+                  </SqlQuery>
+                </SqlJoin>
+              </SqlQuery>
+            </SqlJoin>
+            <SqlJoin JoinType="Inner Join">
+              <MatchCondition LeftDataColumn="CustomerID" RightDataColumn="CustomerID" />
+              <SqlQuery Source="Customers" QueryBuilderTableID="Customers">
+                <SqlColumn ID="Customers_CustomerID" DataColumn="CustomerID" DataType="Text" Caption="Customer Id" />
+                <SqlColumn ID="Customers_CompanyName" DataColumn="CompanyName" DataType="Text" Caption="Company Name" />
+                <SqlColumn ID="Customers_ContactName" DataColumn="ContactName" DataType="Text" Caption="Contact Name" />
+                <SqlColumn ID="Customers_ContactTitle" DataColumn="ContactTitle" DataType="Text" Caption="Contact Title" />
+                <SqlColumn ID="Customers_Address" DataColumn="Address" DataType="Text" Caption="Address" />
+                <SqlColumn ID="Customers_City" DataColumn="City" DataType="Text" Caption="City" />
+                <SqlColumn ID="Customers_Region" DataColumn="Region" DataType="Text" Caption="Region" />
+                <SqlColumn ID="Customers_PostalCode" DataColumn="PostalCode" DataType="Text" Caption="Postal Code" />
+                <SqlColumn ID="Customers_Country" DataColumn="Country" DataType="Text" Caption="Country" />
+                <SqlColumn ID="Customers_Phone" DataColumn="Phone" DataType="Text" Caption="Phone" />
+                <SqlColumn ID="Customers_Fax" DataColumn="Fax" DataType="Text" Caption="Fax" />
+              </SqlQuery>
+            </SqlJoin>
+            <CalculatedColumn ID="rdAgCalc_635798323935224692" Formula="@Data.OrderDetailsWIthRowLevelSecurity_UnitPrice~ *@Data.OrderDetailsWIthRowLevelSecurity_Quantity~" ErrorResult="?" ErrorLimit="100" IncludeCondition="False" />
+            <SqlCalculatedColumn SqlFormula="@Data.OrderDetailsWIthRowLevelSecurity_UnitPrice~ *@Data.OrderDetailsWIthRowLevelSecurity_Quantity~" ID="rdAgCalc_635798323935224692" />
+            <SqlGroup GroupColumn="Customers_CompanyName" DataType="Text" KeepGroupedRows="False">
+              <SqlAggregateColumn ID="rdAggrrdAgCalc_635798323935224692" AggregateColumn="rdAgCalc_635798323935224692" AggregateFunction="SUM" DataType="Number" />
+            </SqlGroup>
+            <SortFilter SortColumn="rdAggrrdAgCalc_635798323935224692" DataType="Number" SortSequence="Descending" />
+            <RelevanceFilter ID="rdAcPieChartRelevanceFilter" RelevanceValue="5" RelevanceType="NumberOfRows" IrrelevanceLabel="Other" DataColumn="rdAggrrdAgCalc_635798323935224692" LabelColumn="Customers_CompanyName" />
+          </DataLayer>
+          <ChartXAxis AxisLineColor="#EFEFF1">
+            <AxisLabelStyle FontColor="#717171" FontAngle="40" FontSize="12" FontFamily=" 'Lato', Helvetica, Arial, sans-serif" FontWeight="Normal" />
+          </ChartXAxis>
+          <ChartYAxis AxisLineColor="#EFEFF1">
+            <ChartTicksAndGrid GridLineColor="#F7F7F7" TickLineColor="#F7F7F7" />
+            <AxisLabelStyle FontColor="#717171" FontSize="12" FontFamily=" 'Lato', Helvetica, Arial, sans-serif" FontWeight="Normal" />
+          </ChartYAxis>
+        </ChartCanvas>
+      </PanelContent>
+    </Panel>
+    <Panel Caption="Top Selling Products" PanelDescription="" SaveTime="2015-10-07T16:38:11-04:00" ID="rdCustomDashboardPanel_24659cfe6b4c4ca2b56b2d1475272cd9" rdUniqueIdentifier="24659cfe6b4c4ca2b56b2d1475272cd9" rdCustomDashboardPanel="True" MultipleInstances="False" Image="C:\inetpub\wwwroot\PSQ4AllHandsOneDayApp\goBookmarks\UserNameAdmin/rdThumbnails\rdThumb-709b38c625074714b8527f7e63622ca1.png" rdMakeIdsUnique="True">
+      <PanelContent Height="">
+        <ChartCanvas ID="rdAcChart_AnalChart_2" ChartHeight="300" ChartWidth="500" BorderColor="#7A7A7A" BorderRadius="4" rdUnderSuperElement="True" rdAcSavedFile="C:\inetpub\wwwroot\PSQ4AllHandsOneDayApp\goBookmarks\UserNameAdmin\AdmingoCollection_d2fa6e4b-6597-433b-a6ff-63b2ca3f9cd4.xml" rdAcIsAnalysisChart="True" rdOriginalChartLabelColumn="OrderDetailsWIthRowLevelSecurity_ProductName" rdOriginalChartValueColumn="rdAgCalc_635798323935224692" ChartOrientation="SwapAxes" PlotBackgroundColor="#ffffff" BackgroundColor="Transparent" BackgroundColorTransparency="15" BorderColorTransparency="15" rdThumbnailPath="C:\inetpub\wwwroot\PSQ4AllHandsOneDayApp\goBookmarks\UserNameAdmin/rdThumbnails\rdThumb-709b38c625074714b8527f7e63622ca1.png">
+          <Series Type="Bar" ForecastColor="#86B840" ChartXDataColumn="OrderDetailsWIthRowLevelSecurity_ProductName" ChartYDataColumn="rdAggrrdAgCalc_635798323935224692" Color="#4DA8EF" BarBorderThickness="0">
+            <Quicktip ID="rdAcBarChartQuicktip">
+              <QuicktipRow Caption="Product Name: " Value="@Chart.OrderDetailsWIthRowLevelSecurity_ProductName~" />
+              <QuicktipRow Caption="Purchased: " Value="@Chart.rdAggrrdAgCalc_635798323935224692~" Format="$###,###,##0.00" />
+            </Quicktip>
+          </Series>
+          <ChartXAxis AxisCaption="Product Name" AxisLineColor="#EFEFF1">
+            <AxisLabelStyle FontColor="#717171" FontAngle="40" FontSize="12" FontFamily=" 'Lato', Helvetica, Arial, sans-serif" FontWeight="Normal" />
+            <AxisCaptionStyle FontFamily=" 'Lato', Helvetica, Arial, sans-serif" FontWeight="Normal" FontColor="#3B4247" FontSize="14" />
+          </ChartXAxis>
+          <ChartYAxis AxisCaption="Purchased" AxisLineColor="#EFEFF1">
+            <AxisLabelStyle FontColor="#717171" FontSize="12" FontFamily=" 'Lato', Helvetica, Arial, sans-serif" FontWeight="Normal" />
+            <ChartTicksAndGrid GridLineColor="#F7F7F7" TickLineColor="#F7F7F7" />
+            <AxisCaptionStyle FontFamily=" 'Lato', Helvetica, Arial, sans-serif" FontWeight="Normal" FontColor="#3B4247" FontSize="14" />
+          </ChartYAxis>
+          <Resizer ID="rdChartResizerTemplate" MinWidth="250" MinHeight="150" />
+          <DataLayer Type="ActiveSQL" ConnectionID="Northwind" Source="Select [OrderID]&#xD;&#xA;      ,[CustomerID]&#xD;&#xA;      ,[EmployeeID]&#xD;&#xA;      ,[OrderDate]&#xD;&#xA;      ,[RequiredDate]&#xD;&#xA;      ,[ShippedDate]&#xD;&#xA;      ,[ShipVia]&#xD;&#xA;      ,[Freight]&#xD;&#xA;      ,[ShipName]&#xD;&#xA;      ,[ShipAddress]&#xD;&#xA;      ,[ShipCity]&#xD;&#xA;      ,[ShipRegion]&#xD;&#xA;      ,[ShipPostalCode]&#xD;&#xA;      ,[ShipCountry] from [Northwind].[dbo].Orders where CAST(EmployeeID as varchar(1)) = '@Session.EmployeeID~'" QueryBuilderTableID="OrdersWithRowLevelSecurity" ErrorSessionVar="rdActiveSqlErrorMsg" ID="dlAnalChart_2">
+            <SqlColumn ID="OrdersWithRowLevelSecurity_OrderID" DataColumn="OrderID" DataType="Number" Caption="Order Id" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_CustomerID" DataColumn="CustomerID" DataType="Text" Caption="Customer Id" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_EmployeeID" DataColumn="EmployeeID" DataType="Number" Caption="Employee Id" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_OrderDate" DataColumn="OrderDate" DataType="DateTime" Caption="Order Date" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_RequiredDate" DataColumn="RequiredDate" DataType="DateTime" Caption="Required Date" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_ShippedDate" DataColumn="ShippedDate" DataType="DateTime" Caption="Shipped Date" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_ShipVia" DataColumn="ShipVia" DataType="Number" Caption="Ship Via" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_Freight" DataColumn="Freight" DataType="Number" Caption="Freight" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_ShipName" DataColumn="ShipName" DataType="Text" Caption="Ship Name" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_ShipAddress" DataColumn="ShipAddress" DataType="Text" Caption="Ship Address" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_ShipCity" DataColumn="ShipCity" DataType="Text" Caption="Ship City" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_ShipRegion" DataColumn="ShipRegion" DataType="Text" Caption="Ship Region" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_ShipPostalCode" DataColumn="ShipPostalCode" DataType="Text" Caption="Ship Postal Code" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_ShipCountry" DataColumn="ShipCountry" DataType="Text" Caption="Ship Country" />
+            <SqlJoin JoinType="Inner Join">
+              <MatchCondition LeftDataColumn="OrderID" RightDataColumn="OrderID" />
+              <SqlQuery Source="SELECT [OrderID]&#xD;&#xA;      ,[ProductID]&#xD;&#xA;      ,[ProductName]&#xD;&#xA;      ,[UnitPrice]&#xD;&#xA;      ,[Quantity]&#xD;&#xA;      ,[Discount]&#xD;&#xA;      ,[ExtendedPrice]&#xD;&#xA;  FROM [Northwind].[dbo].[Order Details Extended] where OrderID in (select OrderID from [Northwind].[dbo].Orders where CAST(EmployeeID as varchar(1)) = '@Session.EmployeeID~')" QueryBuilderTableID="OrderDetailsWIthRowLevelSecurity">
+                <SqlColumn ID="OrderDetailsWIthRowLevelSecurity_OrderID" DataColumn="OrderID" DataType="Number" Caption="Order Id" />
+                <SqlColumn ID="OrderDetailsWIthRowLevelSecurity_ProductID" DataColumn="ProductID" DataType="Number" Caption="Product Id" />
+                <SqlColumn ID="OrderDetailsWIthRowLevelSecurity_ProductName" DataColumn="ProductName" DataType="Text" Caption="Product Name" />
+                <SqlColumn ID="OrderDetailsWIthRowLevelSecurity_UnitPrice" DataColumn="UnitPrice" DataType="Number" Caption="Unit Price" />
+                <SqlColumn ID="OrderDetailsWIthRowLevelSecurity_Quantity" DataColumn="Quantity" DataType="Number" Caption="Quantity" />
+                <SqlColumn ID="OrderDetailsWIthRowLevelSecurity_Discount" DataColumn="Discount" DataType="Number" Caption="Discount" />
+                <SqlColumn ID="OrderDetailsWIthRowLevelSecurity_ExtendedPrice" DataColumn="ExtendedPrice" DataType="Number" Caption="Extended Price" />
+                <SqlJoin JoinType="Inner Join">
+                  <MatchCondition LeftDataColumn="ProductID" RightDataColumn="ProductID" />
+                  <SqlQuery Source="Products" QueryBuilderTableID="Products">
+                    <SqlColumn ID="Products_ProductID" DataColumn="ProductID" DataType="Number" Caption="Product Id" />
+                    <SqlColumn ID="Products_ProductName" DataColumn="ProductName" DataType="Text" Caption="Product Name" />
+                    <SqlColumn ID="Products_SupplierID" DataColumn="SupplierID" DataType="Number" Caption="Supplier Id" />
+                    <SqlColumn ID="Products_CategoryID" DataColumn="CategoryID" DataType="Number" Caption="Category Id" />
+                    <SqlColumn ID="Products_QuantityPerUnit" DataColumn="QuantityPerUnit" DataType="Text" Caption="Quantity Per Unit" />
+                    <SqlColumn ID="Products_UnitPrice" DataColumn="UnitPrice" DataType="Number" Caption="Unit Price" />
+                    <SqlColumn ID="Products_UnitsInStock" DataColumn="UnitsInStock" DataType="Number" Caption="Units In Stock" />
+                    <SqlColumn ID="Products_UnitsOnOrder" DataColumn="UnitsOnOrder" DataType="Number" Caption="Units On Order" />
+                    <SqlColumn ID="Products_ReorderLevel" DataColumn="ReorderLevel" DataType="Number" Caption="Reorder Level" />
+                    <SqlColumn ID="Products_Discontinued" DataColumn="Discontinued" DataType="Boolean" Caption="Discontinued" />
+                  </SqlQuery>
+                </SqlJoin>
+              </SqlQuery>
+            </SqlJoin>
+            <SqlJoin JoinType="Inner Join">
+              <MatchCondition LeftDataColumn="CustomerID" RightDataColumn="CustomerID" />
+              <SqlQuery Source="Customers" QueryBuilderTableID="Customers">
+                <SqlColumn ID="Customers_CustomerID" DataColumn="CustomerID" DataType="Text" Caption="Customer Id" />
+                <SqlColumn ID="Customers_CompanyName" DataColumn="CompanyName" DataType="Text" Caption="Company Name" />
+                <SqlColumn ID="Customers_ContactName" DataColumn="ContactName" DataType="Text" Caption="Contact Name" />
+                <SqlColumn ID="Customers_ContactTitle" DataColumn="ContactTitle" DataType="Text" Caption="Contact Title" />
+                <SqlColumn ID="Customers_Address" DataColumn="Address" DataType="Text" Caption="Address" />
+                <SqlColumn ID="Customers_City" DataColumn="City" DataType="Text" Caption="City" />
+                <SqlColumn ID="Customers_Region" DataColumn="Region" DataType="Text" Caption="Region" />
+                <SqlColumn ID="Customers_PostalCode" DataColumn="PostalCode" DataType="Text" Caption="Postal Code" />
+                <SqlColumn ID="Customers_Country" DataColumn="Country" DataType="Text" Caption="Country" />
+                <SqlColumn ID="Customers_Phone" DataColumn="Phone" DataType="Text" Caption="Phone" />
+                <SqlColumn ID="Customers_Fax" DataColumn="Fax" DataType="Text" Caption="Fax" />
+              </SqlQuery>
+            </SqlJoin>
+            <CalculatedColumn ID="rdAgCalc_635798323935224692" Formula="@Data.OrderDetailsWIthRowLevelSecurity_UnitPrice~ *@Data.OrderDetailsWIthRowLevelSecurity_Quantity~" ErrorResult="?" ErrorLimit="100" IncludeCondition="False" />
+            <SqlCalculatedColumn SqlFormula="@Data.OrderDetailsWIthRowLevelSecurity_UnitPrice~ *@Data.OrderDetailsWIthRowLevelSecurity_Quantity~" ID="rdAgCalc_635798323935224692" />
+            <SqlGroup GroupColumn="OrderDetailsWIthRowLevelSecurity_ProductName" DataType="Text" KeepGroupedRows="False">
+              <SqlAggregateColumn ID="rdAggrrdAgCalc_635798323935224692" AggregateColumn="rdAgCalc_635798323935224692" AggregateFunction="SUM" DataType="Number" />
+            </SqlGroup>
+            <SortFilter SortColumn="rdAggrrdAgCalc_635798323935224692" DataType="Number" SortSequence="Ascending" />
+            <RelevanceFilter ID="rdAcBarChartRelevanceFilter" RelevanceValue="5" RelevanceType="NumberOfRows" IrrelevanceLabel="Other" DataColumn="rdAggrrdAgCalc_635798323935224692" LabelColumn="OrderDetailsWIthRowLevelSecurity_ProductName" />
+          </DataLayer>
+        </ChartCanvas>
+      </PanelContent>
+    </Panel>
+    <Panel Caption="Sales by Date with Forecast" PanelDescription="" SaveTime="2015-10-08T14:49:31-04:00" ID="rdCustomDashboardPanel_a39d897b36f6433dbfbd7d79a2266ea0" rdUniqueIdentifier="a39d897b36f6433dbfbd7d79a2266ea0" rdCustomDashboardPanel="True" MultipleInstances="False" Image="C:\inetpub\wwwroot\PSQ4AllHandsOneDayApp\goBookmarks\UserNameAdmin/rdThumbnails\rdThumb-ef6e703f717c4159a49a4dfb8c229547.png" rdMakeIdsUnique="True">
+      <PanelContent Height="">
+        <ChartCanvas ID="rdAcChart_AnalChart_3" ChartHeight="300" ChartWidth="600" BorderColor="#7A7A7A" BorderRadius="4" rdUnderSuperElement="True" rdAcSavedFile="C:\inetpub\wwwroot\PSQ4AllHandsOneDayApp\goBookmarks\UserNameAdmin\AdmingoCollection_d2fa6e4b-6597-433b-a6ff-63b2ca3f9cd4.xml" rdAcIsAnalysisChart="True" rdOriginalChartLabelColumn="OrdersWithRowLevelSecurity_ShippedDate" rdOriginalChartValueColumn="rdAgCalc_635798323935224692" ChartDataColumn="rdAggrrdAgCalc_635798323935224692" PlotBackgroundColor="#ffffff" BackgroundColor="Transparent" BackgroundColorTransparency="15" BorderColorTransparency="15" rdThumbnailPath="C:\inetpub\wwwroot\PSQ4AllHandsOneDayApp\goBookmarks\UserNameAdmin/rdThumbnails\rdThumb-ef6e703f717c4159a49a4dfb8c229547.png">
+          <Series Type="Spline" ChartXDataColumn="rdTime-OrdersWithRowLevelSecurity_ShippedDate-FirstDayOfQuarter" ChartYDataColumn="rdAggrrdAgCalc_635798323935224692" SeriesLineStyle="@Chart.rdForecastLineStyle~" Color="#4DA8EF">
+            <Quicktip ID="rdAcSplineChartQuicktip">
+              <QuicktipRow Caption="Shipped Date: " Value="@Chart.rdTime-OrdersWithRowLevelSecurity_ShippedDate-FirstDayOfQuarter~" Format="yyyy Qqq" />
+              <QuicktipRow Caption="Purchased: " Value="@Chart.rdAggrrdAgCalc_635798323935224692~" Format="$###,###,##0.00" />
+            </Quicktip>
+          </Series>
+          <ChartXAxis AxisCaption="Shipped Date" AxisType="DateTimeLinear" AxisLineColor="#EFEFF1">
+            <AxisLabelStyle Format="yyyy Qqq" FontColor="#717171" FontAngle="40" FontSize="12" FontFamily=" 'Lato', Helvetica, Arial, sans-serif" FontWeight="Normal" />
+            <AxisCaptionStyle FontFamily=" 'Lato', Helvetica, Arial, sans-serif" FontWeight="Normal" FontColor="#3B4247" FontSize="14" />
+          </ChartXAxis>
+          <ChartYAxis AxisCaption="Purchased" AxisLineColor="#EFEFF1">
+            <AxisLabelStyle FontColor="#717171" FontSize="12" FontFamily=" 'Lato', Helvetica, Arial, sans-serif" FontWeight="Normal" />
+            <ChartTicksAndGrid GridLineColor="#F7F7F7" TickLineColor="#F7F7F7" />
+            <AxisCaptionStyle FontFamily=" 'Lato', Helvetica, Arial, sans-serif" FontWeight="Normal" FontColor="#3B4247" FontSize="14" />
+          </ChartYAxis>
+          <Resizer ID="rdChartResizerTemplate" MinWidth="250" MinHeight="150" />
+          <DataLayer Type="ActiveSQL" ConnectionID="Northwind" Source="Select [OrderID]&#xD;&#xA;      ,[CustomerID]&#xD;&#xA;      ,[EmployeeID]&#xD;&#xA;      ,[OrderDate]&#xD;&#xA;      ,[RequiredDate]&#xD;&#xA;      ,[ShippedDate]&#xD;&#xA;      ,[ShipVia]&#xD;&#xA;      ,[Freight]&#xD;&#xA;      ,[ShipName]&#xD;&#xA;      ,[ShipAddress]&#xD;&#xA;      ,[ShipCity]&#xD;&#xA;      ,[ShipRegion]&#xD;&#xA;      ,[ShipPostalCode]&#xD;&#xA;      ,[ShipCountry] from [Northwind].[dbo].Orders where CAST(EmployeeID as varchar(1)) = '@Session.EmployeeID~'" QueryBuilderTableID="OrdersWithRowLevelSecurity" ErrorSessionVar="rdActiveSqlErrorMsg" ID="dlAnalChart_3">
+            <SqlColumn ID="OrdersWithRowLevelSecurity_OrderID" DataColumn="OrderID" DataType="Number" Caption="Order Id" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_CustomerID" DataColumn="CustomerID" DataType="Text" Caption="Customer Id" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_EmployeeID" DataColumn="EmployeeID" DataType="Number" Caption="Employee Id" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_OrderDate" DataColumn="OrderDate" DataType="DateTime" Caption="Order Date" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_RequiredDate" DataColumn="RequiredDate" DataType="DateTime" Caption="Required Date" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_ShippedDate" DataColumn="ShippedDate" DataType="DateTime" Caption="Shipped Date" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_ShipVia" DataColumn="ShipVia" DataType="Number" Caption="Ship Via" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_Freight" DataColumn="Freight" DataType="Number" Caption="Freight" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_ShipName" DataColumn="ShipName" DataType="Text" Caption="Ship Name" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_ShipAddress" DataColumn="ShipAddress" DataType="Text" Caption="Ship Address" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_ShipCity" DataColumn="ShipCity" DataType="Text" Caption="Ship City" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_ShipRegion" DataColumn="ShipRegion" DataType="Text" Caption="Ship Region" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_ShipPostalCode" DataColumn="ShipPostalCode" DataType="Text" Caption="Ship Postal Code" />
+            <SqlColumn ID="OrdersWithRowLevelSecurity_ShipCountry" DataColumn="ShipCountry" DataType="Text" Caption="Ship Country" />
+            <SqlJoin JoinType="Inner Join">
+              <MatchCondition LeftDataColumn="OrderID" RightDataColumn="OrderID" />
+              <SqlQuery Source="SELECT [OrderID]&#xD;&#xA;      ,[ProductID]&#xD;&#xA;      ,[ProductName]&#xD;&#xA;      ,[UnitPrice]&#xD;&#xA;      ,[Quantity]&#xD;&#xA;      ,[Discount]&#xD;&#xA;      ,[ExtendedPrice]&#xD;&#xA;  FROM [Northwind].[dbo].[Order Details Extended] where OrderID in (select OrderID from [Northwind].[dbo].Orders where CAST(EmployeeID as varchar(1)) = '@Session.EmployeeID~')" QueryBuilderTableID="OrderDetailsWIthRowLevelSecurity">
+                <SqlColumn ID="OrderDetailsWIthRowLevelSecurity_OrderID" DataColumn="OrderID" DataType="Number" Caption="Order Id" />
+                <SqlColumn ID="OrderDetailsWIthRowLevelSecurity_ProductID" DataColumn="ProductID" DataType="Number" Caption="Product Id" />
+                <SqlColumn ID="OrderDetailsWIthRowLevelSecurity_ProductName" DataColumn="ProductName" DataType="Text" Caption="Product Name" />
+                <SqlColumn ID="OrderDetailsWIthRowLevelSecurity_UnitPrice" DataColumn="UnitPrice" DataType="Number" Caption="Unit Price" />
+                <SqlColumn ID="OrderDetailsWIthRowLevelSecurity_Quantity" DataColumn="Quantity" DataType="Number" Caption="Quantity" />
+                <SqlColumn ID="OrderDetailsWIthRowLevelSecurity_Discount" DataColumn="Discount" DataType="Number" Caption="Discount" />
+                <SqlColumn ID="OrderDetailsWIthRowLevelSecurity_ExtendedPrice" DataColumn="ExtendedPrice" DataType="Number" Caption="Extended Price" />
+                <SqlJoin JoinType="Inner Join">
+                  <MatchCondition LeftDataColumn="ProductID" RightDataColumn="ProductID" />
+                  <SqlQuery Source="Products" QueryBuilderTableID="Products">
+                    <SqlColumn ID="Products_ProductID" DataColumn="ProductID" DataType="Number" Caption="Product Id" />
+                    <SqlColumn ID="Products_ProductName" DataColumn="ProductName" DataType="Text" Caption="Product Name" />
+                    <SqlColumn ID="Products_SupplierID" DataColumn="SupplierID" DataType="Number" Caption="Supplier Id" />
+                    <SqlColumn ID="Products_CategoryID" DataColumn="CategoryID" DataType="Number" Caption="Category Id" />
+                    <SqlColumn ID="Products_QuantityPerUnit" DataColumn="QuantityPerUnit" DataType="Text" Caption="Quantity Per Unit" />
+                    <SqlColumn ID="Products_UnitPrice" DataColumn="UnitPrice" DataType="Number" Caption="Unit Price" />
+                    <SqlColumn ID="Products_UnitsInStock" DataColumn="UnitsInStock" DataType="Number" Caption="Units In Stock" />
+                    <SqlColumn ID="Products_UnitsOnOrder" DataColumn="UnitsOnOrder" DataType="Number" Caption="Units On Order" />
+                    <SqlColumn ID="Products_ReorderLevel" DataColumn="ReorderLevel" DataType="Number" Caption="Reorder Level" />
+                    <SqlColumn ID="Products_Discontinued" DataColumn="Discontinued" DataType="Boolean" Caption="Discontinued" />
+                  </SqlQuery>
+                </SqlJoin>
+              </SqlQuery>
+            </SqlJoin>
+            <SqlTimePeriodColumn ID="rdTime-OrdersWithRowLevelSecurity_ShippedDate-FirstDayOfQuarter" DataColumn="OrdersWithRowLevelSecurity_ShippedDate" TimePeriod="FirstDayOfQuarter" DateGroupByOperator="FirstDayOfQuarter" />
+            <SqlJoin JoinType="Inner Join">
+              <MatchCondition LeftDataColumn="CustomerID" RightDataColumn="CustomerID" />
+              <SqlQuery Source="Customers" QueryBuilderTableID="Customers">
+                <SqlColumn ID="Customers_CustomerID" DataColumn="CustomerID" DataType="Text" Caption="Customer Id" />
+                <SqlColumn ID="Customers_CompanyName" DataColumn="CompanyName" DataType="Text" Caption="Company Name" />
+                <SqlColumn ID="Customers_ContactName" DataColumn="ContactName" DataType="Text" Caption="Contact Name" />
+                <SqlColumn ID="Customers_ContactTitle" DataColumn="ContactTitle" DataType="Text" Caption="Contact Title" />
+                <SqlColumn ID="Customers_Address" DataColumn="Address" DataType="Text" Caption="Address" />
+                <SqlColumn ID="Customers_City" DataColumn="City" DataType="Text" Caption="City" />
+                <SqlColumn ID="Customers_Region" DataColumn="Region" DataType="Text" Caption="Region" />
+                <SqlColumn ID="Customers_PostalCode" DataColumn="PostalCode" DataType="Text" Caption="Postal Code" />
+                <SqlColumn ID="Customers_Country" DataColumn="Country" DataType="Text" Caption="Country" />
+                <SqlColumn ID="Customers_Phone" DataColumn="Phone" DataType="Text" Caption="Phone" />
+                <SqlColumn ID="Customers_Fax" DataColumn="Fax" DataType="Text" Caption="Fax" />
+              </SqlQuery>
+            </SqlJoin>
+            <CalculatedColumn ID="rdAgCalc_635798323935224692" Formula="@Data.OrderDetailsWIthRowLevelSecurity_UnitPrice~ *@Data.OrderDetailsWIthRowLevelSecurity_Quantity~" ErrorResult="?" ErrorLimit="100" IncludeCondition="False" />
+            <SqlCalculatedColumn SqlFormula="@Data.OrderDetailsWIthRowLevelSecurity_UnitPrice~ *@Data.OrderDetailsWIthRowLevelSecurity_Quantity~" ID="rdAgCalc_635798323935224692" />
+            <SqlGroup GroupColumn="rdTime-OrdersWithRowLevelSecurity_ShippedDate-FirstDayOfQuarter" DataType="DateTime" KeepGroupedRows="False">
+              <SqlAggregateColumn ID="rdAggrrdAgCalc_635798323935224692" AggregateColumn="rdAgCalc_635798323935224692" AggregateFunction="SUM" DataType="Number" />
+            </SqlGroup>
+            <Forecast ID="rdAcForecast_AnalChart_3" Type="Regression" IndependentDataColumn="rdTime-OrdersWithRowLevelSecurity_ShippedDate-FirstDayOfQuarter" DependentDataColumn="rdAggrrdAgCalc_635798323935224692" ForecastIndicatorColumnID="rdForecastIndicator" RegressionType="Autoregressive" />
+            <CalculatedColumn ID="rdForecastLineStyle" Formula="iif(@Data.rdForecastIndicator~, &quot;Dot&quot;, &quot;Solid&quot;)" />
+          </DataLayer>
+        </ChartCanvas>
+      </PanelContent>
+    </Panel>
+  </ExtraPanelDefinition>
+</rdSavedDashboard>
