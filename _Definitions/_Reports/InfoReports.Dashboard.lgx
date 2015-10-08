@@ -49,6 +49,50 @@ Order by CompanyName"
 							<Spaces
 								Size="5"
 							/>
+							<InputSelectList
+								Caption="Ship Country: "
+								Class="chosen"
+								ID="inpShipCountry"
+								MultiSelect="True"
+								OptionCaptionColumn="ShipCountry"
+								OptionValueColumn="ShipCountry"
+								>
+								<DataLayer
+									ConnectionID="Northwind"
+									ID="dlShipCountry"
+									Source="with
+descendants as
+  ( select [ReportsTo] as parent, [EmployeeID] as descendant, 1 as level
+    from [Northwind].[dbo].[Employees]
+  union all
+    select [ReportsTo] as parent, [EmployeeID] as child, d.level + 1
+    from descendants as d
+      join [Northwind].[dbo].[Employees] s
+        on d.descendant = s.[ReportsTo]
+  ) 
+
+
+Select  distinct
+  Orders.ShipCountry
+
+
+From Orders
+	(Orders.CustomerID = &apos;@Request.CustomerID~&apos;)
+	and (Orders.ShipCountry = &apos;@Request.ShipCountry~&apos; or &apos;&apos;=&apos;@Request.ShipCountry~&apos;)
+	and (Orders.CustomerID = &apos;@Request.inpCustomerID~&apos; or &apos;@Request.inpCustomerID~&apos;=&apos;&apos;)
+	and Orders.EmployeeID in (select descendant from descendants where parent =  &apos;@Session.EmployeeID~&apos; or descendant = &apos;@Session.EmployeeID~&apos; or &apos;@Session.EmployeeID~&apos;=&apos;&apos;)"
+									Type="SQL"
+								/>
+								<EventHandler
+									DhtmlEvent="onchange"
+									>
+									<Action
+										ElementID="BodyMain"
+										ID="actRefreshBodyMain"
+										Type="RefreshElement"
+									/>
+								</EventHandler>
+							</InputSelectList>
 						</Division>
 					</Division>
 					<Division
@@ -340,9 +384,13 @@ where
 	}	
 }
 $( document ).ready(function() {
+	$(&quot;#inpCustomerID&quot;).attr(&quot;data-placeholder&quot;,&quot;companies&quot;);
 	$(&apos;.chosen&apos;).chosen();
+	
+	$(&quot;#inpCustomerID&quot;).attr(&quot;data-placeholder&quot;,&quot;companies&quot;);
 
-});"
+});
+//&lt;select data-placeholder=&quot;Choose a country...&quot; style=&quot;width:350px;&quot; multiple class=&quot;chosen-select&quot;&gt;"
 		/>
 		<Button
 			Class="ThemeHidden"
