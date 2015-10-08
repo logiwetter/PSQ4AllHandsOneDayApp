@@ -1,0 +1,18 @@
+<Report>
+  <Body>
+  </Body>
+  <StyleSheet StyleSheet="_Themes/Accelerate/css/bootstrap.min.css" />
+  <StyleSheet StyleSheet="_Themes/Accelerate/font-awesome/css/font-awesome.min.css" />
+  <StyleSheet StyleSheet="_Themes/Accelerate/Theme.css" />
+  <StyleSheet StyleSheet="_Themes/Accelerate/css/smartmenus.css" />
+  <StyleSheet StyleSheet="_Themes/Accelerate/css/daterangepicker.css" />
+  <StyleSheet StyleSheet="_Themes/Accelerate/css/bootstrap-datepicker.css" />
+  <StyleSheet StyleSheet="_Themes/Accelerate/css/colpick.css" />
+  <StyleSheet StyleSheet="_Themes/Accelerate/css/iconpicker.min.css" />
+  <StyleSheet StyleSheet="_Themes/Accelerate/css/application.css" />
+  <StyleSheet StyleSheet="_SupportFiles/_theme_files.custom.css" />
+  <StyleSheet StyleSheet="" />
+  <StyleSheet StyleSheet="InfoGo.GO.css" IdeDisplayStatus="Collapsed" ShowModes="rdBrowser" Theme="Accelerate" />
+  <StyleSheet StyleSheet="goCustomizations.Custom.css" Theme="Accelerate" />
+  <StyleSheet StyleSheet="rdTemplate/rdReportAuthor/reportAuthor.css" />
+</Report>
