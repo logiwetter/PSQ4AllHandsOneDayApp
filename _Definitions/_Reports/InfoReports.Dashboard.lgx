@@ -484,9 +484,9 @@ function updateShipRegion() {
 
 
 $( document ).ready(function() {
-	$(&quot;#inpCustomerID&quot;).attr(&quot;data-placeholder&quot;,&quot;companies&quot;);
-	$(&quot;#inpShipCountry&quot;).attr(&quot;data-placeholder&quot;,&quot;ship country&quot;);
-	$(&quot;#inpShipRegion&quot;).attr(&quot;data-placeholder&quot;,&quot;ship region&quot;);
+	$(&quot;#inpCustomerIDui&quot;).attr(&quot;data-placeholder&quot;,&quot;companies&quot;);
+	$(&quot;#inpShipCountryUI&quot;).attr(&quot;data-placeholder&quot;,&quot;ship country&quot;);
+	$(&quot;#inpShipRegionUI&quot;).attr(&quot;data-placeholder&quot;,&quot;ship region&quot;);
 	$(&apos;.chosen&apos;).chosen();
 
 });"
