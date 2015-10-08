@@ -307,8 +307,16 @@
 			Note="This process sets the theme color settings"
 		/>
 	</StartupProcess>
+	<StartupProcess
+		Process="proc_SetDefaultUser"
+		TaskID="SetDefaultUser"
+		>
+		<Note
+			Note="This process sets the theme color settings"
+		/>
+	</StartupProcess>
 	<ideTestParams
 		rdPassword=""
-		rdUsername="2"
+		rdUsername=""
 	/>
 </Setting>

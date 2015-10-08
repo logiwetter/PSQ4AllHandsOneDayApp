@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Process
+	ID="proc_SetDefaultUser"
+	>
+	<Task
+		ID="SetDefaultUser"
+		>
+		<Procedure
+			Expression="&quot;@Session.EmployeeID~&quot; == &quot;&quot;"
+			ID="ifNoEmployeeIDSet"
+			Type="If"
+			>
+			<Procedure
+				ID="setEmployeeID"
+				Type="SetSessionVars"
+				>
+				<SessionParams
+					EmployeeID="2"
+				/>
+			</Procedure>
+		</Procedure>
+	</Task>
+	<ideTestParams
+		rdTaskID=""
+	/>
+</Process>

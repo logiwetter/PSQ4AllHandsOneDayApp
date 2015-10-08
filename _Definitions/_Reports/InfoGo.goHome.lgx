@@ -3,9 +3,6 @@
 	ID="InfoGo.goHome"
 	InfoGoVersion="12.0.90"
 	>
-	<SetSessionVariables>
-		<SessionParams/>
-	</SetSessionVariables>
 	<DefinitionModifierFile
 		DefinitionModifierFile="goCustomizations.dmfHome.xml"
 		ID="CustomDefinitionModifierFile"
