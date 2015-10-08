@@ -104,7 +104,7 @@ where
 							</InputSelectList>
 							<InputSelectList
 								Class="chosen"
-								ID="inpShipRegion"
+								ID="inpShipRegionUI"
 								MultiSelect="True"
 								OptionCaptionColumn="ShipRegion"
 								OptionValueColumn="ShipRegion"
@@ -135,10 +135,17 @@ where
 								<EventHandler
 									DhtmlEvent="onchange"
 									>
+									<Remark>
+										<Action
+											ElementID="BodyMain"
+											ID="actRefreshBodyMain"
+											Type="RefreshElement"
+										/>
+									</Remark>
 									<Action
-										ElementID="BodyMain"
-										ID="actRefreshBodyMain"
-										Type="RefreshElement"
+										ID="actSetShipRegion"
+										Javascript="updateShipRegion();"
+										Type="Javascript"
 									/>
 								</EventHandler>
 							</InputSelectList>
@@ -464,6 +471,16 @@ function updateShipCountry() {
 	document.getElementById(&apos;RefreshTable&apos;).click();
 		
 }
+function updateShipRegion() {
+	
+	document.getElementById(&apos;inpShipRegion&apos;).value = $(&apos;#inpShipRegionUI&apos;).val();
+	window.parent.document.getElementById(&apos;ParentShipRegion&apos;).value = $(&apos;#inpShipRegionUI&apos;).val();
+	document.getElementById(&apos;RefreshTable&apos;).click();
+		
+}
+
+
+
 
 
 $( document ).ready(function() {

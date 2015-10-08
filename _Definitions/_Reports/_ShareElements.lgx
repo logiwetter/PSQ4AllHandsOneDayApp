@@ -14,6 +14,10 @@
 			ID="inpCustomerID"
 		/>
 		<InputHidden
+			DefaultValue="@Request.inpShipRegion~"
+			ID="inpShipRegion"
+		/>
+		<InputHidden
 			DefaultValue="@Request.CustomerID~"
 			ID="CustomerID"
 		/>
@@ -26,6 +30,7 @@
 		CustomerID=""
 		CustomerName=""
 		inpCustomerID=""
+		inpShipRegion=""
 		ShipCountry=""
 	/>
 </Report>
