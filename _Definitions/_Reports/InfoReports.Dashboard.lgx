@@ -23,7 +23,7 @@
 							>
 							<InputSelectList
 								Class="chosen"
-								ID="inpCustomerID"
+								ID="inpCustomerIDui"
 								MultiSelect="True"
 								OptionCaptionColumn="CompanyName"
 								OptionValueColumn="CustomerID"
@@ -39,10 +39,17 @@ Order by CompanyName"
 								<EventHandler
 									DhtmlEvent="onchange"
 									>
+									<Remark>
+										<Action
+											ElementID="BodyMain"
+											ID="actRefreshBodyMain"
+											Type="RefreshElement"
+										/>
+									</Remark>
 									<Action
-										ElementID="BodyMain"
-										ID="actRefreshBodyMain"
-										Type="RefreshElement"
+										ID="actSetClientList"
+										Javascript="updateClientList();"
+										Type="Javascript"
 									/>
 								</EventHandler>
 							</InputSelectList>
@@ -52,7 +59,7 @@ Order by CompanyName"
 							<InputSelectList
 								Caption="Ship Country: "
 								Class="chosen"
-								ID="inpShipCountry"
+								ID="inpShipCountryUI"
 								MultiSelect="True"
 								OptionCaptionColumn="ShipCountry"
 								OptionValueColumn="ShipCountry"
@@ -82,13 +89,70 @@ where
 								<EventHandler
 									DhtmlEvent="onchange"
 									>
+									<Remark>
+										<Action
+											ElementID="BodyMain"
+											ID="actRefreshBodyMain"
+											Type="RefreshElement"
+										/>
+									</Remark>
 									<Action
-										ElementID="BodyMain"
-										ID="actRefreshBodyMain"
-										Type="RefreshElement"
+										ID="actSetShipCountry"
+										Javascript="updateShipCountry();"
+										Type="Javascript"
 									/>
 								</EventHandler>
 							</InputSelectList>
+<<<<<<< HEAD
+=======
+							<InputSelectList
+								Class="chosen"
+								ID="inpShipRegionUI"
+								MultiSelect="True"
+								OptionCaptionColumn="ShipRegion"
+								OptionValueColumn="ShipRegion"
+								>
+								<DataLayer
+									ConnectionID="Northwind"
+									ID="dlShipRegion"
+									Source="with
+descendants as
+  ( select [ReportsTo] as parent, [EmployeeID] as descendant, 1 as level
+    from [Northwind].[dbo].[Employees]
+  union all
+    select [ReportsTo] as parent, [EmployeeID] as child, d.level + 1
+    from descendants as d
+      join [Northwind].[dbo].[Employees] s
+        on d.descendant = s.[ReportsTo]
+  ) 
+
+
+Select  distinct
+  Orders.ShipRegion
+From Orders
+where
+	Orders.EmployeeID in (select descendant from descendants where parent =  &apos;@Session.EmployeeID~&apos; or descendant = &apos;@Session.EmployeeID~&apos; or &apos;@Session.EmployeeID~&apos;=&apos;&apos;)
+	and (Orders.ShipCountry = &apos;@Request.inpShipCountry~&apos; or &apos;@Request.inpShipCountry~&apos;=&apos;&apos; )"
+									Type="SQL"
+								/>
+								<EventHandler
+									DhtmlEvent="onchange"
+									>
+									<Remark>
+										<Action
+											ElementID="BodyMain"
+											ID="actRefreshBodyMain"
+											Type="RefreshElement"
+										/>
+									</Remark>
+									<Action
+										ID="actSetShipRegion"
+										Javascript="updateShipRegion();"
+										Type="Javascript"
+									/>
+								</EventHandler>
+							</InputSelectList>
+>>>>>>> f61ba1d58baee2a841e744cecb4e98f44d3a54cc
 						</Division>
 					</Division>
 					<Division
@@ -110,6 +174,7 @@ where
 										HtmlDiv="True"
 										>
 										<ChartCanvas
+											AutoQuicktip="False"
 											ChartCaption="Top 10 Customer Sales"
 											>
 											<DataLayer
@@ -179,6 +244,14 @@ where
 													Javascript="updateClient(&apos;@Chart.CustomerID~&apos;,&apos;@Chart.CompanyName~&apos;);"
 													Type="Javascript"
 												/>
+												<Quicktip
+													Title="@Chart.CompanyName~"
+													>
+													<QuicktipRow
+														Format="$ ###,###,###;($ ###,###,###)"
+														Value="@Chart.gacSaleAmount~"
+													/>
+												</Quicktip>
 											</Series>
 										</ChartCanvas>
 									</Division>
@@ -196,6 +269,7 @@ where
 										HtmlDiv="True"
 										>
 										<ChartCanvas
+											AutoQuicktip="False"
 											ChartCaption="Sales by Country"
 											>
 											<DataLayer
@@ -266,6 +340,14 @@ where
 														ShipCountry="@Chart.ShipCountry~"
 													/>
 												</Action>
+												<Quicktip
+													Title="@Chart.CompanyName~"
+													>
+													<QuicktipRow
+														Format="$ ###,###,###;($ ###,###,###)"
+														Value="@Chart.gacSaleAmount~"
+													/>
+												</Quicktip>
 											</Series>
 										</ChartCanvas>
 									</Division>
@@ -379,15 +461,46 @@ where
 		document.getElementById(&apos;RefreshTable&apos;).click();
 	}	
 }
+<<<<<<< HEAD
 $( document ).ready(function() {
 	$(&quot;#inpCustomerID&quot;).attr(&quot;data-placeholder&quot;,&quot;companies&quot;);
 	$(&quot;#inpShipCountry&quot;).attr(&quot;data-placeholder&quot;,&quot;ship country&quot;);
 	$(&apos;.chosen&apos;).chosen();
+=======
+function updateClientList() {
 	
+	document.getElementById(&apos;inpCustomerID&apos;).value = $(&apos;#inpCustomerIDui&apos;).val();
+	window.parent.document.getElementById(&apos;ParentClientIdList&apos;).value = $(&apos;#inpCustomerIDui&apos;).val();
+	document.getElementById(&apos;RefreshTable&apos;).click();
+		
+}
+function updateShipCountry() {
+>>>>>>> f61ba1d58baee2a841e744cecb4e98f44d3a54cc
 	
+	document.getElementById(&apos;inpShipCountry&apos;).value = $(&apos;#inpShipCountryUI&apos;).val();
+	window.parent.document.getElementById(&apos;ParentShipCountry&apos;).value = $(&apos;#inpShipCountryUI&apos;).val();
+	document.getElementById(&apos;RefreshTable&apos;).click();
+		
+}
+function updateShipRegion() {
+	
+	document.getElementById(&apos;inpShipRegion&apos;).value = $(&apos;#inpShipRegionUI&apos;).val();
+	window.parent.document.getElementById(&apos;ParentShipRegion&apos;).value = $(&apos;#inpShipRegionUI&apos;).val();
+	document.getElementById(&apos;RefreshTable&apos;).click();
+		
+}
 
-});
-"
+
+
+
+
+$( document ).ready(function() {
+	$(&quot;#inpCustomerIDui&quot;).attr(&quot;data-placeholder&quot;,&quot;companies&quot;);
+	$(&quot;#inpShipCountryUI&quot;).attr(&quot;data-placeholder&quot;,&quot;ship country&quot;);
+	$(&quot;#inpShipRegionUI&quot;).attr(&quot;data-placeholder&quot;,&quot;ship region&quot;);
+	$(&apos;.chosen&apos;).chosen();
+
+});"
 		/>
 		<Button
 			Class="ThemeHidden"
