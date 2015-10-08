@@ -17,6 +17,11 @@
 					<Target
 						Report="InfoReports.Dashboard"
 						Type="Report"
+						>
+						<WaitPage/>
+					</Target>
+					<LinkParams
+						inpCustomerID="@Request.inpCustomerID~"
 					/>
 				</Action>
 			</Label>
