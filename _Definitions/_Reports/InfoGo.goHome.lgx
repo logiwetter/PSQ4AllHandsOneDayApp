@@ -703,6 +703,10 @@
 		DefinitionFile="InfoGo.goShared"
 		SharedElementID="sharedScripts"
 	/>
+	<IncludeSharedElement
+		DefinitionFile="_ShareElements"
+		SharedElementID="userState"
+	/>
 	<ideTestParams
 		goFind=""
 	/>
