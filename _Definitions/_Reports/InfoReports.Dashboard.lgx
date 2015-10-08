@@ -57,6 +57,7 @@ Order by CompanyName"
 								Size="5"
 							/>
 							<InputSelectList
+								Caption="Ship Country: "
 								Class="chosen"
 								ID="inpShipCountryUI"
 								MultiSelect="True"
@@ -102,6 +103,8 @@ where
 									/>
 								</EventHandler>
 							</InputSelectList>
+<<<<<<< HEAD
+=======
 							<InputSelectList
 								Class="chosen"
 								ID="inpShipRegionUI"
@@ -149,6 +152,7 @@ where
 									/>
 								</EventHandler>
 							</InputSelectList>
+>>>>>>> f61ba1d58baee2a841e744cecb4e98f44d3a54cc
 						</Division>
 					</Division>
 					<Division
@@ -553,6 +557,12 @@ where
 		document.getElementById(&apos;RefreshTable&apos;).click();
 	}	
 }
+<<<<<<< HEAD
+$( document ).ready(function() {
+	$(&quot;#inpCustomerID&quot;).attr(&quot;data-placeholder&quot;,&quot;companies&quot;);
+	$(&quot;#inpShipCountry&quot;).attr(&quot;data-placeholder&quot;,&quot;ship country&quot;);
+	$(&apos;.chosen&apos;).chosen();
+=======
 function updateClientList() {
 	
 	document.getElementById(&apos;inpCustomerID&apos;).value = $(&apos;#inpCustomerIDui&apos;).val();
@@ -561,6 +571,7 @@ function updateClientList() {
 		
 }
 function updateShipCountry() {
+>>>>>>> f61ba1d58baee2a841e744cecb4e98f44d3a54cc
 	
 	document.getElementById(&apos;inpShipCountry&apos;).value = $(&apos;#inpShipCountryUI&apos;).val();
 	window.parent.document.getElementById(&apos;ParentShipCountry&apos;).value = $(&apos;#inpShipCountryUI&apos;).val();
@@ -606,7 +617,6 @@ $( document ).ready(function() {
 		CustomerID=""
 		CustomerName=""
 		inpCustomerID=""
-		inpShipCountry=""
 		ShipCountry=""
 	/>
 </Report>

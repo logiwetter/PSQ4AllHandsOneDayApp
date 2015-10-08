@@ -3,8 +3,8 @@
 	ID="_settings"
 	>
 	<Application
-		Caption="Awesome Sauce"
-		DefaultReport="InfoReports.Dashboard"
+		Caption="Accelerate"
+		DefaultReport=""
 	/>
 	<Path
 		AppPath="http://localhost/PSQ4AllHandsOneDayApp"
@@ -13,7 +13,7 @@
 		BookmarkCollectionDefault="@Function.UserName~goCollection"
 		BookmarkLocation="@Function.AppPhysicalPath~\goBookmarks\UserName@Function.UserName~"
 		DoctypeDeclaration="Html5"
-		rdDebuggerStyle="ErrorDetail"
+		rdDebuggerStyle="Redirect"
 		RedirectErrorUrl="rdPage.aspx?rdReport=_Layout.Error"
 		RepoFriendly="True"
 	/>
@@ -298,14 +298,6 @@
 	<StartupProcess
 		Process="proc_Theme-Settings"
 		TaskID="startup-SetThemeSettings"
-		>
-		<Note
-			Note="This process sets the theme color settings"
-		/>
-	</StartupProcess>
-	<StartupProcess
-		Process="proc_SetDefaultUser"
-		TaskID="SetDefaultUser"
 		>
 		<Note
 			Note="This process sets the theme color settings"
