@@ -46,58 +46,10 @@ Order by CompanyName"
 									/>
 								</EventHandler>
 							</InputSelectList>
-							<Remark>
-								<InputCheckboxList
-									CheckboxListDropdown="True"
-									DefaultValue="@Request.inpCustomerID~"
-									ID="inpCustomerID"
-									MultiSelect="True"
-									OptionCaptionColumn="CompanyName"
-									OptionValueColumn="CustomerID"
-									>
-									<DataLayer
-										ConnectionID="Northwind"
-										ID="dlCustomers"
-										Source="Select CustomerID, CompanyName
-From  Customers 
-Order by CompanyName"
-										Type="SQL"
-									/>
-								</InputCheckboxList>
-							</Remark>
 							<Spaces
 								Size="5"
 							/>
-							<Remark>
-								<Button
-									Caption="Filter"
-									>
-									<Action
-										Type="Report"
-										>
-										<Target
-											Type="Report"
-										/>
-									</Action>
-								</Button>
-							</Remark>
 						</Division>
-						<Remark>
-							<Label
-								Caption="::@Session.EmployeeID~::@Function.UserRoles~"
-								>
-								<Action
-									ElementID="panelDetailTable"
-									ID="actRefreshTable"
-									Type="RefreshElement"
-									>
-									<LinkParams
-										CustomerID="@Chart.CustomerID~"
-										rdAgReset=""
-									/>
-								</Action>
-							</Label>
-						</Remark>
 					</Division>
 					<Division
 						Class="panel-body"
