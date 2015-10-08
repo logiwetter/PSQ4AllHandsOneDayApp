@@ -49,8 +49,6 @@ Order by CompanyName"
 							<Spaces
 								Size="5"
 							/>
-<<<<<<< HEAD
-=======
 							<InputSelectList
 								Class="chosen"
 								ID="inpShipCountry"
@@ -130,7 +128,6 @@ where
 									/>
 								</EventHandler>
 							</InputSelectList>
->>>>>>> 3c018dbcd9c6e9c80ac265bb3265c22c845b7624
 						</Division>
 					</Division>
 					<Division
@@ -440,12 +437,9 @@ where
 	}	
 }
 $( document ).ready(function() {
-<<<<<<< HEAD
-=======
 	$(&quot;#inpCustomerID&quot;).attr(&quot;data-placeholder&quot;,&quot;companies&quot;);
 	$(&quot;#inpShipCountry&quot;).attr(&quot;data-placeholder&quot;,&quot;ship country&quot;);
 	$(&quot;#inpShipRegion&quot;).attr(&quot;data-placeholder&quot;,&quot;ship region&quot;);
->>>>>>> 3c018dbcd9c6e9c80ac265bb3265c22c845b7624
 	$(&apos;.chosen&apos;).chosen();
 
 });"
