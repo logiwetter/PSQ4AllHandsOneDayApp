@@ -21,52 +21,86 @@
 							HtmlDiv="True"
 							ID="div_inputs"
 							>
-							<InputSelectList
-								Class="chosen"
-								ID="inpCustomerIDui"
-								MultiSelect="True"
-								OptionCaptionColumn="CompanyName"
-								OptionValueColumn="CustomerID"
+							<Division
+								ID="divCustomerInput"
 								>
-								<DataLayer
-									ConnectionID="Northwind"
-									ID="dlCustomers"
-									Source="Select CustomerID, CompanyName
-From  Customers 
-Order by CompanyName"
-									Type="SQL"
-								/>
-								<EventHandler
-									DhtmlEvent="onchange"
+								<InputSelectList
+									Class="chosen"
+									DefaultValue="@Request.inpCustomerID~"
+									ID="inpCustomerIDui"
+									MultiSelect="True"
+									OptionCaptionColumn="CompanyName"
+									OptionValueColumn="CustomerID"
 									>
 									<Remark>
-										<Action
-											ElementID="BodyMain"
-											ID="actRefreshBodyMain"
-											Type="RefreshElement"
+										<DataLayer
+											ConnectionID="Northwind"
+											ID="dlCustomers"
+											Source="Select CustomerID, CompanyName
+From  Customers 
+Order by CompanyName"
+											Type="SQL"
 										/>
 									</Remark>
-									<Action
-										ID="actSetClientList"
-										Javascript="updateClientList();"
-										Type="Javascript"
+									<DataLayer
+										ConnectionID="Northwind"
+										ID="dlCustomers"
+										Source="
+
+with
+descendants as
+  ( select [ReportsTo] as parent, [EmployeeID] as descendant, 1 as level
+    from [Northwind].[dbo].[Employees]
+  union all
+    select [ReportsTo] as parent, [EmployeeID] as child, d.level + 1
+    from descendants as d
+      join [Northwind].[dbo].[Employees] s
+        on d.descendant = s.[ReportsTo]
+  ) 
+
+select
+  distinct o.CustomerID, c.CompanyName
+from
+ dbo.Orders O
+ join dbo.Customers c
+   on o.CustomerID = c.CustomerID
+ and (o.EmployeeID in (select descendant from descendants where parent = &apos;@Session.EmployeeID~&apos; or descendant = &apos;@Session.EmployeeID~&apos; or &apos;@Session.EmployeeID~&apos;=&apos;&apos;))"
+										Type="SQL"
 									/>
-								</EventHandler>
-							</InputSelectList>
-							<Spaces
-								Size="5"
-							/>
-							<InputSelectList
-								Class="chosen"
-								ID="inpShipCountryUI"
-								MultiSelect="True"
-								OptionCaptionColumn="ShipCountry"
-								OptionValueColumn="ShipCountry"
+									<EventHandler
+										DhtmlEvent="onchange"
+										>
+										<Remark>
+											<Action
+												ElementID="BodyMain"
+												ID="actRefreshBodyMain"
+												Type="RefreshElement"
+											/>
+										</Remark>
+										<Action
+											ID="actSetClientList"
+											Javascript="updateClientList();"
+											Type="Javascript"
+										/>
+									</EventHandler>
+								</InputSelectList>
+							</Division>
+							<Division
+								ID="divShipCountryInput"
 								>
-								<DataLayer
-									ConnectionID="Northwind"
-									ID="dlShipCountry"
-									Source="with
+								<InputSelectList
+									Class="chosen"
+									DefaultValue="@Request.inpShipCountry~"
+									ID="inpShipCountryUI"
+									MultiSelect="True"
+									OptionCaptionColumn="ShipCountry"
+									OptionValueColumn="ShipCountry"
+									>
+									<Remark>
+										<DataLayer
+											ConnectionID="Northwind"
+											ID="dlShipCountry"
+											Source="with
 descendants as
   ( select [ReportsTo] as parent, [EmployeeID] as descendant, 1 as level
     from [Northwind].[dbo].[Employees]
@@ -83,36 +117,62 @@ Select  distinct
 From Orders
 where
 	Orders.EmployeeID in (select descendant from descendants where parent =  &apos;@Session.EmployeeID~&apos; or descendant = &apos;@Session.EmployeeID~&apos; or &apos;@Session.EmployeeID~&apos;=&apos;&apos;)"
-									Type="SQL"
-								/>
-								<EventHandler
-									DhtmlEvent="onchange"
-									>
-									<Remark>
-										<Action
-											ElementID="BodyMain"
-											ID="actRefreshBodyMain"
-											Type="RefreshElement"
+											Type="SQL"
 										/>
 									</Remark>
-									<Action
-										ID="actSetShipCountry"
-										Javascript="updateShipCountry();"
-										Type="Javascript"
+									<DataLayer
+										ConnectionID="Northwind"
+										ID="dlShipCountry"
+										Source="with
+descendants as
+  ( select [ReportsTo] as parent, [EmployeeID] as descendant, 1 as level
+    from [Northwind].[dbo].[Employees]
+  union all
+    select [ReportsTo] as parent, [EmployeeID] as child, d.level + 1
+    from descendants as d
+      join [Northwind].[dbo].[Employees] s
+        on d.descendant = s.[ReportsTo]
+  ) 
+
+select
+  distinct o.ShipCountry
+from
+ dbo.Orders o
+Where
+ o.CustomerID in (@SingleQuote.Request.inpCustomerID~) or (&apos;@Request.inpCustomerID~&apos;=&apos;&apos;)
+ and (o.EmployeeID in (select descendant from descendants where parent = &apos;@Session.EmployeeID~&apos; or descendant = &apos;@Session.EmployeeID~&apos; or &apos;@Session.EmployeeID~&apos;=&apos;&apos;))"
+										Type="SQL"
 									/>
-								</EventHandler>
-							</InputSelectList>
-							<InputSelectList
-								Class="chosen"
-								ID="inpShipRegionUI"
-								MultiSelect="True"
-								OptionCaptionColumn="ShipRegion"
-								OptionValueColumn="ShipRegion"
-								>
-								<DataLayer
-									ConnectionID="Northwind"
-									ID="dlShipRegion"
-									Source="with
+									<EventHandler
+										DhtmlEvent="onchange"
+										>
+										<Remark>
+											<Action
+												ElementID="BodyMain"
+												ID="actRefreshBodyMain"
+												Type="RefreshElement"
+											/>
+										</Remark>
+										<Action
+											ID="actSetShipCountry"
+											Javascript="updateShipCountry();"
+											Type="Javascript"
+										/>
+									</EventHandler>
+								</InputSelectList>
+								<Remark>
+									<InputSelectList
+										Class="chosen"
+										DefaultValue="@Request.inpShipRegion~"
+										ID="inpShipRegionUI"
+										MultiSelect="True"
+										OptionCaptionColumn="ShipRegion"
+										OptionValueColumn="ShipRegion"
+										>
+										<DataLayer
+											ConnectionID="Northwind"
+											ID="dlShipRegion"
+											Source="with
 descendants as
   ( select [ReportsTo] as parent, [EmployeeID] as descendant, 1 as level
     from [Northwind].[dbo].[Employees]
@@ -130,25 +190,45 @@ From Orders
 where
 	Orders.EmployeeID in (select descendant from descendants where parent =  &apos;@Session.EmployeeID~&apos; or descendant = &apos;@Session.EmployeeID~&apos; or &apos;@Session.EmployeeID~&apos;=&apos;&apos;)
 	and (Orders.ShipCountry = &apos;@Request.inpShipCountry~&apos; or &apos;@Request.inpShipCountry~&apos;=&apos;&apos; )"
-									Type="SQL"
-								/>
-								<EventHandler
-									DhtmlEvent="onchange"
-									>
-									<Remark>
-										<Action
-											ElementID="BodyMain"
-											ID="actRefreshBodyMain"
-											Type="RefreshElement"
+											Type="SQL"
 										/>
-									</Remark>
-									<Action
-										ID="actSetShipRegion"
-										Javascript="updateShipRegion();"
-										Type="Javascript"
-									/>
-								</EventHandler>
-							</InputSelectList>
+										<EventHandler
+											DhtmlEvent="onchange"
+											>
+											<Remark>
+												<Action
+													ElementID="BodyMain"
+													ID="actRefreshBodyMain"
+													Type="RefreshElement"
+												/>
+											</Remark>
+											<Action
+												ID="actSetShipRegion"
+												Javascript="updateShipRegion();"
+												Type="Javascript"
+											/>
+										</EventHandler>
+									</InputSelectList>
+								</Remark>
+								<Image
+									Caption="_theme_files.1x1.gif"
+									Class="ThemeHidden"
+									ID="onLoadGif"
+									>
+									<EventHandler
+										DhtmlEvent="onload"
+										>
+										<Action
+											Javascript="$(&apos;#inpShipCountryUI&apos;).attr(&quot;data-placeholder&quot;,&quot;ship country&quot;);
+$(&apos;#inpShipCountryUI.chosen&apos;).chosen();
+if (document.getElementById(&apos;inpShipCountry&apos;).value != $(&apos;#inpShipCountryUI&apos;).val()) {
+	updateShipCountry();
+}"
+											Type="Javascript"
+										/>
+									</EventHandler>
+								</Image>
+							</Division>
 						</Division>
 					</Division>
 					<Division
@@ -204,6 +284,8 @@ From Orders
   Inner Join Customers On Customers.CustomerID = Orders.CustomerID
 where
 	(Orders.CustomerID in (@SingleQuote.Request.inpCustomerID~) or &apos;@Request.inpCustomerID~&apos;=&apos;&apos;)
+	and (Orders.ShipCountry in (@SingleQuote.Request.inpShipCountry~) or &apos;@Request.inpShipCountry~&apos;=&apos;&apos;)
+	and (Orders.ShipRegion in (@SingleQuote.Request.inpShipRegion~) or &apos;@Request.inpShipRegion~&apos;=&apos;&apos;)
 	and
 	Orders.EmployeeID in (select descendant from descendants where parent =  &apos;@Session.EmployeeID~&apos; or descendant = &apos;@Session.EmployeeID~&apos; or &apos;@Session.EmployeeID~&apos;=&apos;&apos;)"
 												Type="SQL"
@@ -299,6 +381,8 @@ From Orders
   Inner Join Customers On Customers.CustomerID = Orders.CustomerID
 where
 	(Orders.CustomerID in (@SingleQuote.Request.inpCustomerID~) or &apos;@Request.inpCustomerID~&apos;=&apos;&apos;)
+	and (Orders.ShipCountry in (@SingleQuote.Request.inpShipCountry~) or &apos;@Request.inpShipCountry~&apos;=&apos;&apos;)
+	and (Orders.ShipRegion in (@SingleQuote.Request.inpShipRegion~) or &apos;@Request.inpShipRegion~&apos;=&apos;&apos;)
 	and
 	Orders.EmployeeID in (select descendant from descendants where parent =  &apos;@Session.EmployeeID~&apos; or descendant = &apos;@Session.EmployeeID~&apos; or &apos;@Session.EmployeeID~&apos;=&apos;&apos;)"
 												Type="SQL"
@@ -370,7 +454,7 @@ where
 											ID="table-header"
 											>
 											<Label
-												Caption="Details for @Request.CustomerName~"
+												Caption="=&apos;Details for &apos; + decodeURIComponent(&apos;@Request.CustomerName~&apos;)"
 												Class="panel-title"
 												ID="lblHeader"
 											/>
@@ -421,8 +505,9 @@ From Orders
   Inner Join Customers On Customers.CustomerID = Orders.CustomerID
 where
 	(Orders.CustomerID = &apos;@Request.CustomerID~&apos;)
-	and (Orders.ShipCountry = &apos;@Request.ShipCountry~&apos; or &apos;&apos;=&apos;@Request.ShipCountry~&apos;)
 	and (Orders.CustomerID in (@SingleQuote.Request.inpCustomerID~) or &apos;@Request.inpCustomerID~&apos;=&apos;&apos;)
+	and (Orders.ShipCountry in (@SingleQuote.Request.inpShipCountry~) or &apos;@Request.inpShipCountry~&apos;=&apos;&apos;)
+	and (Orders.ShipRegion in (@SingleQuote.Request.inpShipRegion~) or &apos;@Request.inpShipRegion~&apos;=&apos;&apos;)
 	and Orders.EmployeeID in (select descendant from descendants where parent =  &apos;@Session.EmployeeID~&apos; or descendant = &apos;@Session.EmployeeID~&apos; or &apos;@Session.EmployeeID~&apos;=&apos;&apos;)"
 													Type="SQL"
 												/>
@@ -553,40 +638,53 @@ where
 		document.getElementById(&apos;RefreshTable&apos;).click();
 	}	
 }
-function updateClientList() {
-	
-	document.getElementById(&apos;inpCustomerID&apos;).value = $(&apos;#inpCustomerIDui&apos;).val();
-	window.parent.document.getElementById(&apos;ParentClientIdList&apos;).value = $(&apos;#inpCustomerIDui&apos;).val();
-	document.getElementById(&apos;RefreshEverything&apos;).click();
-		
+function updateClientList() {	
+	var clientListUI = $(&apos;#inpCustomerIDui&apos;).val();
+	var clientList = $(&apos;#inpCustomerID&apos;).val();
+	if (clientList != clientListUI) {
+		$(&apos;#inpCustomerID&apos;).val(clientListUI);
+		window.parent.document.getElementById(&apos;ParentClientIdList&apos;).value = clientListUI;
+		document.getElementById(&apos;RefreshEverythingAndShipCountryInput&apos;).click();
+	}
 }
 function updateShipCountry() {
-	
-	document.getElementById(&apos;inpShipCountry&apos;).value = $(&apos;#inpShipCountryUI&apos;).val();
-	window.parent.document.getElementById(&apos;ParentShipCountry&apos;).value = $(&apos;#inpShipCountryUI&apos;).val();
-	document.getElementById(&apos;RefreshEverything&apos;).click();
-		
+	if (document.getElementById(&apos;inpShipCountry&apos;).value != $(&apos;#inpShipCountryUI&apos;).val()) {
+		document.getElementById(&apos;inpShipCountry&apos;).value = $(&apos;#inpShipCountryUI&apos;).val();
+		window.parent.document.getElementById(&apos;ParentShipCountry&apos;).value = $(&apos;#inpShipCountryUI&apos;).val();
+	}
+	document.getElementById(&apos;RefreshEverything&apos;).click();	
 }
-function updateShipRegion() {
+function RefreshEverything() {
 	
-	document.getElementById(&apos;inpShipRegion&apos;).value = $(&apos;#inpShipRegionUI&apos;).val();
-	window.parent.document.getElementById(&apos;ParentShipRegion&apos;).value = $(&apos;#inpShipRegionUI&apos;).val();
-	document.getElementById(&apos;RefreshEverything&apos;).click();
-		
 }
-
-
-
+function updateShipRegion() {	
+	if (document.getElementById(&apos;inpShipRegion&apos;).value != $(&apos;#inpShipRegionUI&apos;).val()) {
+		document.getElementById(&apos;inpShipRegion&apos;).value = $(&apos;#inpShipRegionUI&apos;).val();
+		window.parent.document.getElementById(&apos;ParentShipRegion&apos;).value = $(&apos;#inpShipRegionUI&apos;).val();
+		document.getElementById(&apos;RefreshEverything&apos;).click();
+	}		
+}
 
 
 $( document ).ready(function() {
 	$(&apos;#inpCustomerIDui&apos;).attr(&quot;data-placeholder&quot;,&quot;companies&quot;);
-	$(&apos;#inpShipCountryUI&apos;).attr(&quot;data-placeholder&quot;,&quot;ship country&quot;);
-	$(&apos;#inpShipRegionUI&apos;).attr(&quot;data-placeholder&quot;,&quot;ship region&quot;);
-	$(&apos;.chosen&apos;).chosen();
-
+	$(&apos;#inpCustomerIDui.chosen&apos;).chosen();
 });"
 		/>
+		<Button
+			Class="ThemeHidden"
+			ID="RefreshEverythingAndShipCountryInput"
+			>
+			<Action
+				ElementID="divShipCountryInput"
+				ID="actRefreshEverythingAndShipCountryInput"
+				Type="RefreshElement"
+				>
+				<Remark>
+					<WaitPage/>
+				</Remark>
+			</Action>
+		</Button>
 		<Button
 			Class="ThemeHidden"
 			ID="RefreshEverything"
@@ -621,6 +719,6 @@ $( document ).ready(function() {
 		CustomerName=""
 		inpCustomerID=""
 		inpShipCountry=""
-		ShipCountry=""
+		inpShipRegion=""
 	/>
 </Report>

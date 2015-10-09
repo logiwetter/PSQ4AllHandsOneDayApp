@@ -6,7 +6,7 @@
 		ID="userState"
 		>
 		<InputHidden
-			DefaultValue="@Request.ShipCountry~"
+			DefaultValue="@Request.inpShipCountry~"
 			ID="inpShipCountry"
 		/>
 		<InputHidden
@@ -26,4 +26,11 @@
 			ID="CustomerName"
 		/>
 	</SharedElement>
+	<ideTestParams
+		CustomerID=""
+		CustomerName=""
+		inpCustomerID=""
+		inpShipCountry=""
+		inpShipRegion=""
+	/>
 </Report>
